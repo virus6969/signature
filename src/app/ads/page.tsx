@@ -2,6 +2,10 @@ import AdHeader from '@/components/app/ad-header';
 import AdFooter from '@/components/app/ad-footer';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Star } from 'lucide-react';
+import PortfolioSection from '@/components/app/ads/portfolio-section';
+import PricingSection from '@/components/app/ads/pricing-section';
+import TestimonialsSection from '@/components/app/ads/testimonials-section';
+import FaqSection from '@/components/app/ads/faq-section';
 
 export default function AdsPage() {
   return (
@@ -30,9 +34,9 @@ export default function AdsPage() {
             <h2 className="text-3xl font-headline font-bold mb-4">
               Trusted by Thousands Worldwide
             </h2>
-            <div className="flex justify-center items-center gap-8 text-muted-foreground">
+            <div className="flex justify-center items-center gap-8 text-muted-foreground flex-wrap">
               <div className="flex items-center gap-2">
-                <Star className="w-6 h-6 text-yellow-400" />
+                <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />
                 <p>1,000+ 5-Star Reviews</p>
               </div>
               <div className="flex items-center gap-2">
@@ -80,6 +84,11 @@ export default function AdsPage() {
                 </div>
             </div>
         </section>
+
+        <PortfolioSection />
+        <PricingSection />
+        <TestimonialsSection />
+        <FaqSection />
 
         {/* CTA Section */}
         <section className="bg-accent text-accent-foreground text-center py-20">

@@ -1,3 +1,46 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "sig-1",
+      "description": "An elegant, flowing signature for 'Alexandra Chen'.",
+      "imageUrl": "https://images.unsplash.com/photo-1695606452826-00ea00c8df41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxlbGVnYW50JTIwc2lnbmF0dXJlfGVufDB8fHx8MTc2MzY3MTQ5NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "elegant signature"
+    },
+    {
+      "id": "sig-2",
+      "description": "A bold, modern signature for 'David Lee'.",
+      "imageUrl": "https://images.unsplash.com/photo-1742006724581-017cd3c1869e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBzaWduYXR1cmV8ZW58MHx8fHwxNzYzNjcxNDk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern signature"
+    },
+    {
+      "id": "sig-3",
+      "description": "A minimalist, clean signature for 'Sophia Miller'.",
+      "imageUrl": "https://images.unsplash.com/photo-1661902735161-f73a3f516200?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtaW5pbWFsaXN0JTIwc2lnbmF0dXJlfGVufDB8fHx8MTc2MzY3MTQ5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "minimalist signature"
+    },
+    {
+      "id": "sig-4",
+      "description": "An extravagant, artistic signature for 'James Rodriguez'.",
+      "imageUrl": "https://images.unsplash.com/photo-1540525702892-c73126e68804?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhcnRpc3RpYyUyMHNpZ25hdHVyZXxlbnwwfHx8fDE3NjM2NzE0OTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "artistic signature"
+    },
+    {
+      "id": "customer-1",
+      "description": "Headshot of a smiling professional man.",
+      "imageUrl": "https://images.unsplash.com/photo-1562788869-4ed32648eb72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwcm9mZXNzaW9uYWwlMjBtYW58ZW58MHx8fHwxNzYzNjE3ODMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional man"
+    },
+    {
+      "id": "customer-2",
+      "description": "Headshot of a smiling professional woman.",
+      "imageUrl": "https://images.unsplash.com/photo-1581065178047-8ee15951ede6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwcm9mZXNzaW9uYWwlMjB3b21hbnxlbnwwfHx8fDE3NjM2MzI4NTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional woman"
+    },
+    {
+      "id": "customer-3",
+      "description": "Headshot of a creative-looking person.",
+      "imageUrl": "https://images.unsplash.com/photo-1622700950970-e82a3df61a89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjcmVhdGl2ZSUyMHBlcnNvbnxlbnwwfHx8fDE3NjM2NDc3MzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "creative person"
+    }
+  ]
 }
