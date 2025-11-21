@@ -7,7 +7,6 @@ import AdFooter from '@/components/app/ad-footer';
 import { Button } from '@/components/ui/button';
 import { Star, CheckCircle, Check } from 'lucide-react';
 import PortfolioSection from '@/components/app/ads/portfolio-section';
-import PricingSection from '@/components/app/ads/pricing-section';
 import TestimonialsSection from '@/components/app/ads/testimonials-section';
 import FaqSection from '@/components/app/ads/faq-section';
 import HowItWorksSection from '@/components/app/ads/how-it-works-section';
@@ -31,6 +30,18 @@ export default function AdsPage() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const CtaButton = () => (
+    <div className="mt-12 text-center">
+      <Button
+        size="lg"
+        className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+        style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
+      >
+        Create My Signature - 50% Off
+      </Button>
+    </div>
+  );
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -92,7 +103,6 @@ export default function AdsPage() {
         <HowItWorksSection />
         <PortfolioSection />
         <TestimonialsSection />
-        <PricingSection />
 
         {/* Final CTA Section */}
         <section className="bg-accent text-accent-foreground text-center py-20">
@@ -143,5 +153,3 @@ export default function AdsPage() {
     </div>
   );
 }
-
-    

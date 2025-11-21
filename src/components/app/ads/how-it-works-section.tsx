@@ -59,8 +59,12 @@ export default function HowItWorksSection() {
                 </div>
 
                 <div className="text-center mt-16">
-                    <Button variant="outline" size="lg" className="h-12 px-8 text-base border-2">
-                        Start Your Signature Journey
+                    <Button
+                        size="lg"
+                        className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                        style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
+                    >
+                        Create My Signature - 50% Off
                     </Button>
                 </div>
             </div>

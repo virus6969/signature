@@ -10,6 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { Button } from '@/components/ui/button';
 
 const testimonials = [
   {
@@ -96,7 +97,7 @@ export default function TestimonialsSection() {
                             </div>
                           </div>
                           <div className="flex mb-4">
-                              {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />)}
+                              {[...Array(5)].map((_, i) => <Star keyi={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />)}
                           </div>
                           <p className="text-muted-foreground flex-grow">"{testimonial.quote}"</p>
                         </CardContent>
@@ -109,10 +110,17 @@ export default function TestimonialsSection() {
               <CarouselNext />
             </Carousel>
         </div>
+        <div className="mt-12 text-center">
+            <Button
+                size="lg"
+                className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
+            >
+                Create My Signature - 50% Off
+            </Button>
+        </div>
 
       </div>
     </section>
   );
 }
-
-    
