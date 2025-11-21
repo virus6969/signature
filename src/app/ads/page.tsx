@@ -1,10 +1,11 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
 import AdHeader from '@/components/app/ad-header';
 import AdFooter from '@/components/app/ad-footer';
 import { Button } from '@/components/ui/button';
-import { Star, CheckCircle } from 'lucide-react';
+import { Star, CheckCircle, Check } from 'lucide-react';
 import PortfolioSection from '@/components/app/ads/portfolio-section';
 import PricingSection from '@/components/app/ads/pricing-section';
 import TestimonialsSection from '@/components/app/ads/testimonials-section';
@@ -93,16 +94,33 @@ export default function AdsPage() {
         <TestimonialsSection />
         <PricingSection />
 
-        {/* CTA Section */}
+        {/* Final CTA Section */}
         <section className="bg-accent text-accent-foreground text-center py-20">
           <div className="container mx-auto">
             <h2 className="text-4xl font-headline font-bold mb-4">
-              Ready for your new signature?
+              Ready to Transform Your Signature? Limited Time Offer!
             </h2>
-            <p className="text-lg mb-8">
-              Join thousands of professionals who have elevated their brand with SignaGenius.
-            </p>
-            <Button size="lg" className="h-14 px-10 text-lg bg-primary hover:bg-primary/90 text-primary-foreground">
+            <div className="flex justify-center mb-8">
+                <ul className="space-y-2 text-left">
+                    <li className="flex items-center gap-2">
+                        <Check className="w-5 h-5 text-green-400" />
+                        <span>50% Off Today Only</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                        <Check className="w-5 h-5 text-green-400" />
+                        <span>Unlimited Revisions Included</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                        <Check className="w-5 h-5 text-green-400" />
+                        <span>24-Hour Delivery Available</span>
+                    </li>
+                     <li className="flex items-center gap-2">
+                        <Check className="w-5 h-5 text-green-400" />
+                        <span>Money-Back Guarantee</span>
+                    </li>
+                </ul>
+            </div>
+            <Button size="lg" className="h-14 px-10 text-lg bg-white text-accent hover:bg-white/90">
               Create Your Signature - 50% Off
             </Button>
           </div>
@@ -125,3 +143,5 @@ export default function AdsPage() {
     </div>
   );
 }
+
+    
