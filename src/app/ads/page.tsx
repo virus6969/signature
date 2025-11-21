@@ -4,21 +4,26 @@ import { useEffect, useState } from 'react';
 import AdHeader from '@/components/app/ad-header';
 import AdFooter from '@/components/app/ad-footer';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, Star, PenTool, Clock, RefreshCw, Download, Award } from 'lucide-react';
+import { Star, CheckCircle, Clock, RefreshCw, Award } from 'lucide-react';
 import PortfolioSection from '@/components/app/ads/portfolio-section';
 import PricingSection from '@/components/app/ads/pricing-section';
 import TestimonialsSection from '@/components/app/ads/testimonials-section';
 import FaqSection from '@/components/app/ads/faq-section';
+import HowItWorksSection from '@/components/app/ads/how-it-works-section';
+import BenefitsSection from '@/components/app/ads/benefits-section';
 
 export default function AdsPage() {
   const [showStickyCta, setShowStickyCta] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowStickyCta(true);
-      } else {
-        setShowStickyCta(false);
+      const heroSection = document.getElementById('hero-section');
+      if (heroSection) {
+        if (window.scrollY > heroSection.offsetHeight) {
+          setShowStickyCta(true);
+        } else {
+          setShowStickyCta(false);
+        }
       }
     };
 
@@ -31,7 +36,7 @@ export default function AdsPage() {
       <AdHeader />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-primary text-primary-foreground text-center py-16 md:py-20">
+        <section id="hero-section" className="bg-primary text-primary-foreground text-center py-16 md:py-20">
           <div className="container mx-auto px-4">
             <h1 className="text-3xl md:text-5xl font-headline font-bold mb-4" style={{ lineHeight: 1.2 }}>
               Express Your Personality with an Exclusive Signature
@@ -40,22 +45,19 @@ export default function AdsPage() {
               Crafted by professional calligraphers. Sign like a pro. Stand out in every document.
             </p>
             <div className="relative inline-block">
-              <div className="absolute -top-4 -right-4 animate-pulse">
-                <span className="relative flex h-10 w-auto items-center justify-center">
-                  <span className="bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
-                    50% OFF
-                  </span>
-                </span>
+               <div className="absolute -top-4 -right-12 sm:-right-16 animate-pulse">
+                <div className="bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                  50% off ends for the first 50 customers
+                </div>
               </div>
               <Button 
                 size="lg" 
-                className="h-12 text-base md:text-lg min-w-[220px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
                 style={{boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}}
               >
                 Create My Signature - 50% Off
               </Button>
             </div>
-            <p className="text-xs md:text-sm mt-4 text-primary-foreground/80">50% off ends for the first 50 customers</p>
           </div>
         </section>
 
@@ -68,88 +70,28 @@ export default function AdsPage() {
             <div className="flex justify-center items-center gap-6 md:gap-12 text-muted-foreground flex-wrap">
               <div className="flex flex-col items-center gap-2">
                 <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
-                <p className="text-2xl font-bold text-foreground">1,000+</p>
+                <p className="text-4xl font-bold text-foreground">1,000+</p>
                 <p className="text-sm">5-Star Reviews</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <CheckCircle className="w-8 h-8 text-green-500" />
-                 <p className="text-2xl font-bold text-foreground">20,500+</p>
+                 <p className="text-4xl font-bold text-foreground">20,500+</p>
                 <p className="text-sm">Clients Served</p>
               </div>
                <div className="flex flex-col items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-                <p className="text-2xl font-bold text-foreground">Since 2017</p>
+                <p className="text-4xl font-bold text-foreground">Since 2017</p>
                 <p className="text-sm">Established</p>
               </div>
             </div>
           </div>
         </section>
         
-        {/* Benefits Section */}
-        <section className="py-16">
-            <div className="container mx-auto">
-                <h2 className="text-3xl font-headline text-center font-bold mb-12">Why Choose SignaGenius?</h2>
-                <div className="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
-                    <div className="flex flex-col items-center">
-                        <Award className="w-12 h-12 text-primary mb-4" />
-                        <h3 className="font-headline text-xl font-semibold mb-2">Professional Brand Identity</h3>
-                        <p className="text-muted-foreground">Stand out in business correspondence. Your signature becomes your personal brand mark that clients remember.</p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <Clock className="w-12 h-12 text-primary mb-4" />
-                        <h3 className="font-headline text-xl font-semibold mb-2">Done in 24 Hours</h3>
-                        <p className="text-muted-foreground">Fast turnaround. Submit your style preferences and receive your custom signature within 24 hours.</p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <RefreshCw className="w-12 h-12 text-primary mb-4" />
-                        <h3 className="font-headline text-xl font-semibold mb-2">Unlimited Revisions</h3>
-                        <p className="text-muted-foreground">Perfection guaranteed. We refine your signature until you're 100% satisfied—no extra charges.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        {/* Process Section */}
-        <section className="bg-card py-16">
-            <div className="container mx-auto">
-                <h2 className="text-3xl font-headline text-center font-bold mb-12">How It Works</h2>
-                <div className="grid md:grid-cols-4 gap-8 text-center">
-                    <div>
-                        <div className="flex items-center justify-center mb-4">
-                            <div className="bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center font-bold text-2xl">1</div>
-                        </div>
-                        <h3 className="font-headline text-xl font-semibold mb-2">Submit Your Style</h3>
-                        <p className="text-muted-foreground">Fill out a quick form with your name and style preferences. Takes 2 minutes.</p>
-                    </div>
-                    <div>
-                        <div className="flex items-center justify-center mb-4">
-                            <div className="bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center font-bold text-2xl">2</div>
-                        </div>
-                        <h3 className="font-headline text-xl font-semibold mb-2">We Design</h3>
-                        <p className="text-muted-foreground">Our calligraphers create multiple signature options based on your unique personality.</p>
-                    </div>
-                    <div>
-                        <div className="flex items-center justify-center mb-4">
-                             <div className="bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center font-bold text-2xl">3</div>
-                        </div>
-                        <h3 className="font-headline text-xl font-semibold mb-2">You Choose</h3>
-                        <p className="text-muted-foreground">Review your designs and pick your favorite. Request unlimited revisions if needed.</p>
-                    </div>
-                    <div>
-                        <div className="flex items-center justify-center mb-4">
-                            <div className="bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center font-bold text-2xl">4</div>
-                        </div>
-                        <h3 className="font-headline text-xl font-semibold mb-2">Master Your Signature</h3>
-                        <p className="text-muted-foreground">Download your signature in all formats and start using it everywhere.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        <BenefitsSection />
+        <HowItWorksSection />
         <PortfolioSection />
         <TestimonialsSection />
         <PricingSection />
-        <FaqSection />
 
         {/* CTA Section */}
         <section className="bg-accent text-accent-foreground text-center py-20">
@@ -165,14 +107,17 @@ export default function AdsPage() {
             </Button>
           </div>
         </section>
+
+        <FaqSection />
+
       </main>
       <AdFooter />
 
       {/* Sticky Mobile CTA */}
-      <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-4 border-t transition-transform duration-300 ${showStickyCta ? 'translate-y-0' : 'translate-y-full'}`} style={{zIndex: 1000}}>
+      <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/90 backdrop-blur-sm p-4 border-t transition-transform duration-300 ${showStickyCta ? 'translate-y-0' : 'translate-y-full'}`} style={{zIndex: 1000}}>
          <Button 
             size="lg" 
-            className="w-full h-12 text-base bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg"
+            className="w-full h-14 text-base bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg"
           >
             Create My Signature - 50% Off
           </Button>
@@ -180,5 +125,3 @@ export default function AdsPage() {
     </div>
   );
 }
-
-    
