@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import AdHeader from '@/components/app/ad-header';
 import AdFooter from '@/components/app/ad-footer';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, Star } from 'lucide-react';
+import { CheckCircle, Star, PenTool, Clock, RefreshCw, Download, Award } from 'lucide-react';
 import PortfolioSection from '@/components/app/ads/portfolio-section';
 import PricingSection from '@/components/app/ads/pricing-section';
 import TestimonialsSection from '@/components/app/ads/testimonials-section';
@@ -15,7 +15,6 @@ export default function AdsPage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show sticky CTA after user scrolls past the hero section (e.g., > 400px)
       if (window.scrollY > 400) {
         setShowStickyCta(true);
       } else {
@@ -85,6 +84,30 @@ export default function AdsPage() {
             </div>
           </div>
         </section>
+        
+        {/* Benefits Section */}
+        <section className="py-16">
+            <div className="container mx-auto">
+                <h2 className="text-3xl font-headline text-center font-bold mb-12">Why Choose SignaGenius?</h2>
+                <div className="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
+                    <div className="flex flex-col items-center">
+                        <Award className="w-12 h-12 text-primary mb-4" />
+                        <h3 className="font-headline text-xl font-semibold mb-2">Professional Brand Identity</h3>
+                        <p className="text-muted-foreground">Stand out in business correspondence. Your signature becomes your personal brand mark that clients remember.</p>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <Clock className="w-12 h-12 text-primary mb-4" />
+                        <h3 className="font-headline text-xl font-semibold mb-2">Done in 24 Hours</h3>
+                        <p className="text-muted-foreground">Fast turnaround. Submit your style preferences and receive your custom signature within 24 hours.</p>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <RefreshCw className="w-12 h-12 text-primary mb-4" />
+                        <h3 className="font-headline text-xl font-semibold mb-2">Unlimited Revisions</h3>
+                        <p className="text-muted-foreground">Perfection guaranteed. We refine your signature until you're 100% satisfied—no extra charges.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         {/* Process Section */}
         <section className="bg-card py-16">
@@ -93,31 +116,31 @@ export default function AdsPage() {
                 <div className="grid md:grid-cols-4 gap-8 text-center">
                     <div>
                         <div className="flex items-center justify-center mb-4">
-                            <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center font-bold text-xl">1</div>
+                            <div className="bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center font-bold text-2xl">1</div>
                         </div>
                         <h3 className="font-headline text-xl font-semibold mb-2">Submit Your Style</h3>
-                        <p className="text-muted-foreground">Fill out a quick form to tell us about your preferences.</p>
+                        <p className="text-muted-foreground">Fill out a quick form with your name and style preferences. Takes 2 minutes.</p>
                     </div>
                     <div>
                         <div className="flex items-center justify-center mb-4">
-                            <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center font-bold text-xl">2</div>
+                            <div className="bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center font-bold text-2xl">2</div>
                         </div>
                         <h3 className="font-headline text-xl font-semibold mb-2">We Design</h3>
-                        <p className="text-muted-foreground">Our AI and human calligraphers create multiple options for you.</p>
+                        <p className="text-muted-foreground">Our calligraphers create multiple signature options based on your unique personality.</p>
                     </div>
                     <div>
                         <div className="flex items-center justify-center mb-4">
-                             <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center font-bold text-xl">3</div>
+                             <div className="bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center font-bold text-2xl">3</div>
                         </div>
                         <h3 className="font-headline text-xl font-semibold mb-2">You Choose</h3>
-                        <p className="text-muted-foreground">You pick your favorite design from the generated options.</p>
+                        <p className="text-muted-foreground">Review your designs and pick your favorite. Request unlimited revisions if needed.</p>
                     </div>
                     <div>
                         <div className="flex items-center justify-center mb-4">
-                            <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center font-bold text-xl">4</div>
+                            <div className="bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center font-bold text-2xl">4</div>
                         </div>
                         <h3 className="font-headline text-xl font-semibold mb-2">Master Your Signature</h3>
-                        <p className="text-muted-foreground">Receive a video tutorial and practice sheets to perfect your new sign.</p>
+                        <p className="text-muted-foreground">Download your signature in all formats and start using it everywhere.</p>
                     </div>
                 </div>
             </div>
@@ -157,3 +180,5 @@ export default function AdsPage() {
     </div>
   );
 }
+
+    

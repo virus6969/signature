@@ -3,6 +3,13 @@ import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Star } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 const testimonials = [
   {
@@ -34,31 +41,78 @@ export default function TestimonialsSection() {
     <section className="py-20">
       <div className="container mx-auto">
         <h2 className="text-3xl font-headline text-center font-bold mb-12">What Our Clients Say</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        {/* Desktop Grid */}
+        <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => {
             const image = getImage(testimonial.id);
             return (
-            <Card key={testimonial.id}>
-              <CardContent className="p-6">
+            <Card key={testimonial.id} className="flex flex-col">
+              <CardContent className="p-6 flex flex-col flex-grow">
                 <div className="flex items-center mb-4">
-                  <Avatar>
+                  <Avatar className="h-16 w-16">
                     {image && <AvatarImage src={image.imageUrl} alt={image.description} data-ai-hint={image.imageHint} />}
                     <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div className="ml-4">
-                    <p className="font-semibold">{testimonial.name}</p>
+                    <p className="font-semibold text-lg">{testimonial.name}</p>
                     <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                   </div>
                 </div>
                 <div className="flex mb-4">
                     {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />)}
                 </div>
-                <p className="text-muted-foreground">"{testimonial.quote}"</p>
+                <p className="text-muted-foreground flex-grow">"{testimonial.quote}"</p>
               </CardContent>
             </Card>
           )})}
         </div>
+
+        {/* Mobile Carousel */}
+        <div className="lg:hidden">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full max-w-md mx-auto"
+            >
+              <CarouselContent>
+                {testimonials.map((testimonial) => {
+                  const image = getImage(testimonial.id);
+                  return (
+                  <CarouselItem key={testimonial.id}>
+                    <div className="p-1">
+                      <Card className="flex flex-col h-full">
+                        <CardContent className="p-6 flex flex-col flex-grow items-center text-center">
+                          <div className="flex flex-col items-center mb-4">
+                            <Avatar className="h-20 w-20 mb-4">
+                              {image && <AvatarImage src={image.imageUrl} alt={image.description} data-ai-hint={image.imageHint} />}
+                              <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                            </Avatar>
+                            <div>
+                              <p className="font-semibold text-lg">{testimonial.name}</p>
+                              <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                            </div>
+                          </div>
+                          <div className="flex mb-4">
+                              {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />)}
+                          </div>
+                          <p className="text-muted-foreground flex-grow">"{testimonial.quote}"</p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                )})}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+        </div>
+
       </div>
     </section>
   );
 }
+
+    
