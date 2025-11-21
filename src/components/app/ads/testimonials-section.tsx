@@ -1,3 +1,4 @@
+
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
@@ -97,7 +98,7 @@ export default function TestimonialsSection() {
                             </div>
                           </div>
                           <div className="flex mb-4">
-                              {[...Array(5)].map((_, i) => <Star keyi={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />)}
+                              {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />)}
                           </div>
                           <p className="text-muted-foreground flex-grow">"{testimonial.quote}"</p>
                         </CardContent>
