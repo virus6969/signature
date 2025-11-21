@@ -53,7 +53,7 @@ export default function AdsPage() {
               </div>
               <Button 
                 size="lg" 
-                className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all animate-jiggle"
                 style={{boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}}
               >
                 Create My Signature - 50% Off
@@ -119,7 +119,7 @@ export default function AdsPage() {
                     </li>
                 </ul>
             </div>
-            <Button size="lg" className="h-14 px-10 text-lg bg-white text-accent hover:bg-white/90">
+            <Button size="lg" className="h-14 px-10 text-lg bg-white text-accent hover:bg-white/90 animate-jiggle">
               Create Your Signature - 50% Off
             </Button>
           </div>
@@ -138,7 +138,7 @@ export default function AdsPage() {
             </div>
             <Button 
               size="default" 
-              className="flex-shrink-0 h-12 text-base bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg"
+              className="flex-shrink-0 h-12 text-base bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg animate-jiggle"
             >
               Create My Signature
             </Button>

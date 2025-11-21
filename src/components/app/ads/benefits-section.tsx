@@ -52,7 +52,7 @@ export default function BenefitsSection() {
                  <div className="mt-12 text-center">
                     <Button
                         size="lg"
-                        className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                        className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all animate-jiggle"
                         style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
                     >
                         Create My Signature - 50% Off

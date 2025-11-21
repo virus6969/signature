@@ -13,7 +13,7 @@ export default function AdHeader() {
             SignaGenius
             </h1>
         </Link>
-        <Button className="bg-orange-500 hover:bg-orange-600 text-white">Get Your Signature</Button>
+        <Button className="bg-orange-500 hover:bg-orange-600 text-white animate-jiggle">Get Your Signature</Button>
       </div>
     </header>
   );
