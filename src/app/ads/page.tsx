@@ -133,7 +133,7 @@ export default function AdsPage() {
       {/* Sticky Mobile CTA */}
       <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/90 backdrop-blur-sm p-2 border-t transition-transform duration-300 ${showStickyCta ? 'translate-y-0' : 'translate-y-full'}`} style={{zIndex: 1000}}>
         <div className="container mx-auto flex items-center justify-between gap-4">
-            <div className="text-center text-sm font-medium">
+            <div className="flex-1 text-center">
                 <CountdownTimer />
             </div>
             <Button 

@@ -56,8 +56,9 @@ export default function CountdownTimer() {
   const seconds = timeLeft % 60;
 
   return (
-    <span>
-      Offer ends in: <span className="font-bold">{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</span>
-    </span>
+    <div className="flex flex-col items-center">
+      <span className="text-xs text-muted-foreground">Offer ends in:</span>
+      <span className="font-bold text-lg leading-tight tabular-nums">{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</span>
+    </div>
   );
 }
