@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import AdHeader from '@/components/app/ad-header';
 import AdFooter from '@/components/app/ad-footer';
 import { Button } from '@/components/ui/button';
-import { Star, CheckCircle, Clock, RefreshCw, Award } from 'lucide-react';
+import { Star, CheckCircle } from 'lucide-react';
 import PortfolioSection from '@/components/app/ads/portfolio-section';
 import PricingSection from '@/components/app/ads/pricing-section';
 import TestimonialsSection from '@/components/app/ads/testimonials-section';
