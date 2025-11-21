@@ -60,9 +60,9 @@ export default function PricingSection() {
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {pricingTiers.map((tier) => (
-            <Card key={tier.name} className={`flex flex-col h-full ${tier.popular ? 'border-primary ring-2 ring-primary' : ''}`}>
+            <Card key={tier.name} className={`flex flex-col h-full ${tier.popular ? 'border-primary ring-2 ring-primary -translate-y-4 shadow-xl' : 'shadow-md'}`}>
               <CardHeader>
-                {tier.popular && <p className="text-primary font-semibold text-sm mb-2">MOST POPULAR</p>}
+                {tier.popular && <p className="text-center font-semibold text-sm mb-2 uppercase text-red-600 bg-red-100 py-1 rounded-full">MOST POPULAR</p>}
                 <CardTitle>{tier.name}</CardTitle>
                 <CardDescription>
                   <span className="text-4xl font-bold">{tier.price}</span>
@@ -80,7 +80,7 @@ export default function PricingSection() {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button className="w-full" variant={tier.popular ? 'default' : 'secondary'}>
+                <Button className={`w-full h-12 text-lg ${tier.popular ? 'bg-orange-500 hover:bg-orange-600 text-white' : ''}`} variant={tier.popular ? 'default' : 'secondary'}>
                   Order Now
                 </Button>
               </CardFooter>
