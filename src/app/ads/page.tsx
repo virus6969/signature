@@ -11,6 +11,7 @@ import TestimonialsSection from '@/components/app/ads/testimonials-section';
 import FaqSection from '@/components/app/ads/faq-section';
 import HowItWorksSection from '@/components/app/ads/how-it-works-section';
 import BenefitsSection from '@/components/app/ads/benefits-section';
+import CountdownTimer from '@/components/app/ads/countdown-timer';
 
 export default function AdsPage() {
   const [showStickyCta, setShowStickyCta] = useState(false);
@@ -30,18 +31,6 @@ export default function AdsPage() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const CtaButton = () => (
-    <div className="mt-12 text-center">
-      <Button
-        size="lg"
-        className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
-        style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
-      >
-        Create My Signature - 50% Off
-      </Button>
-    </div>
-  );
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -143,12 +132,15 @@ export default function AdsPage() {
 
       {/* Sticky Mobile CTA */}
       <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/90 backdrop-blur-sm p-4 border-t transition-transform duration-300 ${showStickyCta ? 'translate-y-0' : 'translate-y-full'}`} style={{zIndex: 1000}}>
-         <Button 
-            size="lg" 
-            className="w-full h-14 text-base bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg"
-          >
-            Create My Signature - 50% Off
-          </Button>
+        <div className="text-center text-sm font-medium mb-2">
+            <CountdownTimer />
+        </div>
+        <Button 
+          size="lg" 
+          className="w-full h-14 text-base bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg"
+        >
+          Create My Signature - 50% Off
+        </Button>
       </div>
     </div>
   );
