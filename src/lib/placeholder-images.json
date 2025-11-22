@@ -3,13 +3,13 @@
     {
       "id": "hero-signature",
       "description": "A collection of beautifully crafted signature styles.",
-      "imageUrl": "https://images.unsplash.com/photo-1758557839522-7d6150265d39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzaWduYXR1cmUlMjBleGFtcGxlc3xlbnwwfHx8fDE3NjM3ODY4NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1620674038244-074dd087cf62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzaWduYXR1cmUlMjBleGFtcGxlc3xlbnwwfHx8fDE3NjM3ODY4NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "signature examples"
     },
     {
       "id": "sig-1",
       "description": "An elegant, flowing signature for 'Alexandra Chen'.",
-      "imageUrl": "https://images.unsplash.com/photo-1759793499819-bf60128a54b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxlbGVnYW50JTIwc2lnbmF0dXJlfGVufDB8fHx8MTc2Mzc4Njc5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1588426657789-142b72fc41ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxlbGVnYW50JTIwc2lnbmF0dXJlfGVufDB8fHx8MTc2Mzc4Njc5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "elegant signature"
     },
     {
@@ -21,25 +21,25 @@
     {
       "id": "sig-3",
       "description": "A minimalist, clean signature for 'Sophia Miller'.",
-      "imageUrl": "https://images.unsplash.com/photo-1636853522150-6b82186dff8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwc2lnbmF0dXJlfGVufDB8fHx8MTc2Mzc4Njc5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1643216669751-eafc6f819e3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtaW5pbWFsaXN0JTIwc2lnbmF0dXJlfGVufDB8fHx8MTc2Mzc4Njc5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "minimalist signature"
     },
     {
       "id": "sig-4",
       "description": "An extravagant, artistic signature for 'James Rodriguez'.",
-      "imageUrl": "https://images.unsplash.com/photo-1561387543-fdfaf21e4194?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YXJ0aXN0aWMlMjBzaWduYXR1cmV8ZW58MHx8fHwxNzYzNzg2NzkyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1763468839619-45036f744d4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcnRpc3RpYyUyMHNpZ25hdHVyZXxlbnwwfHx8fDE3NjM3ODY3OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "artistic signature"
     },
     {
       "id": "customer-1",
       "description": "Headshot of a smiling professional woman.",
-      "imageUrl": "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwcm9mZXNzaW9uYWwlMjB3b21hbnxlbnwwfHx8fDE3NjM3NTAxNTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1573496527892-904f897eb744?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cHJvZmVzc2lvbmFsJTIwd29tYW58ZW58MHx8fHwxNzYzNzUwMTU5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "professional woman"
     },
     {
       "id": "customer-2",
       "description": "Headshot of a smiling professional man.",
-      "imageUrl": "https://images.unsplash.com/photo-1568316674077-d72ee56de61c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBtYW58ZW58MHx8fHwxNzYzNjk0MTQ3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1589386417686-0d34b5903d23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwcm9mZXNzaW9uYWwlMjBtYW58ZW58MHx8fHwxNzYzNzg5MjI5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "professional man"
     },
     {
