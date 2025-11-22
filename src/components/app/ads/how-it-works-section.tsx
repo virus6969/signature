@@ -2,25 +2,30 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { FileText, Brush, Check, Download } from 'lucide-react';
 
 const steps = [
     {
         step: 1,
+        icon: FileText,
         title: "Tell Us What You Like",
         description: "Share your name, initials, and preferred style — elegant, bold, modern, minimal, artistic, or anything in between.",
     },
     {
         step: 2,
+        icon: Brush,
         title: "We Design 3 Signature Concepts",
         description: "Our calligraphy experts craft three signature styles made exclusively for you.",
     },
     {
         step: 3,
+        icon: Check,
         title: "You Pick Your Favorite",
         description: "Need changes? Want it sharper, bolder, cleaner? Ask for unlimited tweaks — free.",
     },
     {
         step: 4,
+        icon: Download,
         title: "Download Your Final Signature",
         description: "Receive high-resolution formats ready for digital use, printing, or even animation.",
     }
@@ -39,7 +44,7 @@ export default function HowItWorksSection() {
                     {steps.map((step) => (
                         <div key={step.step} className="flex items-start gap-6">
                             <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-full text-primary-foreground font-bold text-2xl flex-shrink-0">
-                                {step.step}
+                                <step.icon className="w-6 h-6" />
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold mb-1">{step.title}</h3>
