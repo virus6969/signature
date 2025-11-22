@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import AdHeader from '@/components/app/ad-header';
 import AdFooter from '@/components/app/ad-footer';
 import { Button } from '@/components/ui/button';
-import { Star, CheckCircle, Check } from 'lucide-react';
+import { Star, Users, Calendar } from 'lucide-react';
 import PortfolioSection from '@/components/app/ads/portfolio-section';
 import TestimonialsSection from '@/components/app/ads/testimonials-section';
 import FaqSection from '@/components/app/ads/faq-section';
@@ -82,17 +82,17 @@ export default function AdsPage() {
             </h2>
             <div className="flex justify-center items-center gap-6 md:gap-12 text-muted-foreground flex-wrap">
               <div className="flex flex-col items-center gap-2">
+                <Users className="w-8 h-8 text-primary" />
+                 <p className="text-4xl font-bold text-foreground">20,500+</p>
+                <p className="text-sm">Clients Served</p>
+              </div>
+              <div className="flex flex-col items-center gap-2">
                 <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
                 <p className="text-4xl font-bold text-foreground">1,000+</p>
                 <p className="text-sm">5-Star Reviews</p>
               </div>
-              <div className="flex flex-col items-center gap-2">
-                <CheckCircle className="w-8 h-8 text-green-500" />
-                 <p className="text-4xl font-bold text-foreground">20,500+</p>
-                <p className="text-sm">Clients Served</p>
-              </div>
                <div className="flex flex-col items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                <Calendar className="w-8 h-8 text-muted-foreground"/>
                 <p className="text-4xl font-bold text-foreground">Since 2017</p>
                 <p className="text-sm">Established</p>
               </div>
@@ -104,39 +104,6 @@ export default function AdsPage() {
         <HowItWorksSection />
         <PortfolioSection />
         <TestimonialsSection />
-
-        {/* Final CTA Section */}
-        <section className="bg-accent text-accent-foreground text-center py-20">
-          <div className="container mx-auto">
-            <h2 className="text-4xl font-headline font-bold mb-4">
-              Ready to Transform Your Signature? Limited Time Offer!
-            </h2>
-            <div className="flex justify-center mb-8">
-                <ul className="space-y-2 text-left">
-                    <li className="flex items-center gap-2">
-                        <Check className="w-5 h-5 text-green-400" />
-                        <span>50% Off Today Only</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                        <Check className="w-5 h-5 text-green-400" />
-                        <span>Unlimited Revisions Included</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                        <Check className="w-5 h-5 text-green-400" />
-                        <span>24-Hour Delivery Available</span>
-                    </li>
-                     <li className="flex items-center gap-2">
-                        <Check className="w-5 h-5 text-green-400" />
-                        <span>Money-Back Guarantee</span>
-                    </li>
-                </ul>
-            </div>
-            <Button size="lg" className="h-14 px-10 text-lg bg-white text-accent hover:bg-white/90 animate-jiggle">
-              Create Your Signature - 50% Off
-            </Button>
-          </div>
-        </section>
-
         <FaqSection />
 
       </main>
