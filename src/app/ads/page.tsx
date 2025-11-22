@@ -16,30 +16,12 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 
 export default function AdsPage() {
-  const [showStickyCta, setShowStickyCta] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroSection = document.getElementById('hero-section');
-      if (heroSection) {
-        if (window.scrollY > heroSection.offsetHeight) {
-          setShowStickyCta(true);
-        } else {
-          setShowStickyCta(false);
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-signature');
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <AdHeader />
-      <main className="flex-1">
+      <main className="flex-1 pb-24 md:pb-0">
         {/* Hero Section */}
         <section id="hero-section" className="bg-primary text-primary-foreground text-center py-16 md:py-20">
           <div className="container mx-auto px-4">
@@ -110,7 +92,7 @@ export default function AdsPage() {
       <AdFooter />
 
       {/* Sticky Mobile CTA */}
-      <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/90 backdrop-blur-sm p-2 border-t transition-transform duration-300 ${showStickyCta ? 'translate-y-0' : 'translate-y-full'}`} style={{zIndex: 1000}}>
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-background/90 backdrop-blur-sm p-2 border-t" style={{zIndex: 1000}}>
         <div className="container mx-auto flex items-center justify-between gap-4 px-4">
             <div className="flex-1 text-center">
                 <CountdownTimer />
