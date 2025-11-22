@@ -57,8 +57,8 @@ export default function CountdownTimer() {
 
   return (
     <div className="flex flex-col items-center">
-      <span className="text-xs text-muted-foreground">Offer ends in:</span>
-      <span className="font-bold text-lg leading-tight tabular-nums">{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</span>
+      <span className="text-base text-muted-foreground">Offer ends in:</span>
+      <span className="font-bold text-2xl leading-tight tabular-nums">{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</span>
     </div>
   );
 }
