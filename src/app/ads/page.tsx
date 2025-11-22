@@ -46,11 +46,6 @@ export default function AdsPage() {
               Crafted by professional calligraphers. Sign like a pro. Stand out in every document.
             </p>
             <div className="relative inline-block">
-               <div className="absolute -top-4 -right-12 sm:-right-16 animate-pulse">
-                <div className="bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
-                  50% off ends for the first 50 customers
-                </div>
-              </div>
               <Button 
                 size="lg" 
                 className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all animate-jiggle"
