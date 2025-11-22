@@ -1,7 +1,6 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { FileText, Palette, Smile, Download } from 'lucide-react';
 
 const steps = [
     {
@@ -30,22 +29,22 @@ export default function HowItWorksSection() {
     return (
         <section className="py-20">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
+                <div className="text-center mb-12">
                     <h2 className="text-3xl font-headline font-bold">How It Works</h2>
                     <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">A simple, four-step process to get your perfect signature, designed by professionals.</p>
                 </div>
-                <div className="relative">
-                    {/* Dashed line for desktop */}
-                    <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 border-t-2 border-dashed border-border -translate-y-1/2" style={{top: '30px'}}></div>
-
-                    <div className="relative grid grid-cols-1 md:grid-cols-4 gap-12">
+                
+                <div className="max-w-2xl mx-auto">
+                    <div className="space-y-8">
                         {steps.map((step) => (
-                            <div key={step.step} className="flex flex-col items-center text-center">
-                                <div className="relative z-10 flex items-center justify-center w-[60px] h-[60px] bg-primary rounded-full text-primary-foreground font-bold text-2xl mb-6">
+                            <div key={step.step} className="flex items-start gap-4">
+                                <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-full text-primary-foreground font-bold text-2xl flex-shrink-0">
                                     {step.step}
                                 </div>
-                                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                                <p className="text-muted-foreground text-sm">{step.description}</p>
+                                <div>
+                                    <h3 className="text-xl font-bold mb-1">{step.title}</h3>
+                                    <p className="text-muted-foreground">{step.description}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
