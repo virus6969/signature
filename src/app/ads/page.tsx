@@ -2,7 +2,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import AdHeader from '@/components/app/ad-header';
 import { Button } from '@/components/ui/button';
 import { Star, Users, Calendar } from 'lucide-react';
 import PortfolioSection from '@/components/app/ads/portfolio-section';
@@ -19,7 +18,6 @@ export default function AdsPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <AdHeader />
       <main className="flex-1 pb-24 md:pb-0">
         {/* Hero Section */}
         <section id="hero-section" className="bg-primary text-primary-foreground text-center py-16 md:py-20">

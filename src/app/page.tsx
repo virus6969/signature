@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import AdHeader from '@/components/app/ad-header';
 import { Button } from '@/components/ui/button';
 import { Star, Users, Calendar } from 'lucide-react';
 import PortfolioSection from '@/components/app/portfolio-section';
@@ -21,7 +20,6 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SocialProofToast />
-      <AdHeader />
       <main className="flex-1 pb-24 md:pb-0">
         <OfferBanner />
         {/* Hero Section */}
