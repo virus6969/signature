@@ -22,19 +22,19 @@ const testimonials = [
     id: 'customer-1',
     name: 'Sarah L.',
     title: 'Real Estate Agent',
-    quote: "Awesome customer service, willing to go above and beyond and make sure you're happy. On the first try I got exactly what I wanted and didn't need additional changes. Very happy with this service!",
+    quote: "From start to finish, everything felt premium. My signature came out flawless and elevated my brand instantly.",
   },
   {
     id: 'customer-2',
     name: 'Michael B.',
     title: 'Photographer',
-    quote: "The quality is top-notch. My new signature has elevated my branding and I constantly get compliments on it. The video tutorial was surprisingly helpful.",
+    quote: "People compliment my signature all the time now. It actually boosted my confidence when sending out contracts.",
   },
   {
     id: 'customer-3',
     name: 'Jessica P.',
     title: 'Consultant',
-    quote: "I was skeptical at first, but the process was seamless and the results were stunning. It's a small detail that makes a huge professional impact. Highly recommend!",
+    quote: "Didn’t expect such quality. The process was super smooth and the final signature made me feel truly professional.",
   },
 ];
 
@@ -50,7 +50,7 @@ export default function TestimonialsSection() {
   return (
     <section className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-headline text-center font-bold mb-12">What Our Clients Say</h2>
+        <h2 className="text-3xl font-headline text-center font-bold mb-12">What Clients Say About SignaGenius™</h2>
         
         {/* Desktop Grid */}
         <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -121,10 +121,10 @@ export default function TestimonialsSection() {
         <div className="mt-12 text-center">
             <Button
                 size="lg"
-                className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all animate-jiggle"
+                className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all animate-jiggle"
                 style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
             >
-                Create My Signature - 50% Off
+                Create My Signature (50% Off)
             </Button>
         </div>
 

@@ -25,20 +25,24 @@ export default function AdsPage() {
         <section id="hero-section" className="bg-primary text-primary-foreground text-center py-16 md:py-20">
           <div className="container mx-auto px-4">
             <h1 className="text-3xl md:text-5xl font-headline font-bold mb-4" style={{ lineHeight: 1.2 }}>
-              Express Your Personality with an Exclusive Signature
+              ✨ SignaGenius™ — Your Signature, Reinvented
             </h1>
+            <h2 className="text-xl md:text-2xl font-body font-normal mb-6">
+                Turn Your Name Into a Stunning Personal Brand Mark
+            </h2>
             <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-xl mx-auto">
-              Crafted by professional calligraphers. Sign like a pro. Stand out in every document.
+                A signature isn’t just handwriting — it’s identity, confidence, and presence. We transform your name into a premium, handcrafted signature designed by professional calligraphers so you stand out on every document, email, and contract.
             </p>
             <div className="relative inline-block">
               <Button 
                 size="lg" 
-                className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all animate-jiggle"
+                className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all animate-jiggle"
                 style={{boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}}
               >
-                Create My Signature - 50% Off
+                Get Your Custom Signature — Now at 50% Off
               </Button>
             </div>
+            <p className="text-sm mt-4 text-primary-foreground/80">Crafted by Experts. Delivered in 24 Hours. Guaranteed to Impress.</p>
             {heroImage && (
               <div className="mt-12 md:mt-16 max-w-4xl mx-auto">
                 <Image
@@ -59,7 +63,7 @@ export default function AdsPage() {
         <section className="py-12 md:py-16">
           <div className="container mx-auto text-center px-4">
             <h2 className="text-2xl md:text-3xl font-headline font-bold mb-8">
-              Trusted by Thousands Worldwide
+              Trusted Worldwide
             </h2>
             <div className="flex justify-center items-center gap-6 md:gap-12 text-muted-foreground flex-wrap">
               <div className="flex flex-col items-center gap-2">
@@ -75,7 +79,7 @@ export default function AdsPage() {
                <div className="flex flex-col items-center gap-2">
                 <Calendar className="w-8 h-8 text-muted-foreground"/>
                 <p className="text-4xl font-bold text-foreground">Since 2017</p>
-                <p className="text-sm">Established</p>
+                <p className="text-sm">Creating premium signatures</p>
               </div>
             </div>
           </div>
@@ -97,9 +101,9 @@ export default function AdsPage() {
             </div>
             <Button 
               size="default" 
-              className="flex-shrink-0 h-12 text-base bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg animate-jiggle"
+              className="flex-shrink-0 h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg animate-jiggle"
             >
-              Create My Signature
+              Get My Signature (50% Off)
             </Button>
         </div>
       </div>
