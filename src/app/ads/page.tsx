@@ -3,7 +3,6 @@
 
 import { useEffect, useState } from 'react';
 import AdHeader from '@/components/app/ad-header';
-import AdFooter from '@/components/app/ad-footer';
 import { Button } from '@/components/ui/button';
 import { Star, Users, Calendar } from 'lucide-react';
 import PortfolioSection from '@/components/app/ads/portfolio-section';
@@ -89,7 +88,6 @@ export default function AdsPage() {
         <FaqSection />
 
       </main>
-      <AdFooter />
 
       {/* Sticky Mobile CTA */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-background/90 backdrop-blur-sm p-2 border-t" style={{zIndex: 1000}}>
