@@ -8,23 +8,23 @@ import {
 const faqs = [
     {
         question: "My handwriting is terrible. Can you still help?",
-        answer: "Absolutely. Your handwriting doesn’t matter at all — we design everything from scratch."
+        answer: "Absolutely. Your handwriting has no impact on the final design because we don't use it. Our professional calligraphers create your new signature entirely from scratch based on the style preferences you select, ensuring a clean, professional, and unique result regardless of your own handwriting."
     },
     {
         question: "How long does it take?",
-        answer: "You’ll receive your first 3 signature designs within 24 hours."
+        answer: "You'll receive your initial set of 3 unique signature concepts within 24 hours of submitting your order. We prioritize a swift turnaround so you can start elevating your brand as quickly as possible."
     },
     {
         question: "Is the signature legally usable?",
-        answer: "Yes. Your new signature works on contracts, documents, and official papers just like your current one."
+        answer: "Yes, your new signature is 100% legally binding and can be used on all official documents, including contracts, credit card slips, and legal forms, just like your current signature. It serves as your unique personal mark."
     },
     {
         question: "Is my data safe?",
-        answer: "We never share, sell, or store your personal data. Everything stays fully private."
+        answer: "We are committed to your privacy. Your name and any other personal information are used exclusively for creating your signature. We never share, sell, or store your data for any other purpose. All transactions are securely processed."
     },
      {
         question: "What if I don’t like the signature?",
-        answer: "You get unlimited revisions until you love it — guaranteed."
+        answer: "Your satisfaction is our top priority. We offer unlimited free revisions. If you're not completely happy with the initial designs, we will continue to refine and adjust them based on your feedback until you have a signature you absolutely love, guaranteed."
     }
 ]
 
