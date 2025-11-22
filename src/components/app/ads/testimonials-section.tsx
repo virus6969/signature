@@ -1,4 +1,6 @@
 
+'use client';
+
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
@@ -40,7 +42,7 @@ export default function TestimonialsSection() {
   const getImage = (id: string) => customerImages.find(img => img.id === id);
 
   return (
-    <section className="py-20">
+    <section className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-headline text-center font-bold mb-12">What Our Clients Say</h2>
         
@@ -71,20 +73,19 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Mobile Carousel */}
-        <div className="lg:hidden overflow-hidden">
+        <div className="lg:hidden">
             <Carousel
               opts={{
-                align: "start",
+                align: "center",
                 loop: true,
               }}
-              className="w-full max-w-md mx-auto"
+              className="w-full"
             >
-              <CarouselContent>
+              <CarouselContent className="-ml-4">
                 {testimonials.map((testimonial) => {
                   const image = getImage(testimonial.id);
                   return (
-                  <CarouselItem key={testimonial.id}>
-                    <div className="p-1">
+                  <CarouselItem key={testimonial.id} className="basis-4/5 pl-4 md:basis-1/2">
                       <Card className="flex flex-col h-full">
                         <CardContent className="p-6 flex flex-col flex-grow items-center text-center">
                           <div className="flex flex-col items-center mb-4">
@@ -103,12 +104,11 @@ export default function TestimonialsSection() {
                           <p className="text-muted-foreground flex-grow">"{testimonial.quote}"</p>
                         </CardContent>
                       </Card>
-                    </div>
                   </CarouselItem>
                 )})}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
+              <CarouselPrevious className="absolute left-0" />
+              <CarouselNext className="absolute right-0" />
             </Carousel>
         </div>
         <div className="mt-12 text-center">
