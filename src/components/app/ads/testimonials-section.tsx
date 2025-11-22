@@ -44,7 +44,7 @@ export default function TestimonialsSection() {
   const getImage = (id: string) => customerImages.find(img => img.id === id);
   
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 2000, stopOnInteraction: false })
   )
 
   return (
@@ -87,8 +87,6 @@ export default function TestimonialsSection() {
                 loop: true,
               }}
               className="w-full"
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
             >
               <CarouselContent className="-ml-4">
                 {testimonials.map((testimonial) => {
