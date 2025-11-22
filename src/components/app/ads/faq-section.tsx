@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Button } from '@/components/ui/button';
 
 const faqs = [
     {
@@ -31,28 +30,20 @@ const faqs = [
 
 export default function FaqSection() {
   return (
-    <section className="py-20 bg-card">
+    <section className="pt-20 bg-card">
       <div className="container mx-auto max-w-3xl px-4">
         <h2 className="text-3xl font-headline text-center font-bold mb-12">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
                 <AccordionTrigger>{faq.question}</AccordionTrigger>
+
                 <AccordionContent>
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}
         </Accordion>
-        <div className="mt-12 text-center">
-            <Button
-                size="lg"
-                className="h-14 text-base md:text-lg min-w-[280px] bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all animate-jiggle"
-                style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
-            >
-                Create My Signature - 50% Off
-            </Button>
-        </div>
       </div>
     </section>
   );
