@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "hero-signature",
+      "description": "A collection of beautifully crafted signature styles.",
+      "imageUrl": "https://images.unsplash.com/photo-1758557839522-7d6150265d39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzaWduYXR1cmUlMjBleGFtcGxlc3xlbnwwfHx8fDE3NjM3ODY4NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "signature examples"
+    },
+    {
       "id": "sig-1",
       "description": "An elegant, flowing signature for 'Alexandra Chen'.",
       "imageUrl": "https://images.unsplash.com/photo-1759793499819-bf60128a54b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxlbGVnYW50JTIwc2lnbmF0dXJlfGVufDB8fHx8MTc2Mzc4Njc5Mnww&ixlib=rb-4.1.0&q=80&w=1080",

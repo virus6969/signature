@@ -12,6 +12,8 @@ import FaqSection from '@/components/app/ads/faq-section';
 import HowItWorksSection from '@/components/app/ads/how-it-works-section';
 import BenefitsSection from '@/components/app/ads/benefits-section';
 import CountdownTimer from '@/components/app/ads/countdown-timer';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import Image from 'next/image';
 
 export default function AdsPage() {
   const [showStickyCta, setShowStickyCta] = useState(false);
@@ -31,6 +33,8 @@ export default function AdsPage() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const heroImage = PlaceHolderImages.find(img => img.id === 'hero-signature');
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -54,6 +58,19 @@ export default function AdsPage() {
                 Create My Signature - 50% Off
               </Button>
             </div>
+            {heroImage && (
+              <div className="mt-12 md:mt-16 max-w-4xl mx-auto">
+                <Image
+                  src={heroImage.imageUrl}
+                  alt={heroImage.description}
+                  width={1200}
+                  height={600}
+                  className="rounded-lg shadow-2xl"
+                  data-ai-hint={heroImage.imageHint}
+                  priority
+                />
+              </div>
+            )}
           </div>
         </section>
 
