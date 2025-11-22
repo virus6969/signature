@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -27,7 +28,7 @@ const steps = [
 
 export default function HowItWorksSection() {
     return (
-        <section className="py-20">
+        <section className="py-10">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-headline font-bold">How It Works</h2>
