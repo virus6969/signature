@@ -12,14 +12,18 @@ import BenefitsSection from '@/components/app/benefits-section';
 import CountdownTimer from '@/components/app/countdown-timer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
+import OfferBanner from '@/components/app/offer-banner';
+import SocialProofToast from '@/components/app/social-proof-toast';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-signature');
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
+      <SocialProofToast />
       <AdHeader />
       <main className="flex-1 pb-24 md:pb-0">
+        <OfferBanner />
         {/* Hero Section */}
         <section id="hero-section" className="bg-primary text-primary-foreground text-center py-16 md:py-20">
           <div className="container mx-auto px-4">
