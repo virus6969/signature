@@ -8,25 +8,21 @@ const steps = [
         step: 1,
         title: "Submit Your Style",
         description: "Fill out a quick form with your name and style preferences. Takes 2 minutes.",
-        icon: FileText
     },
     {
         step: 2,
         title: "We Design",
         description: "Our calligraphers create 3 signature options based on your unique personality.",
-        icon: Palette
     },
     {
         step: 3,
         title: "You Choose",
         description: "Review designs and pick your favorite. Request unlimited revisions if needed.",
-        icon: Smile
     },
     {
         step: 4,
         title: "Master Your Signature",
         description: "Download your signature in all formats and start using it everywhere.",
-        icon: Download
     }
 ]
 
@@ -46,9 +42,6 @@ export default function HowItWorksSection() {
                         {steps.map((step) => (
                             <div key={step.step} className="flex flex-col items-center text-center">
                                 <div className="relative z-10 flex items-center justify-center w-[60px] h-[60px] bg-primary rounded-full text-primary-foreground font-bold text-2xl mb-6">
-                                    <div className="absolute -top-8 text-primary">
-                                        <step.icon className="w-7 h-7" />
-                                    </div>
                                     {step.step}
                                 </div>
                                 <h3 className="text-xl font-bold mb-2">{step.title}</h3>
