@@ -1,3 +1,4 @@
+
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
@@ -70,7 +71,7 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Mobile Carousel */}
-        <div className="lg:hidden">
+        <div className="lg:hidden overflow-hidden">
             <Carousel
               opts={{
                 align: "start",
