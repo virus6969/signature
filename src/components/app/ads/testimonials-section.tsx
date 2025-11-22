@@ -1,6 +1,7 @@
 
 'use client';
 
+import React from 'react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
@@ -13,6 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import Autoplay from "embla-carousel-autoplay"
 import { Button } from '@/components/ui/button';
 
 const testimonials = [
@@ -40,6 +42,10 @@ export default function TestimonialsSection() {
   const customerImages = PlaceHolderImages.filter(img => img.id.startsWith('customer-'));
   
   const getImage = (id: string) => customerImages.find(img => img.id === id);
+  
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  )
 
   return (
     <section className="py-20 bg-muted/50">
@@ -73,13 +79,16 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Mobile Carousel */}
-        <div className="lg:hidden">
+        <div className="lg:hidden -mx-4 overflow-hidden">
             <Carousel
+              plugins={[plugin.current]}
               opts={{
                 align: "center",
                 loop: true,
               }}
               className="w-full"
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
             >
               <CarouselContent className="-ml-4">
                 {testimonials.map((testimonial) => {
@@ -107,8 +116,8 @@ export default function TestimonialsSection() {
                   </CarouselItem>
                 )})}
               </CarouselContent>
-              <CarouselPrevious className="absolute left-0" />
-              <CarouselNext className="absolute right-0" />
+              <CarouselPrevious className="absolute left-2" />
+              <CarouselNext className="absolute right-2" />
             </Carousel>
         </div>
         <div className="mt-12 text-center">
