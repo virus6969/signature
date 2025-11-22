@@ -38,9 +38,9 @@ export default function BenefitsSection() {
                     <h2 className="text-3xl font-headline font-bold">Why Thousands Choose SignaGenius™</h2>
                     <p className="text-muted-foreground mt-2">Everything you need to elevate your image instantly.</p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
                     {benefits.map((benefit, index) => (
-                        <div key={index} className="flex items-start text-left p-6 gap-4">
+                        <div key={index} className="flex items-start text-left gap-4">
                             <div className="text-primary mt-1">
                                 <benefit.icon className="w-6 h-6" />
                             </div>
