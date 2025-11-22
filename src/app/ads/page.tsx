@@ -76,7 +76,7 @@ export default function AdsPage() {
 
         {/* Trust Section */}
         <section className="py-12 md:py-16">
-          <div className="container mx-auto text-center">
+          <div className="container mx-auto text-center px-4">
             <h2 className="text-2xl md:text-3xl font-headline font-bold mb-8">
               Trusted by Thousands Worldwide
             </h2>
@@ -111,7 +111,7 @@ export default function AdsPage() {
 
       {/* Sticky Mobile CTA */}
       <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/90 backdrop-blur-sm p-2 border-t transition-transform duration-300 ${showStickyCta ? 'translate-y-0' : 'translate-y-full'}`} style={{zIndex: 1000}}>
-        <div className="container mx-auto flex items-center justify-between gap-4">
+        <div className="container mx-auto flex items-center justify-between gap-4 px-4">
             <div className="flex-1 text-center">
                 <CountdownTimer />
             </div>

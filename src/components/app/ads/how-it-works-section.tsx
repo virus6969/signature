@@ -33,7 +33,7 @@ const steps = [
 export default function HowItWorksSection() {
     return (
         <section className="py-20">
-            <div className="container mx-auto">
+            <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-headline font-bold">How It Works</h2>
                     <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">A simple, four-step process to get your perfect signature, designed by professionals.</p>

@@ -33,7 +33,7 @@ const benefits = [
 export default function BenefitsSection() {
     return (
         <section className="py-20 bg-muted/50">
-            <div className="container mx-auto">
+            <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-headline font-bold">Why Choose SignaGenius?</h2>
                     <p className="text-muted-foreground mt-2">Everything you need to elevate your professional image.</p>
