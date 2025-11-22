@@ -32,7 +32,7 @@ const faqs = [
 export default function FaqSection() {
   return (
     <section className="py-20 bg-card">
-      <div className="container mx-auto max-w-3xl">
+      <div className="container mx-auto max-w-3xl px-4">
         <h2 className="text-3xl font-headline text-center font-bold mb-12">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
