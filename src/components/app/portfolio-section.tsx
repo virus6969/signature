@@ -4,10 +4,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 const portfolioSignatures = [
-    { id: 'sig-1', description: "Elegant Flowing Style – Alexandra Chen" },
-    { id: 'sig-2', description: "Bold Modern Style – David Lee" },
-    { id: 'sig-3', description: "Minimal Clean Style – Sophia Miller" },
-    { id: 'sig-4', description: "Artistic Luxury Style – James Rodriguez" }
+    { id: 'sig-1', description: "Elegant Flowing Style – Priya Sharma" },
+    { id: 'sig-2', description: "Bold Modern Style – Rahul Verma" },
+    { id: 'sig-3', description: "Minimal Clean Style – Anjali Gupta" },
+    { id: 'sig-4', description: "Artistic Luxury Style – Rohan Mehta" }
 ]
 
 export default function PortfolioSection() {
