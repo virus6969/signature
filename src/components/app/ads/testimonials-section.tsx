@@ -20,19 +20,19 @@ import { Button } from '@/components/ui/button';
 const testimonials = [
   {
     id: 'customer-1',
-    name: 'Sarah L.',
+    name: 'Aanya S.',
     title: 'Real Estate Agent',
     quote: "From start to finish, everything felt premium. My signature came out flawless and elevated my brand instantly.",
   },
   {
     id: 'customer-2',
-    name: 'Michael B.',
+    name: 'Rohan M.',
     title: 'Photographer',
     quote: "People compliment my signature all the time now. It actually boosted my confidence when sending out contracts.",
   },
   {
     id: 'customer-3',
-    name: 'Jessica P.',
+    name: 'Isha P.',
     title: 'Consultant',
     quote: "Didn’t expect such quality. The process was super smooth and the final signature made me feel truly professional.",
   },
