@@ -37,7 +37,7 @@ export default function Home() {
             <div className="relative inline-block">
               <Button 
                 size="lg" 
-                className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all animate-jiggle shine-effect"
+                className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
                 style={{boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}}
               >
                 Get Your Custom Signature (50% Off)
@@ -102,7 +102,7 @@ export default function Home() {
             </div>
             <Button 
               size="default" 
-              className="flex-shrink-0 h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg animate-jiggle shine-effect"
+              className="flex-shrink-0 h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg shine-effect"
             >
               Get My Signature (50% Off)
             </Button>

@@ -121,7 +121,7 @@ export default function TestimonialsSection() {
         <div className="mt-12 text-center">
             <Button
                 size="lg"
-                className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all animate-jiggle"
+                className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
                 style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
             >
                 Create My Signature (50% Off)

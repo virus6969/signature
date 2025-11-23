@@ -84,11 +84,6 @@
 }
 
 @layer utilities {
-  @keyframes jiggle {
-    0%, 100% { transform: rotate(-1deg); }
-    50% { transform: rotate(1deg); }
-  }
-
   @keyframes shine {
     0% {
       transform: translate(-100%, -100%) rotate(45deg);
