@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -13,13 +14,45 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import OfferBanner from '@/components/app/offer-banner';
 import SocialProofToast from '@/components/app/social-proof-toast';
+import ExitIntentPopup from '@/components/app/exit-intent-popup';
+
+const POPUP_SESSION_KEY = 'signagenius_popup_shown';
+
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-signature');
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    if (sessionStorage.getItem(POPUP_SESSION_KEY)) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+      sessionStorage.setItem(POPUP_SESSION_KEY, 'true');
+    }, 7000); // 7 seconds
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0) {
+        setShowPopup(true);
+        sessionStorage.setItem(POPUP_SESSION_KEY, 'true');
+        document.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SocialProofToast />
+       <ExitIntentPopup open={showPopup} onOpenChange={setShowPopup} />
       <main className="flex-1 pb-24 md:pb-0">
         <OfferBanner />
         {/* Hero Section */}
@@ -37,7 +70,7 @@ export default function Home() {
             <div className="relative inline-block">
               <Button 
                 size="lg" 
-                className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
+                className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
                 style={{boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}}
               >
                 Get Your Custom Signature (50% Off)
