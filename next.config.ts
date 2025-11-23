@@ -28,6 +28,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'media.easy-peasy.ai',
+        port: '',
+        pathname: '/**',
+      }
     ],
   },
 };
