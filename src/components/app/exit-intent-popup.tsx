@@ -22,7 +22,7 @@ type ExitIntentPopupProps = {
 export default function ExitIntentPopup({ open, onOpenChange }: ExitIntentPopupProps) {
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
-      <AlertDialogContent className="max-w-md text-center p-8">
+      <AlertDialogContent className="max-w-md text-center p-8 w-[90vw] rounded-lg">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-2xl md:text-3xl font-headline">
             Wait! Your 50% Discount Is Waiting
