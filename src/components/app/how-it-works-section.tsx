@@ -27,7 +27,7 @@ const steps = [
         step: 4,
         icon: Download,
         title: "Download Your Final Signature",
-        description: "Receive high-resolution formats ready for digital use, printing, or even animation.",
+        description: "Receive high resolution formats ready for digital use, printing, or even animation.",
     }
 ]
 

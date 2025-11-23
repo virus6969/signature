@@ -50,7 +50,7 @@ export default function TestimonialsSection() {
   return (
     <section className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-headline text-center font-bold mb-12">What Clients Say About SignaGenius™</h2>
+        <h2 className="text-3xl font-headline text-center font-bold mb-12">What Clients Say About SignaGenius</h2>
         
         {/* Desktop Grid */}
         <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8">

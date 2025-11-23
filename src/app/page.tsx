@@ -26,13 +26,13 @@ export default function Home() {
         <section id="hero-section" className="bg-primary text-primary-foreground text-center py-16 md:py-20">
           <div className="container mx-auto px-4">
             <h1 className="text-3xl md:text-5xl font-headline font-bold mb-4" style={{ lineHeight: 1.2 }}>
-              ✨ SignaGenius™ — Your Signature, Reinvented
+              ✨ Your Signature, Reinvented
             </h1>
             <h2 className="text-xl md:text-2xl font-body font-normal mb-6">
-                Turn Your Name Into a Stunning Personal Brand Mark
+                Turn Your Name Into a Stunning Brand Mark
             </h2>
             <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-xl mx-auto">
-                A signature isn’t just handwriting — it’s identity, confidence, and presence. We transform your name into a premium, handcrafted signature designed by professional calligraphers so you stand out on every document, email, and contract.
+                A signature isn’t just handwriting; it’s your identity. We transform your name into a premium, handcrafted signature that makes you stand out.
             </p>
             <div className="relative inline-block">
               <Button 
@@ -40,7 +40,7 @@ export default function Home() {
                 className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all animate-jiggle shine-effect"
                 style={{boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}}
               >
-                Get Your Custom Signature — Now at 50% Off
+                Get Your Custom Signature (50% Off)
               </Button>
             </div>
             <p className="text-sm mt-4 text-primary-foreground/80">Crafted by Experts. Delivered in 24 Hours. Guaranteed to Impress.</p>
@@ -75,7 +75,7 @@ export default function Home() {
               <div className="flex flex-col items-center gap-2">
                 <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
                 <p className="text-4xl font-bold text-foreground">1,000+</p>
-                <p className="text-sm">5-Star Reviews</p>
+                <p className="text-sm">5 Star Reviews</p>
               </div>
                <div className="flex flex-col items-center gap-2">
                 <Calendar className="w-8 h-8 text-muted-foreground"/>
