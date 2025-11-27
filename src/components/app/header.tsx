@@ -10,7 +10,9 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
+  SheetClose
 } from "@/components/ui/sheet"
+import { DialogTitle } from '@radix-ui/react-dialog';
 
 
 const navLinks = [
@@ -41,15 +43,20 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+               <DialogTitle className="sr-only">Menu</DialogTitle>
               <nav className="flex flex-col gap-6 mt-16 text-lg">
                 {navLinks.map(link => (
-                    <a key={link.href} href={link.href} className="font-medium hover:text-accent transition-colors">
-                        {link.label}
-                    </a>
+                    <SheetClose asChild key={link.href}>
+                      <a href={link.href} className="font-medium hover:text-accent transition-colors">
+                          {link.label}
+                      </a>
+                    </SheetClose>
                 ))}
-                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 mt-4">
-                  Get Started
-                </Button>
+                <SheetClose asChild>
+                  <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 mt-4">
+                    Get Started
+                  </Button>
+                </SheetClose>
               </nav>
             </SheetContent>
           </Sheet>
