@@ -64,12 +64,12 @@
 }
 
 @layer utilities {
-  @keyframes shine {
-    0% {
-      transform: translate(-100%, -100%) rotate(45deg);
+  @keyframes shimmer {
+    from {
+      background-position: -200% 0;
     }
-    100% {
-      transform: translate(100%, 100%) rotate(45deg);
+    to {
+      background-position: 200% 0;
     }
   }
 
@@ -78,16 +78,22 @@
     overflow: hidden;
   }
 
-  .shine-effect::before {
+  .shine-effect::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 60%);
-    animation: shine 3s infinite linear;
-    animation-delay: 2s; /* Start after initial load */
-    z-index: 10;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+      115deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 80%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite linear;
+    animation-delay: 2s;
+    z-index: 1;
   }
 }
