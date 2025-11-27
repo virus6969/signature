@@ -1,5 +1,6 @@
 
-import { GraduationCap, Briefcase, Paintbrush, UserCheck, UserPlus } from 'lucide-react';
+
+import { GraduationCap, Briefcase, Paintbrush, UserCheck, UserPlus, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '../ui/button';
 
@@ -38,8 +39,9 @@ const audiences = [
 
 export default function TargetAudienceSection() {
   return (
-    <section className="py-20 bg-accent/20">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-accent/20 relative overflow-hidden">
+        <Users className="absolute -right-24 bottom-0 h-96 w-96 text-foreground/5" />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
             <p className="text-accent font-semibold">Perfect For</p>
           <h2 className="text-3xl md:text-4xl font-headline font-bold">Who Is This For?</h2>

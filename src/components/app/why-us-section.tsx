@@ -1,4 +1,5 @@
 
+
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Award, PenTool, Users, Eye, Fingerprint } from 'lucide-react';
@@ -39,8 +40,10 @@ const features = [
 
 export default function WhyUsSection() {
   return (
-    <section className="py-20 bg-accent/20">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-accent/20 relative overflow-hidden">
+        <PenTool className="absolute -left-12 -top-12 h-64 w-64 text-foreground/5 rotate-12" />
+        <Award className="absolute -right-12 bottom-12 h-72 w-72 text-foreground/5 -rotate-12" />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-headline font-bold">Why Choose Us</h2>
           <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
