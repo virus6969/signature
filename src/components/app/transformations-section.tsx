@@ -69,15 +69,23 @@ export default function TransformationsSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-12">
           {transformationImages.map(item => (
-            <Card key={item.id} className="overflow-hidden shadow-lg">
+            <Card key={item.id} className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out hover:scale-[1.02]">
                 <CardHeader>
                     <CardTitle className="font-headline text-2xl">{item.title}</CardTitle>
                     <p className="text-muted-foreground">{item.description}</p>
                 </CardHeader>
-              <CardContent className="p-0 md:p-6 md:pt-0">
-                <div className="grid md:grid-cols-2 gap-4 items-center">
+              <CardContent className="p-4 md:p-6 md:pt-0">
+                <div className="grid md:grid-cols-2 gap-4 md:gap-8 items-center relative">
+                    {/* Arrow for Desktop */}
+                    <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-background p-2 rounded-full border shadow-md">
+                        <ArrowRight className="w-8 h-8 text-primary" />
+                    </div>
+
                   <div className="flex flex-col items-center text-center">
-                    <div className="aspect-video relative w-full rounded-lg overflow-hidden border-2 border-dashed">
+                    <div className="w-full mb-2">
+                        <span className="inline-block bg-destructive/10 text-destructive text-sm font-semibold px-3 py-1 rounded-full">BEFORE</span>
+                    </div>
+                    <div className="aspect-video relative w-full rounded-lg overflow-hidden border-2 border-dashed border-destructive/50">
                         {item.before.imageUrl && <Image
                             src={item.before.imageUrl}
                             alt={item.before.label}
@@ -87,11 +95,13 @@ export default function TransformationsSection() {
                         />}
                     </div>
                     <div className="mt-2">
-                        <p className="font-semibold text-destructive">BEFORE</p>
                         <p className="text-sm text-muted-foreground">{item.before.label}</p>
                     </div>
                   </div>
                   <div className="flex flex-col items-center text-center">
+                    <div className="w-full mb-2">
+                        <span className="inline-block bg-green-500/10 text-green-600 text-sm font-semibold px-3 py-1 rounded-full">AFTER</span>
+                    </div>
                      <div className="aspect-video relative w-full rounded-lg overflow-hidden border-2 border-green-500 bg-green-500/5">
                         {item.after.imageUrl && <Image
                             src={item.after.imageUrl}
@@ -102,7 +112,6 @@ export default function TransformationsSection() {
                         />}
                     </div>
                     <div className="mt-2">
-                        <p className="font-semibold text-green-600">AFTER</p>
                         <p className="text-sm text-muted-foreground">{item.after.label}</p>
                     </div>
                   </div>
