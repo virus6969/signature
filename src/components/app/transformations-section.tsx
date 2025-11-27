@@ -69,7 +69,7 @@ export default function TransformationsSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
           {transformationImages.map(item => (
-            <Card key={item.id} className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out hover:scale-[1.02]">
+            <Card key={item.id} className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out hover:scale-[1.02] bg-accent/5">
                 <CardHeader>
                     <CardTitle className="font-headline text-2xl">{item.title}</CardTitle>
                     <p className="text-muted-foreground">{item.description}</p>
