@@ -28,7 +28,7 @@ const offers = [
 
 export default function OfferSection() {
     return (
-        <section className="py-20 bg-accent/10">
+        <section className="py-20 bg-accent/20">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-headline font-bold">What You'll Receive</h2>
