@@ -38,7 +38,7 @@ const audiences = [
 
 export default function TargetAudienceSection() {
   return (
-    <section className="py-20 bg-accent/5">
+    <section className="py-20 bg-accent/10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
             <p className="text-accent font-semibold">Perfect For</p>

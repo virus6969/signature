@@ -11,7 +11,7 @@ const features = [
 
 export default function PricingSection() {
   return (
-    <section className="py-20 bg-accent/5">
+    <section className="py-20 bg-accent/10">
       <div className="container mx-auto px-4 max-w-2xl">
         <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-headline font-bold mt-2">Become Unforgettable</h2>
