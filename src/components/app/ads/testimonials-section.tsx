@@ -48,22 +48,22 @@ export default function TestimonialsSection() {
   )
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-10 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-headline font-bold">What Clients Say About SignaGenius™</h2>
             <p className="text-muted-foreground mt-2">Ready to Join These Success Stories?</p>
         </div>
         
         {/* Desktop Grid */}
-        <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-4">
           {testimonials.map((testimonial) => {
             const image = getImage(testimonial.id);
             return (
-            <Card key={testimonial.id} className="flex flex-col bg-card/50 shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+            <Card key={testimonial.id} className="flex flex-col bg-card/50 shadow-lg transform hover:-translate-y-1 transition-transform duration-300">
               <CardContent className="p-6 flex flex-col flex-grow">
-                <div className="flex items-center mb-4">
-                  <Avatar className="h-16 w-16 border-2 border-accent">
+                <div className="flex items-center mb-2">
+                  <Avatar className="h-12 w-12 border-2 border-accent">
                     {image && <AvatarImage src={image.imageUrl} alt={image.description} data-ai-hint={image.imageHint} />}
                     <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                   </Avatar>
@@ -72,7 +72,7 @@ export default function TestimonialsSection() {
                     <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                   </div>
                 </div>
-                <div className="flex mb-4">
+                <div className="flex mb-2">
                     {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-accent fill-accent" />)}
                 </div>
                 <p className="text-foreground/80 flex-grow">"{testimonial.quote}"</p>
@@ -98,8 +98,8 @@ export default function TestimonialsSection() {
                   <CarouselItem key={testimonial.id} className="basis-4/5 pl-4 md:basis-1/2">
                       <Card className="flex flex-col h-full bg-card/50 shadow-lg">
                         <CardContent className="p-6 flex flex-col flex-grow items-center text-center">
-                          <div className="flex flex-col items-center mb-4">
-                            <Avatar className="h-20 w-20 mb-4 border-2 border-accent">
+                          <div className="flex flex-col items-center mb-2">
+                            <Avatar className="h-16 w-16 mb-2 border-2 border-accent">
                               {image && <AvatarImage src={image.imageUrl} alt={image.description} data-ai-hint={image.imageHint} />}
                               <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                             </Avatar>
@@ -108,7 +108,7 @@ export default function TestimonialsSection() {
                               <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                             </div>
                           </div>
-                          <div className="flex mb-4">
+                          <div className="flex mb-2">
                               {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-accent fill-accent" />)}
                           </div>
                           <p className="text-foreground/80 flex-grow">"{testimonial.quote}"</p>
@@ -121,7 +121,7 @@ export default function TestimonialsSection() {
               <CarouselNext className="absolute right-2" />
             </Carousel>
         </div>
-        <div className="mt-12 text-center">
+        <div className="mt-6 text-center">
             <Button
                 size="lg"
                 className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"

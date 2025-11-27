@@ -36,19 +36,19 @@ const benefits = [
 
 export default function BenefitsSection() {
     return (
-        <section className="py-20">
+        <section className="py-10">
             <div className="container mx-auto px-4">
-                 <div className="text-center mb-12">
+                 <div className="text-center mb-6">
                     <h2 className="text-3xl font-headline font-bold">Why Thousands Choose SignaGenius</h2>
                     <p className="text-muted-foreground mt-2">Everything you need to elevate your image instantly.</p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-center">
                     {benefits.map(benefit => (
                         <div key={benefit.title} className="flex flex-col items-center">
-                             <div className="bg-primary/10 text-primary p-3 rounded-full mb-4">
+                             <div className="bg-primary/10 text-primary p-3 rounded-full mb-2">
                                 <benefit.icon className="w-8 h-8" />
                             </div>
-                            <h3 className="text-xl font-headline font-semibold mb-2">{benefit.title}</h3>
+                            <h3 className="text-xl font-headline font-semibold mb-1">{benefit.title}</h3>
                             <p className="text-muted-foreground">{benefit.description}</p>
                         </div>
                     ))}

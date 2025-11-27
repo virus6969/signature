@@ -11,9 +11,9 @@ const features = [
 
 export default function PricingSection() {
   return (
-    <section className="py-20 bg-accent/20">
+    <section className="py-10 bg-accent/20">
       <div className="container mx-auto px-4 max-w-2xl">
-        <div className="text-center mb-8">
+        <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-headline font-bold mt-2">Become Unforgettable</h2>
             <p className="text-muted-foreground mt-2 max-w-xl mx-auto">Your signature is the most personal piece of your brand. Don't settle for average. Invest in an identity that makes a lasting impression.</p>
         </div>
@@ -28,7 +28,7 @@ export default function PricingSection() {
             </CardTitle>
             <CardDescription>We limit our client intake to ensure every signature receives the personal attention and quality craftsmanship it deserves.</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-2">
             <ul className="space-y-3 pt-4 border-t">
               {features.map((feature) => (
                 <li key={feature} className="flex items-center gap-3">

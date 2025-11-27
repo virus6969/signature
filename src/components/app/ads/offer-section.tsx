@@ -28,16 +28,16 @@ const offers = [
 
 export default function OfferSection() {
     return (
-        <section className="py-20 bg-accent/20">
+        <section className="py-10 bg-accent/20">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
+                <div className="text-center mb-6">
                     <h2 className="text-3xl font-headline font-bold">What You'll Receive</h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {offers.map((offer, index) => (
-                        <Card key={index} className="flex flex-col items-center text-center p-6 shadow-md hover:shadow-xl transition-shadow">
+                        <Card key={index} className="flex flex-col items-center text-center p-3 shadow-md hover:shadow-xl transition-shadow">
                             <CardHeader className="p-0">
-                                <div className="bg-primary/10 text-primary p-4 rounded-full mb-4">
+                                <div className="bg-primary/10 text-primary p-4 rounded-full mb-2">
                                     <offer.icon className="w-8 h-8" />
                                 </div>
                                 <CardTitle>{offer.title}</CardTitle>

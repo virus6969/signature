@@ -61,13 +61,13 @@ export default function TransformationsSection() {
   });
 
   return (
-    <section className="py-20">
+    <section className="py-10">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
             <h2 className="text-3xl font-headline font-bold">✍️ Signature Transformations</h2>
             <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">See how we transform ordinary name writing into powerful, professional signatures that make a lasting impression</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
           {transformationImages.map(item => (
             <Card key={item.id} className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out hover:scale-[1.02]">
                 <CardHeader>
@@ -120,9 +120,9 @@ export default function TransformationsSection() {
             </Card>
           ))}
         </div>
-         <div className="mt-16 text-center">
-            <h3 className="text-2xl font-headline mb-4">Ready for Your Signature Transformation?</h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">Join thousands of professionals who have elevated their personal brand with a custom signature design</p>
+         <div className="mt-8 text-center">
+            <h3 className="text-2xl font-headline mb-2">Ready for Your Signature Transformation?</h3>
+            <p className="text-muted-foreground mb-3 max-w-2xl mx-auto">Join thousands of professionals who have elevated their personal brand with a custom signature design</p>
             <Button
                 size="lg"
                 className="h-14 text-lg bg-accent hover:bg-accent/90 text-accent-foreground"

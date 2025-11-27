@@ -48,24 +48,24 @@ export default function TestimonialsSection() {
   const getImage = (id: string) => customerImages.find(img => img.id === id);
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-10 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-headline font-bold">Real Transformations, Real Results</h2>
             <p className="text-muted-foreground mt-2">See how we've helped professionals elevate their identity with stunning signature transformations</p>
         </div>
         
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
           {testimonials.map((testimonial) => {
             const image = getImage(testimonial.id);
             return (
             <div key={testimonial.id} className="break-inside-avoid">
-              <Card className="flex flex-col bg-card/50 shadow-lg transform hover:-translate-y-2 transition-transform duration-300 h-full">
+              <Card className="flex flex-col bg-card/50 shadow-lg transform hover:-translate-y-1 transition-transform duration-300 h-full">
                 <CardContent className="p-6 flex flex-col flex-grow">
-                  <div className="flex mb-4">
+                  <div className="flex mb-2">
                       {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-accent fill-accent" />)}
                   </div>
-                  <p className="text-foreground/80 flex-grow mb-6">"{testimonial.quote}"</p>
+                  <p className="text-foreground/80 flex-grow mb-3">"{testimonial.quote}"</p>
                    <div className="flex items-center">
                     <Avatar className="h-12 w-12 border-2 border-accent">
                       {image && <AvatarImage src={image.imageUrl} alt={image.description} data-ai-hint={image.imageHint} />}
@@ -82,9 +82,9 @@ export default function TestimonialsSection() {
           )})}
         </div>
 
-        <div className="text-center mt-16">
-          <h3 className="text-2xl font-headline mb-4">Ready to Join These Success Stories?</h3>
-          <p className="text-muted-foreground mb-6 max-w-xl mx-auto">Transform your signature and elevate your professional presence today</p>
+        <div className="text-center mt-8">
+          <h3 className="text-2xl font-headline mb-2">Ready to Join These Success Stories?</h3>
+          <p className="text-muted-foreground mb-3 max-w-xl mx-auto">Transform your signature and elevate your professional presence today</p>
           <Button size="lg" className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90">Start Your Transformation</Button>
         </div>
       </div>

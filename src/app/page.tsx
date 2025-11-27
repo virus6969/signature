@@ -58,20 +58,20 @@ export default function Home() {
       <Header />
       <SocialProofToast />
        <ExitIntentPopup open={showPopup} onOpenChange={setShowPopup} />
-      <main className="flex-1 pb-24 md:pb-0">
+      <main className="flex-1 pb-12 md:pb-0">
         <OfferBanner />
         {/* Hero Section */}
-        <section id="hero-section" className="bg-primary text-primary-foreground py-16 md:py-20">
+        <section id="hero-section" className="bg-primary text-primary-foreground py-8 md:py-10">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
             <div className="text-center md:text-left">
               <p className="font-headline text-accent text-lg">Transform Your Identity</p>
-              <h1 className="text-3xl md:text-5xl font-headline font-bold mb-4" style={{ lineHeight: 1.2 }}>
+              <h1 className="text-3xl md:text-5xl font-headline font-bold mb-2" style={{ lineHeight: 1.2 }}>
                 Craft Your Perfect Digital Signature
               </h1>
-              <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-xl mx-auto md:mx-0">
+              <p className="text-lg md:text-xl mb-4 md:mb-4 max-w-xl mx-auto md:mx-0">
                   Elevate your personal brand with a handcrafted, designer signature that reflects your style, ambition, and profession.
               </p>
-              <div className="relative inline-block mb-8">
+              <div className="relative inline-block mb-4">
                 <Button 
                   size="lg" 
                   className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
@@ -96,7 +96,7 @@ export default function Home() {
               </div>
             </div>
             {heroImage && (
-              <div className="mt-12 md:mt-0 max-w-md mx-auto md:max-w-none">
+              <div className="mt-6 md:mt-0 max-w-md mx-auto md:max-w-none">
                 <Image
                   src={heroImage.imageUrl}
                   alt={heroImage.description}
@@ -106,7 +106,7 @@ export default function Home() {
                   data-ai-hint={heroImage.imageHint}
                   priority
                 />
-                 <p className="text-center mt-4 text-sm text-primary-foreground/60 italic">Your custom signature will be uniquely crafted for you</p>
+                 <p className="text-center mt-2 text-sm text-primary-foreground/60 italic">Your custom signature will be uniquely crafted for you</p>
               </div>
             )}
           </div>

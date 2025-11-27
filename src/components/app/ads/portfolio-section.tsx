@@ -17,10 +17,10 @@ export default function PortfolioSection() {
   });
 
   return (
-    <section className="pt-8 pb-16">
+    <section className="pt-4 pb-8">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-headline text-center font-bold mb-12">Our Work Speaks for Itself</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <h2 className="text-3xl font-headline text-center font-bold mb-6">Our Work Speaks for Itself</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
           {portfolioImages.map(image => (
             <Card key={image.id} className="overflow-hidden">
               <CardContent className="p-0">
@@ -40,7 +40,7 @@ export default function PortfolioSection() {
             </Card>
           ))}
         </div>
-         <div className="mt-12 text-center">
+         <div className="mt-6 text-center">
             <Button
                 size="lg"
                 className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"

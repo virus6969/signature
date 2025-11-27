@@ -49,18 +49,18 @@ export default function AdsPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <ExitIntentPopup open={showPopup} onOpenChange={setShowPopup} />
-      <main className="flex-1 pb-24 md:pb-0">
+      <main className="flex-1 pb-12 md:pb-0">
         {/* Hero Section */}
-        <section id="hero-section" className="bg-primary text-primary-foreground py-16 md:py-20">
+        <section id="hero-section" className="bg-primary text-primary-foreground py-8 md:py-10">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
             <div className="text-center md:text-left">
-              <h1 className="text-3xl md:text-5xl font-headline font-bold mb-4" style={{ lineHeight: 1.2 }}>
+              <h1 className="text-3xl md:text-5xl font-headline font-bold mb-2" style={{ lineHeight: 1.2 }}>
                 ✨ Your Signature, Reinvented
               </h1>
-              <h2 className="text-xl md:text-2xl font-body font-normal mb-6">
+              <h2 className="text-xl md:text-2xl font-body font-normal mb-3">
                   Turn Your Name Into a Stunning Brand Mark
               </h2>
-              <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-xl mx-auto md:mx-0">
+              <p className="text-lg md:text-xl mb-4 md:mb-4 max-w-xl mx-auto md:mx-0">
                   A signature isn’t just handwriting; it’s your identity. We transform your name into a premium, handcrafted signature that makes you stand out.
               </p>
               <div className="relative inline-block">
@@ -72,10 +72,10 @@ export default function AdsPage() {
                   Get Your Signature Now (50% Off)
                 </Button>
               </div>
-              <p className="text-sm mt-4 text-primary-foreground/80">Crafted by Experts. Delivered in 24 Hours. Guaranteed to Impress.</p>
+              <p className="text-sm mt-2 text-primary-foreground/80">Crafted by Experts. Delivered in 24 Hours. Guaranteed to Impress.</p>
             </div>
             {heroImage && (
-              <div className="mt-12 md:mt-0 max-w-md mx-auto md:max-w-none">
+              <div className="mt-6 md:mt-0 max-w-md mx-auto md:max-w-none">
                 <Image
                   src={heroImage.imageUrl}
                   alt={heroImage.description}
@@ -91,23 +91,23 @@ export default function AdsPage() {
         </section>
 
         {/* Trust Section */}
-        <section className="py-12 md:py-16">
+        <section className="py-6 md:py-8">
           <div className="container mx-auto text-center px-4">
-            <h2 className="text-2xl md:text-3xl font-headline font-bold mb-8">
+            <h2 className="text-2xl md:text-3xl font-headline font-bold mb-4">
               Trusted Worldwide
             </h2>
             <div className="flex justify-center items-center gap-6 md:gap-12 text-muted-foreground flex-wrap">
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-1">
                 <Users className="w-8 h-8 text-primary" />
                  <p className="text-4xl font-bold text-foreground">20,500+</p>
                 <p className="text-sm">Clients Served</p>
               </div>
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-1">
                 <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
                 <p className="text-4xl font-bold text-foreground">1,000+</p>
                 <p className="text-sm">5-Star Reviews</p>
               </div>
-               <div className="flex flex-col items-center gap-2">
+               <div className="flex flex-col items-center gap-1">
                 <Calendar className="w-8 h-8 text-muted-foreground"/>
                 <p className="text-4xl font-bold text-foreground">Since 2017</p>
                 <p className="text-sm">Creating premium signatures</p>
