@@ -65,6 +65,8 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
+        gold: '#FFD700',
+        'gold-dark': '#B8860B',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -88,10 +90,21 @@ export default {
             height: '0',
           },
         },
+        shimmer: {
+          '0%': { backgroundPosition: '200% center' },
+          '100%': { backgroundPosition: '-200% center' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'shimmer': 'shimmer 3s linear infinite',
+        'fadeInUp': 'fadeInUp 0.5s ease-out forwards',
+        'spin-slow': 'spin 10s linear infinite',
       },
     },
   },

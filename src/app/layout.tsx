@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
+import LoadingScreen from '@/components/app/loading-screen';
+import { PenSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'SignaGenius',
@@ -20,7 +22,10 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        {children}
+        <LoadingScreen />
+        <div id="main-content" className="opacity-0 transition-opacity duration-500">
+          {children}
+        </div>
         <Toaster />
       </body>
     </html>
