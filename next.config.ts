@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
         hostname: 'media.easy-peasy.ai',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.thesignaturestudio.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
