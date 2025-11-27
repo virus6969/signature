@@ -18,7 +18,6 @@ import WhyUsSection from '@/components/app/why-us-section';
 import TargetAudienceSection from '@/components/app/target-audience-section';
 import PricingSection from '@/components/app/pricing-section';
 import TransformationsSection from '@/components/app/transformations-section';
-import Header from '@/components/app/header';
 import Footer from '@/components/app/footer';
 
 const POPUP_SESSION_KEY = 'signagenius_popup_shown';
@@ -55,7 +54,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <Header />
       <SocialProofToast />
        <ExitIntentPopup open={showPopup} onOpenChange={setShowPopup} />
       <main className="flex-1 pb-12 md:pb-0">
