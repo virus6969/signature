@@ -1,35 +1,37 @@
+
 import { GraduationCap, Briefcase, Paintbrush, UserCheck, UserPlus } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '../ui/button';
 
 const audiences = [
   {
     icon: GraduationCap,
     title: 'Students & Freshers',
-    description: 'Start your career with a signature that commands respect.',
+    description: 'Make a strong first impression with a professional signature that sets you apart from the crowd. Perfect for job applications, internships, and building your professional identity from day one.',
     className: 'md:col-span-2',
   },
   {
     icon: Briefcase,
     title: 'Business Owners',
-    description: 'Close deals with confidence and a professional mark.',
+    description: 'who want to stand out',
     className: 'md:col-span-1',
   },
   {
     icon: UserCheck,
     title: 'Working Professionals',
-    description: 'Elevate your daily communications and documents.',
+    description: 'upgrading their image',
     className: 'md:col-span-1',
   },
   {
     icon: Paintbrush,
     title: 'Creatives',
-    description: 'A signature that reflects your unique artistic identity.',
+    description: 'who value aesthetics',
     className: 'md:col-span-2',
   },
    {
     icon: UserPlus,
     title: 'Anyone Tired of Basic Signatures',
-    description: 'Ready for an upgrade? We craft signatures that make an impact.',
+    description: 'or inconsistent handwriting',
     className: 'md:col-span-3',
   },
 ];
@@ -39,23 +41,29 @@ export default function TargetAudienceSection() {
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
+            <p className="text-accent font-semibold">Perfect For</p>
           <h2 className="text-3xl md:text-4xl font-headline font-bold">Who Is This For?</h2>
-          <p className="text-muted-foreground mt-2">Our handcrafted signatures are designed for anyone ready to make a statement.</p>
+          <p className="text-muted-foreground mt-2">Professional signature design for everyone who wants to make their mark</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {audiences.map((audience) => (
-            <Card key={audience.title} className={`${audience.className} bg-card/50 shadow-md hover:shadow-lg transition-shadow`}>
+            <Card key={audience.title} className={`${audience.className} bg-card/80 shadow-md hover:shadow-lg transition-shadow flex flex-col`}>
               <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2">
                 <div className="bg-primary/10 text-primary p-3 rounded-full">
                     <audience.icon className="w-6 h-6" />
                 </div>
                 <CardTitle>{audience.title}</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-grow">
                 <p className="text-muted-foreground">{audience.description}</p>
               </CardContent>
             </Card>
           ))}
+        </div>
+        <div className="text-center mt-12">
+            <h3 className="text-2xl font-headline mb-4">Ready to Create Your Perfect Signature?</h3>
+            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">Join thousands of professionals who've transformed their image with a custom signature</p>
+            <Button size="lg" className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90">Get Started Today</Button>
         </div>
       </div>
     </section>

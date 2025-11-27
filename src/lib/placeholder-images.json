@@ -2,51 +2,81 @@
   "placeholderImages": [
     {
       "id": "hero-signature",
-      "description": "A collection of beautifully crafted signature styles.",
+      "description": "A beautifully crafted signature.",
       "imageUrl": "https://media.easy-peasy.ai/3f4d3e26-312f-4b13-aa15-cfd9251fff2d/e300932d-7f90-4995-9a79-26162c7893ad.png",
-      "imageHint": "signature collection"
+      "imageHint": "elegant signature"
+    },
+    {
+      "id": "sig-before-1",
+      "description": "A basic, messy signature.",
+      "imageUrl": "https://images.unsplash.com/photo-1646442064656-1f5442f906d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtZXNzeSUyMGhhbmR3cml0aW5nfGVufDB8fHx8MTc2NDIyODQ4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "messy handwriting"
+    },
+    {
+      "id": "sig-before-2",
+      "description": "A cluttered, unreadable signature.",
+      "imageUrl": "https://images.unsplash.com/photo-1626681353704-0dce0883e498?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx1bnJlYWRhYmxlJTIwaGFuZHdyaXRpbmd8ZW58MHx8fHwxNzY0MjI4NDgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "unreadable handwriting"
+    },
+    {
+      "id": "sig-before-3",
+      "description": "A plain, forgettable signature.",
+      "imageUrl": "https://images.unsplash.com/photo-1586296188195-89285b63f670?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwbGFpbiUyMHNpZ25hdHVyZXxlbnwwfHx8fDE3NjQyMjg0ODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "plain signature"
     },
     {
       "id": "sig-1",
-      "description": "An elegant, flowing signature for 'Alexandra Chen'.",
+      "description": "An elegant, flowing signature for 'Priya Sharma'.",
       "imageUrl": "https://images.unsplash.com/photo-1588426657789-142b72fc41ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxlbGVnYW50JTIwc2lnbmF0dXJlfGVufDB8fHx8MTc2Mzc4Njc5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "elegant signature"
     },
     {
       "id": "sig-2",
-      "description": "A bold, modern signature for 'David Lee'.",
+      "description": "A bold, modern signature for 'Rahul Verma'.",
       "imageUrl": "https://images.unsplash.com/photo-1557124827-86864fac83fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtb2Rlcm4lMjBzaWduYXR1cmV8ZW58MHx8fHwxNzYzNzg2NzkyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "modern signature"
     },
     {
       "id": "sig-3",
-      "description": "A minimalist, clean signature for 'Sophia Miller'.",
+      "description": "A minimalist, clean signature for 'Anjali Gupta'.",
       "imageUrl": "https://images.unsplash.com/photo-1643216669751-eafc6f819e3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtaW5pbWFsaXN0JTIwc2lnbmF0dXJlfGVufDB8fHx8MTc2Mzc4Njc5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "minimalist signature"
     },
     {
       "id": "sig-4",
-      "description": "An extravagant, artistic signature for 'James Rodriguez'.",
+      "description": "An artistic, luxury signature for 'Rohan Mehta'.",
       "imageUrl": "https://images.unsplash.com/photo-1763468839619-45036f744d4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcnRpc3RpYyUyMHNpZ25hdHVyZXxlbnwwfHx8fDE3NjM3ODY3OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "artistic signature"
     },
     {
       "id": "customer-1",
-      "description": "Headshot of a smiling professional woman.",
+      "description": "Headshot of Priya S.",
       "imageUrl": "https://images.unsplash.com/photo-1573496527892-904f897eb744?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cHJvZmVzc2lvbmFsJTIwd29tYW58ZW58MHx8fHwxNzYzNzUwMTU5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "professional woman"
     },
     {
       "id": "customer-2",
-      "description": "Headshot of a smiling professional man.",
+      "description": "Headshot of Rahul V.",
       "imageUrl": "https://images.unsplash.com/photo-1589386417686-0d34b5903d23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwcm9mZXNzaW9uYWwlMjBtYW58ZW58MHx8fHwxNzYzNzg5MjI5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "professional man"
     },
     {
       "id": "customer-3",
-      "description": "Headshot of a creative-looking person.",
+      "description": "Headshot of Aisha K.",
       "imageUrl": "https://images.unsplash.com/photo-1622700950970-e82a3df61a89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjcmVhdGl2ZSUyMHBlcnNvbnxlbnwwfHx8fDE3NjM3Nzc1ODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "creative person"
+    },
+    {
+      "id": "customer-4",
+      "description": "Headshot of Sarah M.",
+      "imageUrl": "https://images.unsplash.com/photo-1580894908361-967195033215?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "marketing director"
+    },
+    {
+      "id": "customer-5",
+      "description": "Headshot of Michael R.",
+      "imageUrl": "https://images.unsplash.com/photo-1614583224978-f05ce51ef5fa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "software engineer"
     }
   ]
 }

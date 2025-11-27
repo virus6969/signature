@@ -1,3 +1,4 @@
+
 import { Gem, Film, PencilRuler, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
@@ -6,22 +7,22 @@ const offers = [
     {
         icon: Gem,
         title: "3 Designer Options",
-        description: "We provide 3 distinct signature styles for you to choose from."
+        description: "Unique signature variations crafted by professional designers"
     },
     {
         icon: Film,
         title: "Writing Tutorial",
-        description: "Video guide on how to recreate your new signature."
+        description: "Step-by-step video guide to master your new signature"
     },
     {
         icon: PencilRuler,
         title: "Practice Sheets",
-        description: "Printable sheets to practice your muscle memory."
+        description: "PDF practice sheets for perfecting your signature"
     },
     {
         icon: Zap,
         title: "24-48hr Delivery",
-        description: "Fast turnaround time for your urgent needs."
+        description: "Fast turnaround via email delivery"
     },
 ]
 
@@ -35,7 +36,7 @@ export default function OfferSection() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {offers.map((offer, index) => (
-                        <Card key={index} className="flex flex-col items-center text-center p-6 shadow-md hover:shadow-xl transition-shadow">
+                        <Card key={index} className="flex flex-col items-center text-center p-6 shadow-md hover:shadow-xl transition-shadow bg-card">
                             <CardHeader className="p-0">
                                 <div className="bg-primary/10 text-primary p-4 rounded-full mb-4">
                                     <offer.icon className="w-8 h-8" />
