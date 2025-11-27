@@ -5,8 +5,8 @@ import LoadingScreen from '@/components/app/loading-screen';
 import { PenSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'SignaGenius',
-  description: 'AI-powered signature design and analysis.',
+  title: 'Professional Handcrafted Digital Signatures',
+  description: 'Transform your signature into a professional brand asset. Handcrafted designs delivered in 48 hours.',
 };
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
         <LoadingScreen />

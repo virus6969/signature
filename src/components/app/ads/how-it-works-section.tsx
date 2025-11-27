@@ -8,47 +8,55 @@ const steps = [
     {
         step: 1,
         icon: FileText,
-        title: "Tell Us What You Like",
-        description: "Share your name, initials, and preferred style — elegant, bold, modern, minimal, artistic, or anything in between.",
+        title: "Share Your Details",
+        description: "Share your name, and style preferences.",
     },
     {
         step: 2,
         icon: Brush,
-        title: "We Design 3 Signature Concepts",
-        description: "Our calligraphy experts craft three signature styles made exclusively for you.",
+        title: "Designer Analysis",
+        description: "We study your name's unique flow.",
     },
     {
         step: 3,
         icon: Check,
-        title: "You Pick Your Favorite",
-        description: "Need changes? Want it sharper, bolder, cleaner? Ask for unlimited tweaks — free.",
+        title: "Crafting Your Options",
+        description: "Our calligraphy experts get to work crafting three signature styles.",
     },
     {
         step: 4,
         icon: Download,
-        title: "Download Your Final Signature",
-        description: "Receive high-resolution formats ready for digital use, printing, or even animation.",
+        title: "Receive Your Package",
+        description: "Receive high-resolution formats delivered to your email.",
     }
 ]
 
 export default function HowItWorksSection() {
     return (
-        <section className="py-10">
+        <section className="py-20">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl font-headline font-bold">How It Works</h2>
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-4xl font-headline font-bold">Your Signature in 4 Simple Steps</h2>
                     <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">A simple process. Stunning results.</p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 max-w-4xl mx-auto">
-                    {steps.map((step) => (
-                        <div key={step.step} className="flex items-start gap-6">
-                            <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-full text-primary-foreground font-bold text-2xl flex-shrink-0">
-                                <step.icon className="w-6 h-6" />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold mb-1">{step.title}</h3>
+                <div className="relative">
+                    {/* The connecting line */}
+                    <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2 hidden md:block"></div>
+
+                    {steps.map((step, index) => (
+                        <div key={step.step} className="relative mb-12 md:mb-20 flex flex-col md:flex-row items-center justify-center">
+                            {/* Content */}
+                            <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'} text-center`}>
+                                <h3 className="text-2xl font-headline font-bold mb-2">{step.title}</h3>
                                 <p className="text-muted-foreground">{step.description}</p>
+                            </div>
+                            
+                            {/* Icon & Number */}
+                            <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center bg-background z-10 my-4 md:my-0">
+                                <div className="flex items-center justify-center w-20 h-20 bg-primary text-primary-foreground rounded-full border-4 border-background">
+                                    <step.icon className="w-8 h-8" />
+                                </div>
                             </div>
                         </div>
                     ))}
@@ -57,7 +65,7 @@ export default function HowItWorksSection() {
                 <div className="text-center mt-16">
                     <Button
                         size="lg"
-                        className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                        className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
                         style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
                     >
                         Start My Signature (50% Off)

@@ -15,9 +15,12 @@ import Image from 'next/image';
 import OfferBanner from '@/components/app/offer-banner';
 import SocialProofToast from '@/components/app/social-proof-toast';
 import ExitIntentPopup from '@/components/app/exit-intent-popup';
+import OfferSection from '@/components/app/offer-section';
+import WhyUsSection from '@/components/app/why-us-section';
+import TargetAudienceSection from '@/components/app/target-audience-section';
+import PricingSection from '@/components/app/pricing-section';
 
 const POPUP_SESSION_KEY = 'signagenius_popup_shown';
-
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-signature');
@@ -56,34 +59,36 @@ export default function Home() {
       <main className="flex-1 pb-24 md:pb-0">
         <OfferBanner />
         {/* Hero Section */}
-        <section id="hero-section" className="bg-primary text-primary-foreground text-center py-16 md:py-20">
-          <div className="container mx-auto px-4">
-            <h1 className="text-3xl md:text-5xl font-headline font-bold mb-4" style={{ lineHeight: 1.2 }}>
-              ✨ Your Signature, Reinvented
-            </h1>
-            <h2 className="text-xl md:text-2xl font-body font-normal mb-6">
-                Turn Your Name Into a Stunning Brand Mark
-            </h2>
-            <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-xl mx-auto">
-                A signature isn’t just handwriting; it’s your identity. We transform your name into a premium, handcrafted signature that makes you stand out.
-            </p>
-            <div className="relative inline-block">
-              <Button 
-                size="lg" 
-                className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
-                style={{boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}}
-              >
-                Get Your Custom Signature (50% Off)
-              </Button>
+        <section id="hero-section" className="bg-primary text-primary-foreground py-16 md:py-20">
+          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+            <div className="text-center md:text-left">
+              <h1 className="text-3xl md:text-5xl font-headline font-bold mb-4" style={{ lineHeight: 1.2 }}>
+                ✨ Your Signature, Reinvented
+              </h1>
+              <h2 className="text-xl md:text-2xl font-body font-normal mb-6">
+                  Turn Your Name Into a Stunning Brand Mark
+              </h2>
+              <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-xl mx-auto md:mx-0">
+                  A signature isn’t just handwriting; it’s your identity. We transform your name into a premium, handcrafted signature that makes you stand out.
+              </p>
+              <div className="relative inline-block">
+                <Button 
+                  size="lg" 
+                  className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                  style={{boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}}
+                >
+                  Get Your Signature Now
+                </Button>
+              </div>
+              <p className="text-sm mt-4 text-primary-foreground/80">Crafted by Experts. Delivered in 24 Hours. Guaranteed to Impress.</p>
             </div>
-            <p className="text-sm mt-4 text-primary-foreground/80">Crafted by Experts. Delivered in 24 Hours. Guaranteed to Impress.</p>
             {heroImage && (
-              <div className="mt-12 md:mt-16 max-w-4xl mx-auto">
+              <div className="mt-12 md:mt-0 max-w-md mx-auto md:max-w-none">
                 <Image
                   src={heroImage.imageUrl}
                   alt={heroImage.description}
-                  width={1200}
-                  height={600}
+                  width={600}
+                  height={400}
                   className="rounded-lg shadow-2xl"
                   data-ai-hint={heroImage.imageHint}
                   priority
@@ -119,10 +124,13 @@ export default function Home() {
           </div>
         </section>
         
-        <BenefitsSection />
+        <OfferSection />
+        <WhyUsSection />
         <HowItWorksSection />
+        <TargetAudienceSection />
         <PortfolioSection />
         <TestimonialsSection />
+        <PricingSection />
         <FaqSection />
 
       </main>
@@ -137,7 +145,7 @@ export default function Home() {
               size="default" 
               className="flex-shrink-0 h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg shine-effect"
             >
-              Get My Signature (50% Off)
+              Get Started
             </Button>
         </div>
       </div>
