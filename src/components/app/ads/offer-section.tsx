@@ -1,4 +1,5 @@
 import { Gem, Film, PencilRuler, Zap } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const offers = [
     {
@@ -41,6 +42,15 @@ export default function OfferSection() {
                             <p className="text-muted-foreground mt-1">{offer.description}</p>
                         </div>
                     ))}
+                </div>
+                <div className="text-center mt-8">
+                    <Button
+                        size="lg"
+                        className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
+                        style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
+                    >
+                        Start My Signature (50% Off)
+                    </Button>
                 </div>
             </div>
         </section>

@@ -52,6 +52,14 @@ export default function HowItWorksSection() {
                         </div>
                     ))}
                 </div>
+                 <div className="text-center mt-8">
+                    <Button
+                        size="lg"
+                        className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect"
+                    >
+                        Get Started Today
+                    </Button>
+                </div>
             </div>
         </section>
     )

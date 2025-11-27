@@ -125,7 +125,7 @@ export default function TransformationsSection() {
             <p className="text-muted-foreground mb-3 max-w-2xl mx-auto">Join thousands of professionals who have elevated their personal brand with a custom signature design</p>
             <Button
                 size="lg"
-                className="h-14 text-lg bg-accent hover:bg-accent/90 text-accent-foreground"
+                className="h-14 text-lg bg-accent hover:bg-accent/90 text-accent-foreground shine-effect"
             >
                 Start Your Transformation
             </Button>

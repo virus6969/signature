@@ -83,7 +83,7 @@ export default function WhyUsSection() {
          <div className="text-center mt-8">
           <h3 className="text-2xl font-headline mb-2">Ready to Elevate Your Professional Image?</h3>
           <p className="text-muted-foreground mb-3 max-w-2xl mx-auto">Join thousands of professionals who have transformed their personal brand with our signature design service</p>
-          <Button size="lg" className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90">Get Your Signature Design</Button>
+          <Button size="lg" className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect">Get Your Signature Design</Button>
         </div>
       </div>
     </section>

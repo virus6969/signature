@@ -132,7 +132,7 @@ export default function AdsPage() {
             </div>
             <Button 
               size="default" 
-              className="flex-shrink-0 h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg"
+              className="flex-shrink-0 h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg shine-effect"
             >
               Get My Signature (50% Off)
             </Button>

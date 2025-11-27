@@ -65,7 +65,7 @@ export default function TargetAudienceSection() {
         <div className="text-center mt-6">
             <h3 className="text-2xl font-headline mb-2">Ready to Create Your Perfect Signature?</h3>
             <p className="text-muted-foreground mb-3 max-w-xl mx-auto">Join thousands of professionals who've transformed their image with a custom signature</p>
-            <Button size="lg" className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90">Get Started Today</Button>
+            <Button size="lg" className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect">Get Started Today</Button>
         </div>
       </div>
     </section>

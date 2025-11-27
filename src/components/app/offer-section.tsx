@@ -1,4 +1,5 @@
 import { Gem, Film, PencilRuler, Zap } from 'lucide-react';
+import { Button } from '../ui/button';
 
 const offers = [
     {
@@ -41,6 +42,14 @@ export default function OfferSection() {
                             <p className="text-muted-foreground mt-1">{offer.description}</p>
                         </div>
                     ))}
+                </div>
+                <div className="text-center mt-8">
+                    <Button
+                        size="lg"
+                        className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect"
+                    >
+                        Start Your Transformation
+                    </Button>
                 </div>
             </div>
         </section>

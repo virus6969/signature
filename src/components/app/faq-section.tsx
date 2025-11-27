@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
 import { HelpCircle, Clock, CheckSquare, Shield, Smile } from 'lucide-react';
 import React from 'react';
 
@@ -61,6 +62,14 @@ export default function FaqSection() {
               </AccordionItem>
             </Accordion>
           ))}
+        </div>
+         <div className="text-center mt-8">
+            <Button
+                size="lg"
+                className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect"
+            >
+                Get Started Today
+            </Button>
         </div>
       </div>
     </section>

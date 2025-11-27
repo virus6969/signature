@@ -41,7 +41,7 @@ export default function PricingSection() {
             </ul>
           </CardContent>
           <CardFooter className="flex-col gap-2">
-            <Button size="lg" className="w-full h-12 text-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold">
+            <Button size="lg" className="w-full h-12 text-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shine-effect">
               Secure Your Spot Now
             </Button>
             <p className="text-xs text-muted-foreground">Secure One-Time Payment • SSL Protected</p>

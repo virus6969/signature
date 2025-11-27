@@ -72,7 +72,7 @@ export default function Home() {
               <div className="relative inline-block mb-4">
                 <Button 
                   size="lg" 
-                  className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                  className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
                 >
                   Get Your Designer Signature
                 </Button>
@@ -131,7 +131,7 @@ export default function Home() {
             </div>
             <Button 
               size="lg" 
-              className="flex-grow h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg"
+              className="flex-grow h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg shine-effect"
             >
               Get Signature
             </Button>
