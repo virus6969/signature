@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -70,32 +70,47 @@ export default function CheckoutPage() {
 
             {/* Add-on */}
             <Card className="bg-accent/10 border-accent relative overflow-hidden shadow-lg">
-              <div className="absolute top-0 right-0 h-24 w-24 overflow-hidden z-10">
-                <div className="absolute transform rotate-45 bg-accent text-accent-foreground text-xs font-bold text-center py-1 right-[-25px] top-[22px] w-[120px] shadow-md">
-                  93% Opted-In
+                <div className="absolute top-0 right-0 h-24 w-24 overflow-hidden z-10">
+                    <div className="absolute transform rotate-45 bg-accent text-accent-foreground text-xs font-bold text-center py-1 right-[-25px] top-[22px] w-[120px] shadow-md">
+                        93% Opted-In
+                    </div>
                 </div>
-              </div>
 
-              <CardContent className="p-6 pt-8 flex items-start gap-4">
-                  <Checkbox id="add-on" className="mt-1" checked={isAddonSelected} onCheckedChange={(checked) => setIsAddonSelected(checked as boolean)} />
-                  <div className="grid gap-1.5 flex-1">
-                      <Label htmlFor="add-on" className="font-semibold text-lg font-headline">
-                          Want to master your new signature perfectly?
-                      </Label>
-                      <p className="text-sm text-muted-foreground">
-                          Add a printable sheet with your signature traced & outlined — just like handwriting practice sheets.
-                      </p>
-                      <ul className="text-xs text-muted-foreground list-disc pl-5 mt-1 space-y-1">
-                          <li>Light grey version for trace-over</li>
-                          <li>Lined version for repeat practice</li>
-                          <li>Adds premium feel for very little effort</li>
-                      </ul>
-                      <div className="text-right mt-2">
-                          <p className="text-lg font-bold">₹{ADDON_PRICE}</p>
-                          <p className="text-sm text-muted-foreground line-through">₹499</p>
-                      </div>
-                  </div>
-              </CardContent>
+                <CardHeader 
+                    className="flex-row items-center justify-between p-6 cursor-pointer"
+                    onClick={() => setIsAddonSelected(!isAddonSelected)}
+                >
+                    <div className="flex-1 pr-4">
+                        <CardTitle className="text-lg font-headline">
+                            Want to master your new signature perfectly?
+                        </CardTitle>
+                    </div>
+                    <Switch
+                        id="add-on-switch"
+                        checked={isAddonSelected}
+                        onCheckedChange={setIsAddonSelected}
+                        aria-label="Toggle signature practice sheet add-on"
+                    />
+                </CardHeader>
+                <CardContent className="p-6 pt-0">
+                    <div 
+                        className="cursor-pointer"
+                        onClick={() => setIsAddonSelected(!isAddonSelected)}
+                    >
+                        <p className="text-sm text-muted-foreground">
+                            Add a printable sheet with your signature traced & outlined — just like handwriting practice sheets.
+                        </p>
+                        <ul className="text-xs text-muted-foreground list-disc pl-5 mt-2 space-y-1">
+                            <li>Light grey version for trace-over</li>
+                            <li>Lined version for repeat practice</li>
+                            <li>Adds premium feel for very little effort</li>
+                        </ul>
+                    </div>
+                    <div className="text-right mt-4">
+                        <p className="text-lg font-bold">₹{ADDON_PRICE}</p>
+                        <p className="text-sm text-muted-foreground line-through">₹499</p>
+                    </div>
+                </CardContent>
             </Card>
 
 
