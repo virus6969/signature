@@ -4,13 +4,13 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Switch } from '@/components/ui/switch';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import TestimonialsSection from '@/components/app/testimonials-section';
 import Footer from '@/components/app/footer';
-import { FileSignature } from 'lucide-react';
+import { FileSignature, CheckCircle2 } from 'lucide-react';
 
 const BASE_PRICE = 489;
 const ADDON_PRICE = 199;
@@ -69,48 +69,48 @@ export default function CheckoutPage() {
             </Card>
 
             {/* Add-on */}
-            <Card className="bg-accent/10 border-accent relative overflow-hidden shadow-lg">
-                <div className="absolute top-0 right-0 h-24 w-24 overflow-hidden z-10">
-                    <div className="absolute transform rotate-45 bg-accent text-accent-foreground text-xs font-bold text-center py-1 right-[-25px] top-[22px] w-[120px] shadow-md">
-                        93% Opted-In
-                    </div>
+             <Card 
+              className={`relative overflow-hidden shadow-lg cursor-pointer transition-all duration-300 ${isAddonSelected ? 'border-accent ring-2 ring-accent' : 'border-border'}`}
+              onClick={() => setIsAddonSelected(!isAddonSelected)}
+            >
+              <div className="absolute top-0 right-0 h-24 w-24 overflow-hidden z-10">
+                <div className="absolute transform rotate-45 bg-accent text-accent-foreground text-xs font-bold text-center py-1 right-[-25px] top-[22px] w-[120px] shadow-md">
+                    93% Opted-In
                 </div>
-
-                <div className="cursor-pointer" onClick={() => setIsAddonSelected(!isAddonSelected)}>
-                    <CardHeader 
-                        className="flex-row items-center justify-between p-6"
-                    >
-                        <div className="flex-1 pr-4">
-                            <CardTitle className="text-lg font-headline">
-                                Want to master your new signature perfectly?
-                            </CardTitle>
-                        </div>
-                    </CardHeader>
-                    <CardContent className="p-6 pt-0">
-                        <div>
-                            <p className="text-sm text-muted-foreground">
-                                Add a printable sheet with your signature traced & outlined — just like handwriting practice sheets.
-                            </p>
-                            <ul className="text-xs text-muted-foreground list-disc pl-5 mt-2 space-y-1">
-                                <li>Light grey version for trace-over</li>
-                                <li>Lined version for repeat practice</li>
-                                <li>Adds premium feel for very little effort</li>
-                            </ul>
-                        </div>
-                        <div className="flex justify-between items-center mt-4">
-                            <Switch
-                                id="add-on-switch"
+              </div>
+                <CardHeader>
+                    <CardTitle className="text-lg font-headline flex items-center justify-between">
+                        <span>Want to master your new signature perfectly?</span>
+                        {isAddonSelected && <CheckCircle2 className="h-6 w-6 text-green-500" />}
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0">
+                    <div>
+                        <p className="text-sm text-muted-foreground">
+                            Add a printable sheet with your signature traced & outlined — just like handwriting practice sheets.
+                        </p>
+                        <ul className="text-xs text-muted-foreground list-disc pl-5 mt-2 space-y-1">
+                            <li>Light grey version for trace-over</li>
+                            <li>Lined version for repeat practice</li>
+                            <li>Adds premium feel for very little effort</li>
+                        </ul>
+                    </div>
+                    <div className="flex justify-between items-center mt-4">
+                        <div className="flex items-center gap-2">
+                             <Checkbox
+                                id="add-on-checkbox"
                                 checked={isAddonSelected}
-                                onCheckedChange={setIsAddonSelected}
+                                onCheckedChange={() => setIsAddonSelected(!isAddonSelected)}
                                 aria-label="Toggle signature practice sheet add-on"
                             />
-                            <div className="text-right">
-                                <p className="text-lg font-bold">₹{ADDON_PRICE}</p>
-                                <p className="text-sm text-muted-foreground line-through">₹499</p>
-                            </div>
+                            <Label htmlFor="add-on-checkbox" className="font-bold cursor-pointer">Add to Cart</Label>
                         </div>
-                    </CardContent>
-                </div>
+                        <div className="text-right">
+                            <p className="text-lg font-bold">₹{ADDON_PRICE}</p>
+                            <p className="text-sm text-muted-foreground line-through">₹499</p>
+                        </div>
+                    </div>
+                </CardContent>
             </Card>
 
 
