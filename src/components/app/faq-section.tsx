@@ -64,16 +64,6 @@ export default function FaqSection() {
             </Accordion>
           ))}
         </div>
-         <div className="text-center mt-8">
-            <Link href="/checkout" passHref>
-                <Button
-                    size="lg"
-                    className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect"
-                >
-                    Get Started Today
-                </Button>
-            </Link>
-        </div>
       </div>
     </section>
   );
