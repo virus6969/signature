@@ -34,7 +34,7 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
         }
         return prevProgress + Math.random() * 10;
       });
-    }, 150);
+    }, 50);
 
     return () => clearInterval(interval);
   }, [isLoading]);
