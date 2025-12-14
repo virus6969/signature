@@ -3,6 +3,7 @@
 import { GraduationCap, Briefcase, Paintbrush, UserCheck, UserPlus, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '../ui/button';
+import Link from 'next/link';
 
 const audiences = [
   {
@@ -65,7 +66,9 @@ export default function TargetAudienceSection() {
         <div className="text-center mt-6">
             <h3 className="text-2xl font-headline mb-2">Ready to Create Your Perfect Signature?</h3>
             <p className="text-muted-foreground mb-3 max-w-xl mx-auto">Join thousands of professionals who've transformed their image with a custom signature</p>
-            <Button size="lg" className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect">Get Started Today</Button>
+            <Link href="/checkout" passHref>
+              <Button size="lg" className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect">Get Started Today</Button>
+            </Link>
         </div>
       </div>
     </section>

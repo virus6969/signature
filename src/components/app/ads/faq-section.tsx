@@ -10,6 +10,7 @@ import {
 import { HelpCircle, Clock, CheckSquare, Shield, Smile } from 'lucide-react';
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const faqs = [
     {
@@ -63,6 +64,7 @@ export default function FaqSection() {
           ))}
         </div>
         <div className="text-center mt-8">
+          <Link href="/checkout" passHref>
             <Button
                 size="lg"
                 className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
@@ -70,6 +72,7 @@ export default function FaqSection() {
             >
                 Start My Signature (50% Off)
             </Button>
+          </Link>
         </div>
       </div>
     </section>

@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/alert-dialog';
 import CountdownTimer from './countdown-timer';
 import { Button } from '../ui/button';
+import Link from 'next/link';
 
 type ExitIntentPopupProps = {
   open: boolean;
@@ -36,9 +37,11 @@ export default function ExitIntentPopup({ open, onOpenChange }: ExitIntentPopupP
         </div>
         <AlertDialogFooter className="flex-col gap-2 sm:flex-col sm:space-x-0">
           <AlertDialogAction asChild>
-            <Button size="lg" className="w-full h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold">
-              Claim My 50% Discount
-            </Button>
+            <Link href="/checkout" passHref>
+              <Button size="lg" className="w-full h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold">
+                Claim My 50% Discount
+              </Button>
+            </Link>
           </AlertDialogAction>
           <AlertDialogCancel asChild>
               <Button variant="ghost" size="lg" className="w-full h-12 text-base text-muted-foreground">

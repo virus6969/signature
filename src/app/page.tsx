@@ -19,6 +19,8 @@ import TargetAudienceSection from '@/components/app/target-audience-section';
 import PricingSection from '@/components/app/pricing-section';
 import TransformationsSection from '@/components/app/transformations-section';
 import Footer from '@/components/app/footer';
+import Header from '@/components/app/header';
+import Link from 'next/link';
 
 const POPUP_SESSION_KEY = 'signagenius_popup_shown';
 
@@ -54,6 +56,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
+      <Header />
       <SocialProofToast />
        <ExitIntentPopup open={showPopup} onOpenChange={setShowPopup} />
       <main className="flex-1 pb-12 md:pb-0">
@@ -70,12 +73,14 @@ export default function Home() {
                   Elevate your personal brand with a handcrafted, designer signature that reflects your style, ambition, and profession.
               </p>
               <div className="relative inline-block mb-4">
-                <Button 
-                  size="lg" 
-                  className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
-                >
-                  Get Your Designer Signature
-                </Button>
+                <Link href="/checkout" passHref>
+                  <Button 
+                    size="lg" 
+                    className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
+                  >
+                    Get Your Designer Signature
+                  </Button>
+                </Link>
               </div>
 
                <div className="flex justify-center md:justify-start items-center gap-6 md:gap-8 text-primary-foreground/80 flex-wrap">
@@ -129,12 +134,14 @@ export default function Home() {
                 <span className="text-muted-foreground line-through text-sm">₹4,999</span>
                 <span className="font-bold text-xl text-foreground">₹489</span>
             </div>
-            <Button 
-              size="lg" 
-              className="flex-grow h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg shine-effect"
-            >
-              Get Signature
-            </Button>
+            <Link href="/checkout" passHref className="flex-grow">
+              <Button 
+                size="lg" 
+                className="w-full h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg shine-effect"
+              >
+                Get Signature
+              </Button>
+            </Link>
         </div>
       </div>
     </div>

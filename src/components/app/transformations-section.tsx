@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const transformations = [
     { 
@@ -120,15 +121,17 @@ export default function TransformationsSection() {
             </Card>
           ))}
         </div>
-         <div className="mt-8 text-center">
+         <div className="text-center mt-8">
             <h3 className="text-2xl font-headline mb-2">Ready for Your Signature Transformation?</h3>
             <p className="text-muted-foreground mb-3 max-w-2xl mx-auto">Join thousands of professionals who have elevated their personal brand with a custom signature design</p>
-            <Button
-                size="lg"
-                className="h-14 text-lg bg-accent hover:bg-accent/90 text-accent-foreground shine-effect"
-            >
-                Start Your Transformation
-            </Button>
+            <Link href="/checkout" passHref>
+                <Button
+                    size="lg"
+                    className="h-14 text-lg bg-accent hover:bg-accent/90 text-accent-foreground shine-effect"
+                >
+                    Start Your Transformation
+                </Button>
+            </Link>
         </div>
       </div>
     </section>

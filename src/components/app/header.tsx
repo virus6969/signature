@@ -13,6 +13,7 @@ import {
   SheetClose
 } from "@/components/ui/sheet"
 import { DialogTitle } from '@radix-ui/react-dialog';
+import Link from 'next/link';
 
 
 const navLinks = [
@@ -53,9 +54,11 @@ export default function Header() {
                     </SheetClose>
                 ))}
                 <SheetClose asChild>
-                  <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 mt-4">
-                    Get Started
-                  </Button>
+                  <Link href="/checkout" passHref>
+                    <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 mt-4 w-full">
+                      Get Started
+                    </Button>
+                  </Link>
                 </SheetClose>
               </nav>
             </SheetContent>
@@ -67,9 +70,11 @@ export default function Header() {
                     {link.label}
                 </a>
             ))}
-            <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-                Get Started
-            </Button>
+            <Link href="/checkout" passHref>
+              <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
+                  Get Started
+              </Button>
+            </Link>
           </nav>
         )}
       </div>

@@ -1,5 +1,6 @@
 import { Gem, Film, PencilRuler, Zap } from 'lucide-react';
 import { Button } from '../ui/button';
+import Link from 'next/link';
 
 const offers = [
     {
@@ -44,12 +45,14 @@ export default function OfferSection() {
                     ))}
                 </div>
                 <div className="text-center mt-8">
-                    <Button
-                        size="lg"
-                        className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect"
-                    >
-                        Start Your Transformation
-                    </Button>
+                    <Link href="/checkout" passHref>
+                        <Button
+                            size="lg"
+                            className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect"
+                        >
+                            Start Your Transformation
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </section>

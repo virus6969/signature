@@ -2,6 +2,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const portfolioSignatures = [
     { id: 'sig-1', description: "Elegant Flowing Style – Priya Sharma" },
@@ -41,13 +42,15 @@ export default function PortfolioSection() {
           ))}
         </div>
          <div className="mt-6 text-center">
-            <Button
-                size="lg"
-                className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
-                style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
-            >
-                Create My Signature (50% Off)
-            </Button>
+            <Link href="/checkout" passHref>
+                <Button
+                    size="lg"
+                    className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
+                    style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
+                >
+                    Create My Signature (50% Off)
+                </Button>
+            </Link>
         </div>
       </div>
     </section>

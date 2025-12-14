@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const testimonials = [
   {
@@ -85,7 +86,9 @@ export default function TestimonialsSection() {
         <div className="text-center mt-8">
           <h3 className="text-2xl font-headline mb-2">Ready to Join These Success Stories?</h3>
           <p className="text-muted-foreground mb-3 max-w-xl mx-auto">Transform your signature and elevate your professional presence today</p>
-          <Button size="lg" className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect">Start Your Transformation</Button>
+          <Link href="/checkout" passHref>
+            <Button size="lg" className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect">Start Your Transformation</Button>
+          </Link>
         </div>
       </div>
     </section>
