@@ -37,7 +37,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="bg-background" id="checkout-top">
+    <div className="bg-background overflow-x-hidden" id="checkout-top">
       <main className="container mx-auto px-4 py-8 relative">
         <FileSignature className="absolute -left-24 top-1/4 h-96 w-96 text-foreground/5" />
         <FileSignature className="absolute -right-24 bottom-1/4 h-96 w-96 text-foreground/5" />
