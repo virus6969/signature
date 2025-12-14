@@ -29,8 +29,15 @@ export default function CheckoutPage() {
     }
   }, [isAddonSelected]);
 
+  const handleScrollToTop = () => {
+    const checkoutTop = document.getElementById('checkout-top');
+    if (checkoutTop) {
+      checkoutTop.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   return (
-    <div className="bg-background">
+    <div className="bg-background" id="checkout-top">
       <main className="container mx-auto px-4 py-8 relative">
         <FileSignature className="absolute -left-24 top-1/4 h-96 w-96 text-foreground/5" />
         <FileSignature className="absolute -right-24 bottom-1/4 h-96 w-96 text-foreground/5" />
@@ -175,7 +182,11 @@ export default function CheckoutPage() {
                   <p>Total</p>
                   <p>₹{totalPrice}</p>
                 </div>
-                <Button size="lg" className="w-full h-12 text-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold">
+                <Button 
+                  size="lg" 
+                  className="w-full h-12 text-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+                  onClick={handleScrollToTop}
+                >
                   Proceed to Payment - ₹{totalPrice}
                 </Button>
                  <p className="text-xs text-muted-foreground text-center">Secure One-Time Payment • SSL Protected</p>
