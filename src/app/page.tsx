@@ -59,7 +59,7 @@ export default function Home() {
       <Header />
       <SocialProofToast />
        <ExitIntentPopup open={showPopup} onOpenChange={setShowPopup} />
-      <main className="flex-1 pb-12 md:pb-0">
+      <main id="main-content" className="flex-1 pb-12 md:pb-0">
         <OfferBanner />
         {/* Hero Section */}
         <section id="hero-section" className="bg-primary text-primary-foreground py-8 md:py-10">

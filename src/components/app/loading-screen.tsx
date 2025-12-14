@@ -3,40 +3,25 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { PenSquare } from 'lucide-react';
+import { useLoading } from './loading-provider';
 
 export default function LoadingScreen() {
-    const [progress, setProgress] = useState(0);
+    const { isLoading, progress } = useLoading();
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setProgress(prevProgress => {
-                if (prevProgress >= 100) return 100;
-                return prevProgress + Math.random() * 5;
-            });
-        }, 100);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    useEffect(() => {
-        if (progress >= 100) {
+        if (!isLoading) {
             setTimeout(() => {
                 const loadingScreen = document.getElementById('loading-screen');
-                const mainContent = document.getElementById('main-content');
                 if (loadingScreen) {
                     loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        setVisible(false);
+                    }, 500); // Wait for fade out transition
                 }
-                if (mainContent) {
-                    mainContent.style.opacity = '1';
-                }
-                setTimeout(() => {
-                    setVisible(false);
-                }, 500); // Wait for fade out transition
-            }, 500); // Short delay at 100%
+            }, 100); // Short delay after loading is finished
         }
-    }, [progress]);
-
+    }, [isLoading]);
 
     const circumference = 2 * Math.PI * 85; // ~534
     const offset = circumference - (Math.min(progress, 100) / 100) * circumference;
