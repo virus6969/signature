@@ -184,7 +184,7 @@ export default function CheckoutPage() {
                 </div>
                 <Button 
                   size="lg" 
-                  className="w-full h-12 text-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+                  className="w-full h-12 text-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shine-effect"
                   onClick={handleScrollToTop}
                 >
                   Proceed to Payment - ₹{totalPrice}
