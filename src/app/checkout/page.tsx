@@ -10,7 +10,6 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import TestimonialsSection from '@/components/app/testimonials-section';
 import Footer from '@/components/app/footer';
-import Header from '@/components/app/header';
 import { FileSignature } from 'lucide-react';
 
 const BASE_PRICE = 489;
@@ -32,7 +31,6 @@ export default function CheckoutPage() {
 
   return (
     <div className="bg-background">
-      <Header />
       <main className="container mx-auto px-4 py-8 relative">
         <FileSignature className="absolute -left-24 top-1/4 h-96 w-96 text-foreground/5" />
         <FileSignature className="absolute -right-24 bottom-1/4 h-96 w-96 text-foreground/5" />
