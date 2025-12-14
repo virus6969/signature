@@ -158,7 +158,7 @@ export default function CheckoutPage() {
           </div>
 
           {/* Right Column: Order Summary */}
-          <div className="lg:sticky top-24">
+          <div className="lg:sticky top-24" id="order-summary">
             <Card className="shadow-2xl border-2 border-accent">
               <CardHeader>
                 <CardTitle className="font-headline text-2xl">Order Summary</CardTitle>

@@ -45,7 +45,7 @@ export default function OfferSection() {
                     ))}
                 </div>
                 <div className="text-center mt-8">
-                    <Link href="/checkout" passHref>
+                    <Link href="/checkout#order-summary" passHref>
                         <Button
                             size="lg"
                             className="h-14 text-lg bg-accent text-accent-foreground hover:bg-accent/90 shine-effect"
