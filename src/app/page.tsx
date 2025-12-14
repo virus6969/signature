@@ -19,7 +19,6 @@ import TargetAudienceSection from '@/components/app/target-audience-section';
 import PricingSection from '@/components/app/pricing-section';
 import TransformationsSection from '@/components/app/transformations-section';
 import Footer from '@/components/app/footer';
-import Header from '@/components/app/header';
 import Link from 'next/link';
 import { LoadingProvider } from '@/components/app/loading-provider';
 
@@ -58,7 +57,6 @@ export default function Home() {
   return (
     <LoadingProvider>
       <div className="flex flex-col min-h-screen bg-background">
-        <Header />
         <SocialProofToast />
         <ExitIntentPopup open={showPopup} onOpenChange={setShowPopup} />
         <main id="main-content" className="flex-1 pb-12 md:pb-0">
