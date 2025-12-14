@@ -8,7 +8,6 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import Header from '@/components/app/header';
 import TestimonialsSection from '@/components/app/testimonials-section';
 import Footer from '@/components/app/footer';
 
@@ -31,7 +30,6 @@ export default function CheckoutPage() {
 
   return (
     <div className="bg-background">
-      <Header />
       <main className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-headline font-bold">Your Signature Cart</h1>
