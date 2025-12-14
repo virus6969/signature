@@ -10,6 +10,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import TestimonialsSection from '@/components/app/testimonials-section';
 import Footer from '@/components/app/footer';
+import Header from '@/components/app/header';
+import { FileSignature } from 'lucide-react';
 
 const BASE_PRICE = 489;
 const ADDON_PRICE = 199;
@@ -30,22 +32,24 @@ export default function CheckoutPage() {
 
   return (
     <div className="bg-background">
-      <main className="container mx-auto px-4 py-8">
-        <div className="text-center mb-8">
+      <Header />
+      <main className="container mx-auto px-4 py-8 relative">
+        <FileSignature className="absolute -left-24 top-1/4 h-96 w-96 text-foreground/5" />
+        <FileSignature className="absolute -right-24 bottom-1/4 h-96 w-96 text-foreground/5" />
+        <div className="text-center mb-8 relative z-10">
           <h1 className="text-4xl font-headline font-bold">Your Signature Cart</h1>
           <p className="text-muted-foreground mt-2">
             Review your selected signature design and prepare for your professional journey
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start relative z-10">
           {/* Left Column: Cart & Form */}
           <div className="lg:col-span-2 space-y-8">
             {/* Main Product */}
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden shadow-lg">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <span className="text-2xl">✍️</span>
+                <CardTitle className="flex items-center gap-3 text-2xl font-headline">
                   Professional Signature Design
                 </CardTitle>
               </CardHeader>
@@ -67,7 +71,7 @@ export default function CheckoutPage() {
             </Card>
 
             {/* Add-on */}
-            <Card className="bg-accent/10 border-accent relative overflow-hidden">
+            <Card className="bg-accent/10 border-accent relative overflow-hidden shadow-lg">
               <div className="absolute top-0 right-0 h-24 w-24 overflow-hidden z-10">
                 <div className="absolute transform rotate-45 bg-accent text-accent-foreground text-xs font-bold text-center py-1 right-[-25px] top-[22px] w-[120px] shadow-md">
                   93% Opted-In
@@ -77,8 +81,8 @@ export default function CheckoutPage() {
               <CardContent className="p-6 pt-8 flex items-start gap-4">
                   <Checkbox id="add-on" className="mt-1" checked={isAddonSelected} onCheckedChange={(checked) => setIsAddonSelected(checked as boolean)} />
                   <div className="grid gap-1.5 flex-1">
-                      <Label htmlFor="add-on" className="font-semibold text-lg">
-                          <span>✍️ Want to master your new signature perfectly?</span>
+                      <Label htmlFor="add-on" className="font-semibold text-lg font-headline">
+                          Want to master your new signature perfectly?
                       </Label>
                       <p className="text-sm text-muted-foreground">
                           Add a printable sheet with your signature traced & outlined — just like handwriting practice sheets.
@@ -98,9 +102,9 @@ export default function CheckoutPage() {
 
 
             {/* User Details Form */}
-            <Card>
+            <Card className="shadow-lg">
               <CardHeader>
-                <CardTitle>Your Details</CardTitle>
+                <CardTitle className="font-headline text-2xl">Your Details</CardTitle>
                 <p className="text-sm text-muted-foreground">
                   Please provide your information for personalized signature design
                 </p>
@@ -136,9 +140,9 @@ export default function CheckoutPage() {
 
           {/* Right Column: Order Summary */}
           <div className="lg:sticky top-24">
-            <Card className="shadow-lg">
+            <Card className="shadow-2xl border-2 border-accent">
               <CardHeader>
-                <CardTitle>Order Summary</CardTitle>
+                <CardTitle className="font-headline text-2xl">Order Summary</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
@@ -162,6 +166,7 @@ export default function CheckoutPage() {
                 <Button size="lg" className="w-full h-12 text-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold">
                   Proceed to Payment - ₹{totalPrice}
                 </Button>
+                 <p className="text-xs text-muted-foreground text-center">Secure One-Time Payment • SSL Protected</p>
               </CardContent>
             </Card>
           </div>
