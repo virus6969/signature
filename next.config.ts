@@ -39,6 +39,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.thesignaturestudio.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ik.imagekit.io',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
