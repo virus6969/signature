@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -11,7 +12,23 @@ import Header from '@/components/app/header';
 import TestimonialsSection from '@/components/app/testimonials-section';
 import Footer from '@/components/app/footer';
 
+const BASE_PRICE = 489;
+const ADDON_PRICE = 199;
+const ORIGINAL_TOTAL = 4999;
+const DISCOUNT = 4510;
+
 export default function CheckoutPage() {
+  const [isAddonSelected, setIsAddonSelected] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(BASE_PRICE);
+
+  useEffect(() => {
+    if (isAddonSelected) {
+      setTotalPrice(BASE_PRICE + ADDON_PRICE);
+    } else {
+      setTotalPrice(BASE_PRICE);
+    }
+  }, [isAddonSelected]);
+
   return (
     <div className="bg-background">
       <Header />
@@ -45,8 +62,8 @@ export default function CheckoutPage() {
                   </ul>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold">₹489</p>
-                  <p className="text-muted-foreground line-through">₹4999</p>
+                  <p className="text-2xl font-bold">₹{BASE_PRICE}</p>
+                  <p className="text-muted-foreground line-through">₹{ORIGINAL_TOTAL}</p>
                 </div>
               </CardContent>
             </Card>
@@ -54,12 +71,12 @@ export default function CheckoutPage() {
             {/* Add-on */}
             <Card className="bg-accent/10 border-accent">
                 <CardContent className="p-4 flex items-start gap-4">
-                    <Checkbox id="add-on" className="mt-1" />
+                    <Checkbox id="add-on" className="mt-1" checked={isAddonSelected} onCheckedChange={(checked) => setIsAddonSelected(checked as boolean)} />
                     <div className="grid gap-1.5 flex-1">
                         <Label htmlFor="add-on" className="font-semibold text-lg flex items-center justify-between">
                             <span>✍️ Want to master your new signature perfectly?</span>
                              <div className="text-right">
-                                <p className="text-lg font-bold">₹199</p>
+                                <p className="text-lg font-bold">₹{ADDON_PRICE}</p>
                                 <p className="text-sm text-muted-foreground line-through">₹499</p>
                             </div>
                         </Label>
@@ -121,18 +138,24 @@ export default function CheckoutPage() {
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
                   <p>Subtotal</p>
-                  <p className="font-medium">₹4999</p>
+                  <p className="font-medium">₹{ORIGINAL_TOTAL}</p>
                 </div>
+                 {isAddonSelected && (
+                  <div className="flex justify-between text-muted-foreground">
+                    <p>Practice Sheet Add-on</p>
+                    <p className="font-medium">₹{ADDON_PRICE}</p>
+                  </div>
+                )}
                 <div className="flex justify-between text-green-600">
                   <p>Discount</p>
-                  <p className="font-medium">-₹4510</p>
+                  <p className="font-medium">-₹{DISCOUNT}</p>
                 </div>
                 <div className="border-t pt-4 flex justify-between font-bold text-lg">
                   <p>Total</p>
-                  <p>₹489</p>
+                  <p>₹{totalPrice}</p>
                 </div>
                 <Button size="lg" className="w-full h-12 text-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold">
-                  Proceed to Payment - ₹489
+                  Proceed to Payment - ₹{totalPrice}
                 </Button>
               </CardContent>
             </Card>
