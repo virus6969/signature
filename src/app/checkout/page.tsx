@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import TestimonialsSection from '@/components/app/testimonials-section';
 import Footer from '@/components/app/footer';
-import { FileSignature, CheckCircle2 } from 'lucide-react';
+import { FileSignature } from 'lucide-react';
 
 const BASE_PRICE = 489;
 const ADDON_PRICE = 199;
@@ -81,7 +81,6 @@ export default function CheckoutPage() {
                 <CardHeader>
                     <CardTitle className="text-lg font-headline flex items-center justify-between">
                         <span>Want to master your new signature perfectly?</span>
-                        {isAddonSelected && <CheckCircle2 className="h-6 w-6 text-green-500" />}
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
