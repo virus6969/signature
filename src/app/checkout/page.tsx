@@ -70,7 +70,7 @@ export default function CheckoutPage() {
 
             {/* Add-on */}
              <Card 
-              className={`relative overflow-hidden shadow-lg cursor-pointer transition-all duration-300 ${isAddonSelected ? 'border-accent ring-2 ring-accent' : 'border-border'}`}
+              className={`relative overflow-hidden shadow-lg cursor-pointer transition-all duration-300 bg-accent/10 ${isAddonSelected ? 'border-accent ring-2 ring-accent' : 'border-border'}`}
               onClick={() => setIsAddonSelected(!isAddonSelected)}
             >
               <div className="absolute top-0 right-0 h-24 w-24 overflow-hidden z-10">
