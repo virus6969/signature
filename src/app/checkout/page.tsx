@@ -79,21 +79,21 @@ export default function CheckoutPage() {
               <CardContent className="p-6 pt-8 flex items-start gap-4">
                   <Checkbox id="add-on" className="mt-1" checked={isAddonSelected} onCheckedChange={(checked) => setIsAddonSelected(checked as boolean)} />
                   <div className="grid gap-1.5 flex-1">
-                      <Label htmlFor="add-on" className="font-semibold text-lg flex items-center justify-between">
+                      <Label htmlFor="add-on" className="font-semibold text-lg">
                           <span>✍️ Want to master your new signature perfectly?</span>
-                           <div className="text-right">
-                              <p className="text-lg font-bold">₹{ADDON_PRICE}</p>
-                              <p className="text-sm text-muted-foreground line-through">₹499</p>
-                          </div>
                       </Label>
                       <p className="text-sm text-muted-foreground">
                           Add a printable sheet with your signature traced & outlined — just like handwriting practice sheets.
                       </p>
-                      <ul className="text-xs text-muted-foreground list-disc pl-5 mt-1">
+                      <ul className="text-xs text-muted-foreground list-disc pl-5 mt-1 space-y-1">
                           <li>Light grey version for trace-over</li>
                           <li>Lined version for repeat practice</li>
                           <li>Adds premium feel for very little effort</li>
                       </ul>
+                      <div className="text-right mt-2">
+                          <p className="text-lg font-bold">₹{ADDON_PRICE}</p>
+                          <p className="text-sm text-muted-foreground line-through">₹499</p>
+                      </div>
                   </div>
               </CardContent>
             </Card>
