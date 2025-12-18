@@ -26,10 +26,10 @@ export default function ExitIntentPopup({ open, onOpenChange }: ExitIntentPopupP
       <AlertDialogContent className="max-w-md text-center p-8 w-[90vw] rounded-lg">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-2xl md:text-3xl font-headline">
-            Wait! Your 50% Discount Is Waiting
+            Wait! Your 90% Discount Is Waiting
           </AlertDialogTitle>
           <AlertDialogDescription className="text-base md:text-lg text-muted-foreground pt-2">
-            Don't miss out on the chance to get a premium, handcrafted signature for half the price. This special offer expires soon!
+            Don't miss out on the chance to get a premium, handcrafted signature for a massive discount. This special offer expires soon!
           </AlertDialogDescription>
         </AlertDialogHeader>
         <div className="py-4 my-4 border-y">
@@ -39,7 +39,7 @@ export default function ExitIntentPopup({ open, onOpenChange }: ExitIntentPopupP
           <AlertDialogAction asChild>
             <Link href="/checkout" passHref>
               <Button size="lg" className="w-full h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold">
-                Claim My 50% Discount
+                Claim My 90% Discount
               </Button>
             </Link>
           </AlertDialogAction>
