@@ -91,7 +91,7 @@ export default function TransformationsSection() {
                             src={item.before.imageUrl}
                             alt={item.before.label}
                             fill
-                            className="object-contain p-4"
+                            className={`object-contain p-4 ${item.id === 'transform-2' ? 'transform rotate-90' : ''}`}
                             data-ai-hint={item.before.imageHint}
                         />}
                     </div>
