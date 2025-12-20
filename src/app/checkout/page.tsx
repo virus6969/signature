@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import TestimonialsSection from '@/components/app/testimonials-section';
 import Footer from '@/components/app/footer';
-import { FileSignature } from 'lucide-react';
+import { FileSignature, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const BASE_PRICE = 489;
@@ -18,11 +18,12 @@ const ADDON_PRICE = 199;
 const ORIGINAL_TOTAL = 4999;
 const DISCOUNT = 4510;
 
-type ProductId = 'PRO_SIGNATURE_DESIGN' | 'ADDON_PRACTICE_SHEET';
+const BACKEND_URL = 'https://razorpay-signature-app.onrender.com';
 
 export default function CheckoutPage() {
   const [isAddonSelected, setIsAddonSelected] = useState(false);
   const [totalPrice, setTotalPrice] = useState(BASE_PRICE);
+  const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -32,15 +33,23 @@ export default function CheckoutPage() {
       setTotalPrice(BASE_PRICE);
     }
   }, [isAddonSelected]);
+  
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+        document.body.removeChild(script);
+    }
+  }, []);
+
 
   const handleProceedToPayment = async () => {
-    // 1. Collect the IDs of selected items
-    const selectedItems: ProductId[] = ['PRO_SIGNATURE_DESIGN'];
-    if (isAddonSelected) {
-      selectedItems.push('ADDON_PRACTICE_SHEET');
-    }
-
-    // 2. Collect customer details from the form
+    setIsProcessing(true);
+    
+    // 1. Collect customer details
     const customerDetails = {
       name: (document.getElementById('fullName') as HTMLInputElement)?.value,
       profession: (document.getElementById('profession') as HTMLInputElement)?.value,
@@ -49,57 +58,107 @@ export default function CheckoutPage() {
       remarks: (document.getElementById('remarks') as HTMLTextAreaElement)?.value,
     };
     
-    // Basic validation
-    if (!customerDetails.name || !customerDetails.profession || !customerDetails.phone) {
+    // 2. Collect selected item IDs
+    const selectedItemIds: string[] = ['PRO_SIGNATURE_DESIGN'];
+    if (isAddonSelected) {
+      selectedItemIds.push('ADDON_PRACTICE_SHEET');
+    }
+
+    // 3. Basic validation
+    if (!customerDetails.name || !customerDetails.profession || !customerDetails.phone || !customerDetails.email) {
         toast({
             title: "Missing Information",
             description: "Please fill out all required fields (*).",
             variant: "destructive",
         });
+        setIsProcessing(false);
         return;
     }
-
-    console.log('Proceeding to payment with the following data:');
-    console.log('Selected Item IDs:', selectedItems);
-    console.log('Customer Details:', customerDetails);
-
-    // DEVELOPER_TODO:
-    // 3. Send `selectedItems` and `customerDetails` to your backend endpoint
-    // Example:
-    /*
-    try {
-      const response = await fetch('/api/payment/create-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          itemIds: selectedItems,
-          customer: customerDetails,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        // 4. Use the orderId from the backend to open Razorpay checkout
-        // const { orderId, amount } = data;
-        // openRazorpayCheckout(orderId, amount, customerDetails);
-      } else {
-        throw new Error(data.error || 'Failed to create payment order.');
-      }
-    } catch (error) {
-      console.error('Payment initiation failed:', error);
-      toast({
-        title: "Payment Failed",
-        description: "Could not initiate the payment. Please try again.",
-        variant: "destructive",
-      });
-    }
-    */
     
     toast({
-        title: "Redirecting to Payment...",
-        description: "You will be redirected to our secure payment gateway.",
+        title: "Initializing Payment...",
+        description: "Please wait while we create your secure order.",
     });
+
+    try {
+        // 4. Create order on backend
+        const orderResponse = await fetch(`${BACKEND_URL}/api/payment/create-order`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ customerDetails, selectedItemIds })
+        });
+
+        const orderData = await orderResponse.json();
+        
+        if (!orderData.success) {
+            throw new Error(orderData.error || 'Backend order creation failed');
+        }
+
+        // 5. Open Razorpay checkout
+        const options = {
+            key: orderData.key,
+            amount: orderData.amount,
+            currency: orderData.currency,
+            order_id: orderData.orderId,
+            name: 'SignaGenius™ Design Service',
+            description: `Payment for your custom signature`,
+            handler: async function(razorpayResponse: any) {
+                // 6. Verify payment on backend
+                const verifyResponse = await fetch(`${BACKEND_URL}/api/payment/verify`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(razorpayResponse)
+                });
+                
+                const verifyData = await verifyResponse.json();
+                
+                if (verifyData.success) {
+                    toast({
+                        title: "Payment Successful!",
+                        description: "Your order has been confirmed. You will receive an email shortly.",
+                    });
+                    // DEVELOPER_TODO: Redirect to a thank you page
+                    // window.location.href = '/thank-you';
+                } else {
+                     toast({
+                        title: "Payment Verification Failed",
+                        description: verifyData.error || "Please contact support.",
+                        variant: "destructive",
+                    });
+                }
+            },
+            prefill: {
+                name: customerDetails.name,
+                email: customerDetails.email,
+                contact: customerDetails.phone
+            },
+            theme: { color: '#D4AF37' },
+            modal: {
+                ondismiss: function() {
+                    setIsProcessing(false);
+                     toast({
+                        title: "Payment Canceled",
+                        description: "Your order was not completed.",
+                        variant: "destructive"
+                    });
+                }
+            }
+        };
+
+        const rzp = new (window as any).Razorpay(options);
+        rzp.open();
+
+    } catch (error: any) {
+        console.error('Payment error:', error);
+        toast({
+            title: "Error Initiating Payment",
+            description: error.message || "Could not connect to payment gateway.",
+            variant: "destructive"
+        });
+    } finally {
+        // Note: isProcessing is set to false in ondismiss or after handler.
+        // We don't set it here to allow the modal to open without the button re-enabling.
+    }
   };
 
   return (
@@ -207,8 +266,8 @@ export default function CheckoutPage() {
                 </div>
                  <div className="grid md:grid-cols-2 gap-4">
                    <div>
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input id="email" type="email" placeholder="Enter your email address" />
+                    <Label htmlFor="email">Email Address *</Label>
+                    <Input id="email" type="email" placeholder="Enter your email address" required/>
                   </div>
                   <div>
                     <Label htmlFor="phone">Phone Number *</Label>
@@ -231,8 +290,8 @@ export default function CheckoutPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
-                  <p>Subtotal</p>
-                  <p className="font-medium">₹{ORIGINAL_TOTAL}</p>
+                  <p>Pro Signature</p>
+                  <p className="font-medium">₹{BASE_PRICE}</p>
                 </div>
                  {isAddonSelected && (
                   <div className="flex justify-between text-muted-foreground">
@@ -242,7 +301,7 @@ export default function CheckoutPage() {
                 )}
                 <div className="flex justify-between text-green-600">
                   <p>Discount</p>
-                  <p className="font-medium">-₹{DISCOUNT}</p>
+                  <p className="font-medium">-₹{DISCOUNT - (isAddonSelected ? 300 : 0)}</p>
                 </div>
                 <div className="border-t pt-4 flex justify-between font-bold text-lg">
                   <p>Total</p>
@@ -252,8 +311,10 @@ export default function CheckoutPage() {
                   size="lg" 
                   className="w-full h-12 text-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shine-effect"
                   onClick={handleProceedToPayment}
+                  disabled={isProcessing}
                 >
-                  Proceed to Payment - ₹{totalPrice}
+                  {isProcessing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+                  {isProcessing ? 'Processing...' : `Proceed to Payment - ₹${totalPrice}`}
                 </Button>
                  <p className="text-xs text-muted-foreground text-center">Secure One-Time Payment • SSL Protected</p>
               </CardContent>
@@ -266,4 +327,5 @@ export default function CheckoutPage() {
       <Footer />
     </div>
   );
-}
+
+    
