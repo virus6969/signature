@@ -18,7 +18,7 @@ const ADDON_PRICE = 0;
 const ORIGINAL_TOTAL = 99;
 const DISCOUNT = 98;
 
-const BACKEND_URL = 'https://razorpay-signature-app.onrender.com';
+const BACKEND_URL = 'https://razorpay-backend-fdy4.onrender.com';
 
 export default function CheckoutPage() {
   const [isAddonSelected, setIsAddonSelected] = useState(false);
@@ -328,5 +328,3 @@ export default function CheckoutPage() {
     </div>
   );
 }
-
-    
