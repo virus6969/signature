@@ -11,15 +11,19 @@ import { Textarea } from '@/components/ui/textarea';
 import TestimonialsSection from '@/components/app/testimonials-section';
 import Footer from '@/components/app/footer';
 import { FileSignature } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const BASE_PRICE = 489;
 const ADDON_PRICE = 199;
 const ORIGINAL_TOTAL = 4999;
 const DISCOUNT = 4510;
 
+type ProductId = 'PRO_SIGNATURE_DESIGN' | 'ADDON_PRACTICE_SHEET';
+
 export default function CheckoutPage() {
   const [isAddonSelected, setIsAddonSelected] = useState(false);
   const [totalPrice, setTotalPrice] = useState(BASE_PRICE);
+  const { toast } = useToast();
 
   useEffect(() => {
     if (isAddonSelected) {
@@ -29,12 +33,74 @@ export default function CheckoutPage() {
     }
   }, [isAddonSelected]);
 
-  const handleScrollToTop = () => {
-    const checkoutTop = document.getElementById('checkout-top');
-    if (checkoutTop) {
-      checkoutTop.scrollIntoView({ behavior: 'smooth' });
+  const handleProceedToPayment = async () => {
+    // 1. Collect the IDs of selected items
+    const selectedItems: ProductId[] = ['PRO_SIGNATURE_DESIGN'];
+    if (isAddonSelected) {
+      selectedItems.push('ADDON_PRACTICE_SHEET');
     }
-  }
+
+    // 2. Collect customer details from the form
+    const customerDetails = {
+      name: (document.getElementById('fullName') as HTMLInputElement)?.value,
+      profession: (document.getElementById('profession') as HTMLInputElement)?.value,
+      email: (document.getElementById('email') as HTMLInputElement)?.value,
+      phone: (document.getElementById('phone') as HTMLInputElement)?.value,
+      remarks: (document.getElementById('remarks') as HTMLTextAreaElement)?.value,
+    };
+    
+    // Basic validation
+    if (!customerDetails.name || !customerDetails.profession || !customerDetails.phone) {
+        toast({
+            title: "Missing Information",
+            description: "Please fill out all required fields (*).",
+            variant: "destructive",
+        });
+        return;
+    }
+
+    console.log('Proceeding to payment with the following data:');
+    console.log('Selected Item IDs:', selectedItems);
+    console.log('Customer Details:', customerDetails);
+
+    // DEVELOPER_TODO:
+    // 3. Send `selectedItems` and `customerDetails` to your backend endpoint
+    // Example:
+    /*
+    try {
+      const response = await fetch('/api/payment/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          itemIds: selectedItems,
+          customer: customerDetails,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // 4. Use the orderId from the backend to open Razorpay checkout
+        // const { orderId, amount } = data;
+        // openRazorpayCheckout(orderId, amount, customerDetails);
+      } else {
+        throw new Error(data.error || 'Failed to create payment order.');
+      }
+    } catch (error) {
+      console.error('Payment initiation failed:', error);
+      toast({
+        title: "Payment Failed",
+        description: "Could not initiate the payment. Please try again.",
+        variant: "destructive",
+      });
+    }
+    */
+    
+    toast({
+        title: "Redirecting to Payment...",
+        description: "You will be redirected to our secure payment gateway.",
+    });
+  };
 
   return (
     <div className="bg-background overflow-x-hidden" id="checkout-top">
@@ -106,7 +172,7 @@ export default function CheckoutPage() {
                              <Checkbox
                                 id="add-on-checkbox"
                                 checked={isAddonSelected}
-                                onCheckedChange={() => setIsAddonSelected(!isAddonSelected)}
+                                onCheckedChange={(checked) => setIsAddonSelected(!!checked)}
                                 aria-label="Toggle signature practice sheet add-on"
                             />
                             <Label htmlFor="add-on-checkbox" className="font-bold cursor-pointer">Add to Cart</Label>
@@ -132,11 +198,11 @@ export default function CheckoutPage() {
                 <div className="grid md:grid-cols-2 gap-4">
                    <div>
                     <Label htmlFor="fullName">Full Name *</Label>
-                    <Input id="fullName" placeholder="Enter your full name" />
+                    <Input id="fullName" placeholder="Enter your full name" required />
                   </div>
                   <div>
                     <Label htmlFor="profession">Profession *</Label>
-                    <Input id="profession" placeholder="Enter your profession" />
+                    <Input id="profession" placeholder="Enter your profession" required />
                   </div>
                 </div>
                  <div className="grid md:grid-cols-2 gap-4">
@@ -146,7 +212,7 @@ export default function CheckoutPage() {
                   </div>
                   <div>
                     <Label htmlFor="phone">Phone Number *</Label>
-                    <Input id="phone" type="tel" placeholder="Enter your phone number" />
+                    <Input id="phone" type="tel" placeholder="Enter your phone number" required />
                   </div>
                 </div>
                 <div>
@@ -185,7 +251,7 @@ export default function CheckoutPage() {
                 <Button 
                   size="lg" 
                   className="w-full h-12 text-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shine-effect"
-                  onClick={handleScrollToTop}
+                  onClick={handleProceedToPayment}
                 >
                   Proceed to Payment - ₹{totalPrice}
                 </Button>
