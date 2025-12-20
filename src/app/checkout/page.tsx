@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -25,6 +26,7 @@ export default function CheckoutPage() {
   const [totalPrice, setTotalPrice] = useState(BASE_PRICE);
   const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   useEffect(() => {
     if (isAddonSelected) {
@@ -49,7 +51,6 @@ export default function CheckoutPage() {
   const handleProceedToPayment = async () => {
     setIsProcessing(true);
     
-    // 1. Collect customer details
     const customerDetails = {
       name: (document.getElementById('fullName') as HTMLInputElement)?.value,
       profession: (document.getElementById('profession') as HTMLInputElement)?.value,
@@ -58,13 +59,11 @@ export default function CheckoutPage() {
       remarks: (document.getElementById('remarks') as HTMLTextAreaElement)?.value,
     };
     
-    // 2. Collect selected item IDs
     const selectedItemIds: string[] = ['PRO_SIGNATURE_DESIGN'];
     if (isAddonSelected) {
       selectedItemIds.push('ADDON_PRACTICE_SHEET');
     }
 
-    // 3. Basic validation
     if (!customerDetails.name || !customerDetails.profession || !customerDetails.phone || !customerDetails.email) {
         toast({
             title: "Missing Information",
@@ -81,7 +80,6 @@ export default function CheckoutPage() {
     });
 
     try {
-        // 4. Create order on backend
         const orderResponse = await fetch(`${BACKEND_URL}/api/payment/create-order`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -94,7 +92,6 @@ export default function CheckoutPage() {
             throw new Error(orderData.error || 'Backend order creation failed');
         }
 
-        // 5. Open Razorpay checkout
         const options = {
             key: orderData.key,
             amount: orderData.amount,
@@ -103,7 +100,6 @@ export default function CheckoutPage() {
             name: 'SignaGenius™ Design Service',
             description: `Payment for your custom signature`,
             handler: async function(razorpayResponse: any) {
-                // 6. Verify payment on backend
                 const verifyResponse = await fetch(`${BACKEND_URL}/api/payment/verify`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -115,10 +111,9 @@ export default function CheckoutPage() {
                 if (verifyData.success) {
                     toast({
                         title: "Payment Successful!",
-                        description: "Your order has been confirmed. You will receive an email shortly.",
+                        description: "Redirecting you to the confirmation page...",
                     });
-                    // DEVELOPER_TODO: Redirect to a thank you page
-                    // window.location.href = '/thank-you';
+                    router.push('/thank-you');
                 } else {
                      toast({
                         title: "Payment Verification Failed",
@@ -155,9 +150,7 @@ export default function CheckoutPage() {
             description: error.message || "Could not connect to payment gateway.",
             variant: "destructive"
         });
-    } finally {
-        // Note: isProcessing is set to false in ondismiss or after handler.
-        // We don't set it here to allow the modal to open without the button re-enabling.
+        setIsProcessing(false);
     }
   };
 
