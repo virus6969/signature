@@ -79,7 +79,7 @@ export default function CheckoutPage() {
         if (!orderData.success) {
             throw new Error(orderData.error || 'Backend order creation failed');
         }
-
+        
         const cashfree = (window as any).cashfree;
         if (!cashfree) {
           console.error("Cashfree SDK not loaded");
@@ -91,7 +91,7 @@ export default function CheckoutPage() {
           setIsProcessing(false);
           return;
         }
-
+        
         cashfree.checkout({
           paymentSessionId: orderData.payment_session_id,
           redirectTarget: "_self",
