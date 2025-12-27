@@ -80,7 +80,7 @@ export default function CheckoutPage() {
             throw new Error(orderData.error || 'Backend order creation failed');
         }
         
-        const cashfree = (window as any).cashfree;
+        const cashfree = (window as any).Cashfree;
         if (!cashfree) {
           console.error("Cashfree SDK not loaded");
            toast({
