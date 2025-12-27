@@ -85,7 +85,7 @@ export default function CheckoutPage() {
           console.error("Cashfree SDK not loaded");
            toast({
               title: "Error Initializing Payment",
-              description: "Could not load payment library.",
+              description: "Could not load payment library. Please refresh and try again.",
               variant: "destructive"
           });
           setIsProcessing(false);
