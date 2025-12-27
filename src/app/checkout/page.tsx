@@ -68,6 +68,7 @@ export default function CheckoutPage() {
     });
 
     try {
+        // ========== STEP 1: CREATE ORDER FIRST ==========
         const orderResponse = await fetch(`${BACKEND_URL}/api/payment/cashfree/create-order`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -77,28 +78,54 @@ export default function CheckoutPage() {
         const orderData = await orderResponse.json();
         
         if (!orderData.success) {
-            throw new Error(orderData.error || 'Backend order creation failed');
+            throw new Error(orderData.error || 'Order creation failed');
         }
         
+        console.log('✅ Order created, payment_session_id:', orderData.payment_session_id);
+
+        // ========== STEP 2: CHECK/LOAD CASHFREE SDK ==========
         if (typeof (window as any).Cashfree === 'undefined') {
-          throw new Error("Cashfree SDK not loaded. Please refresh the page and try again.");
+            console.log('Loading Cashfree SDK...');
+            
+            // Load SDK dynamically
+            await new Promise<void>((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = 'https://sdk.cashfree.com/js/v3/cashfree.js';
+                
+                script.onload = () => {
+                    console.log('✅ Cashfree SDK loaded');
+                    resolve();
+                };
+                
+                script.onerror = () => {
+                    console.error('❌ Failed to load Cashfree SDK');
+                    reject(new Error('Failed to load payment gateway'));
+                };
+                
+                document.head.appendChild(script);
+            });
         }
 
-        const cashfree = (window as any).Cashfree();
+        // ========== STEP 3: INITIALIZE & CHECKOUT ==========
+        console.log('Initializing Cashfree checkout...');
+        
+        // According to Cashfree docs: https://docs.cashfree.com/docs/integrate-checkout
+        const cashfree = (window as any).Cashfree(); // Initialize SDK first
         
         cashfree.checkout({
-          paymentSessionId: orderData.payment_session_id,
-          redirectTarget: "_self",
+            paymentSessionId: orderData.payment_session_id,
+            redirectTarget: "_self",
         });
 
     } catch (error: any) {
-        console.error('Payment error:', error);
+        console.error('❌ Payment error:', error);
+        setIsProcessing(false);
+        
         toast({
-            title: "Error Initiating Payment",
-            description: error.message || "Could not connect to payment gateway.",
+            title: "Payment Error",
+            description: error.message || "Please try again or contact support",
             variant: "destructive"
         });
-        setIsProcessing(false);
     }
   };
 
