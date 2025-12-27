@@ -35,20 +35,19 @@ export default function CheckoutPage() {
     }
   }, [isAddonSelected]);
 
-  const loadCashfreeSDK = () => {
-    return new Promise((resolve, reject) => {
-      if ((window as any).Cashfree) {
-        resolve((window as any).Cashfree);
-        return;
+  const loadCashfreeSDK = (): Promise<any> => {
+    return new Promise((resolve) => {
+      if ((window as any).cashfree) {
+        return resolve((window as any).cashfree);
       }
-      
       const script = document.createElement('script');
       script.src = 'https://sdk.cashfree.com/js/v3/cashfree.js';
-      script.onload = () => resolve((window as any).Cashfree);
-      script.onerror = () => reject(new Error('Failed to load Cashfree SDK'));
-      document.head.appendChild(script);
+      script.onload = () => {
+        resolve((window as any).cashfree);
+      };
+      document.body.appendChild(script);
     });
-  }
+  };
 
   const handleProceedToPayment = async () => {
     setIsProcessing(true);
