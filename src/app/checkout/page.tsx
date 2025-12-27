@@ -95,17 +95,6 @@ export default function CheckoutPage() {
         cashfree.checkout({
           paymentSessionId: orderData.payment_session_id,
           redirectTarget: "_self",
-          onSuccess: function(data: any) {
-            console.log('Payment Success:', data);
-            router.push(`/thank-you?order_id=${data.order.orderId}`);
-          },
-          onFailure: function(data: any) {
-            console.log('Payment Failed:', data);
-            router.push(`/payment-failed?order_id=${data.order.orderId}`);
-          },
-          onRedirect: function(data: any) {
-            console.log('Redirecting for payment:', data);
-          }
         });
 
     } catch (error: any) {
