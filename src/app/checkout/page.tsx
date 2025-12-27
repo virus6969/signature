@@ -261,3 +261,11 @@ export default function CheckoutPage() {
                  <p className="text-xs text-muted-foreground text-center">Secure One-Time Payment • SSL Protected</p>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </main>
+      <TestimonialsSection />
+      <Footer />
+    </div>
+  );
+}
