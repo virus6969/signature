@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -35,18 +34,21 @@ export default function CheckoutPage() {
       setTotalPrice(BASE_PRICE);
     }
   }, [isAddonSelected]);
-  
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.async = true;
-    document.body.appendChild(script);
 
-    return () => {
-        document.body.removeChild(script);
-    }
-  }, []);
-
+  const loadCashfreeSDK = () => {
+    return new Promise((resolve, reject) => {
+      if ((window as any).Cashfree) {
+        resolve((window as any).Cashfree);
+        return;
+      }
+      
+      const script = document.createElement('script');
+      script.src = 'https://sdk.cashfree.com/js/v3/cashfree.js';
+      script.onload = () => resolve((window as any).Cashfree);
+      script.onerror = () => reject(new Error('Failed to load Cashfree SDK'));
+      document.head.appendChild(script);
+    });
+  }
 
   const handleProceedToPayment = async () => {
     setIsProcessing(true);
@@ -80,7 +82,7 @@ export default function CheckoutPage() {
     });
 
     try {
-        const orderResponse = await fetch(`${BACKEND_URL}/api/payment/create-order`, {
+        const orderResponse = await fetch(`${BACKEND_URL}/api/payment/cashfree/create-order`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ customerDetails, selectedItemIds })
@@ -92,56 +94,28 @@ export default function CheckoutPage() {
             throw new Error(orderData.error || 'Backend order creation failed');
         }
 
-        const options = {
-            key: orderData.key,
-            amount: orderData.amount,
-            currency: orderData.currency,
-            order_id: orderData.orderId,
-            name: 'SignaGenius™ Design Service',
-            description: `Payment for your custom signature`,
-            handler: async function(razorpayResponse: any) {
-                const verifyResponse = await fetch(`${BACKEND_URL}/api/payment/verify`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(razorpayResponse)
-                });
-                
-                const verifyData = await verifyResponse.json();
-                
-                if (verifyData.success) {
-                    toast({
-                        title: "Payment Successful!",
-                        description: "Redirecting you to the confirmation page...",
-                    });
-                    router.push('/thank-you');
-                } else {
-                     toast({
-                        title: "Payment Verification Failed",
-                        description: verifyData.error || "Please contact support.",
-                        variant: "destructive",
-                    });
-                }
-            },
-            prefill: {
-                name: customerDetails.name,
-                email: customerDetails.email,
-                contact: customerDetails.phone
-            },
-            theme: { color: '#D4AF37' },
-            modal: {
-                ondismiss: function() {
-                    setIsProcessing(false);
-                     toast({
-                        title: "Payment Canceled",
-                        description: "Your order was not completed.",
-                        variant: "destructive"
-                    });
-                }
-            }
-        };
-
-        const rzp = new (window as any).Razorpay(options);
-        rzp.open();
+        const cashfree = await loadCashfreeSDK();
+        
+        cashfree.checkout({
+          paymentSessionId: orderData.payment_session_id,
+          redirectTarget: "_self", // Opens in same tab
+          
+          onSuccess: function(data: any) {
+            console.log('Payment Success:', data);
+            // The backend handles the final confirmation via webhook.
+            // We just need to redirect the user to the thank you page.
+            router.push(`/thank-you?order_id=${data.order.orderId}`);
+          },
+          
+          onFailure: function(data: any) {
+            console.log('Payment Failed:', data);
+            router.push(`/payment-failed?order_id=${data.order.orderId}`);
+          },
+          
+          onRedirect: function(data: any) {
+            console.log('Redirecting for payment:', data);
+          }
+        });
 
     } catch (error: any) {
         console.error('Payment error:', error);
