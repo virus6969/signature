@@ -19,7 +19,7 @@ export default function SupportPolicyPage() {
           <p>
             For any questions, issues, or inquiries, please contact our support team at:
             <br />
-            <a href="mailto:orders@thesignaturestudio.in" className="text-primary font-semibold hover:underline">orders@thesignaturestudio.in</a>
+            <a href="mailto:orders@thesignaturestudios.in" className="text-primary font-semibold hover:underline">orders@thesignaturestudios.in</a>
           </p>
         </div>
         <div>

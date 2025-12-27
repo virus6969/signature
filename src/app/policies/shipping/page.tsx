@@ -41,7 +41,7 @@ export default function ShippingPolicyPage() {
             <AlertCircle className="h-5 w-5" /> Non-Delivery
           </h3>
           <p>
-            If you do not receive your product within 48 hours, please check your spam or junk folder first. If it's not there, contact us immediately at <a href="mailto:orders@thesignaturestudio.in" className="text-primary hover:underline">orders@thesignaturestudio.in</a> with your order number so we can resolve the issue promptly.
+            If you do not receive your product within 48 hours, please check your spam or junk folder first. If it's not there, contact us immediately at <a href="mailto:orders@thesignaturestudios.in" className="text-primary hover:underline">orders@thesignaturestudios.in</a> with your order number so we can resolve the issue promptly.
           </p>
         </div>
       </CardContent>
