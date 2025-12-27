@@ -18,7 +18,7 @@ const ADDON_PRICE = 0;
 const ORIGINAL_TOTAL = 99;
 const DISCOUNT = 98;
 
-const BACKEND_URL = 'https://razorpay-signature-app.onrender.com';
+const BACKEND_URL = 'https://payment-gateway-app.onrender.com';
 
 export default function CheckoutPage() {
   const [isAddonSelected, setIsAddonSelected] = useState(false);
