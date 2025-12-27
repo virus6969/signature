@@ -80,17 +80,11 @@ export default function CheckoutPage() {
             throw new Error(orderData.error || 'Backend order creation failed');
         }
         
-        const cashfree = (window as any).Cashfree;
-        if (!cashfree) {
-          console.error("Cashfree SDK not loaded");
-           toast({
-              title: "Error Initializing Payment",
-              description: "Could not load payment library. Please refresh and try again.",
-              variant: "destructive"
-          });
-          setIsProcessing(false);
-          return;
+        if (typeof (window as any).Cashfree === 'undefined') {
+          throw new Error("Cashfree SDK not loaded. Please refresh the page and try again.");
         }
+
+        const cashfree = (window as any).Cashfree();
         
         cashfree.checkout({
           paymentSessionId: orderData.payment_session_id,
@@ -267,12 +261,3 @@ export default function CheckoutPage() {
                  <p className="text-xs text-muted-foreground text-center">Secure One-Time Payment • SSL Protected</p>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </main>
-
-      <TestimonialsSection />
-      <Footer />
-    </div>
-  );
-}
