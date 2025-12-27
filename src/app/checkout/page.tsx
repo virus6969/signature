@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -35,20 +36,37 @@ export default function CheckoutPage() {
     }
   }, [isAddonSelected]);
 
-  const loadCashfreeSDK = (): Promise<any> => {
-    return new Promise((resolve) => {
+  const loadCashfreeSDK = (callback: () => void) => {
+    if ((window as any).cashfree) {
+      callback();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://sdk.cashfree.com/js/v3/cashfree.js';
+    script.onload = () => {
       if ((window as any).cashfree) {
-        return resolve((window as any).cashfree);
+        callback();
+      } else {
+        console.error('Cashfree SDK failed to load.');
+         toast({
+            title: "Error Initializing Payment",
+            description: "Could not load payment library.",
+            variant: "destructive"
+        });
+        setIsProcessing(false);
       }
-      const script = document.createElement('script');
-      script.src = 'https://sdk.cashfree.com/js/v3/cashfree.js';
-      script.onload = () => {
-        resolve((window as any).cashfree);
-      };
-      document.body.appendChild(script);
-    });
+    };
+    script.onerror = () => {
+        toast({
+            title: "Error Initializing Payment",
+            description: "Failed to load payment script.",
+            variant: "destructive"
+        });
+        setIsProcessing(false);
+    };
+    document.body.appendChild(script);
   };
-
+  
   const handleProceedToPayment = async () => {
     setIsProcessing(true);
     
@@ -93,27 +111,22 @@ export default function CheckoutPage() {
             throw new Error(orderData.error || 'Backend order creation failed');
         }
 
-        const cashfree = await loadCashfreeSDK();
-        
-        cashfree.checkout({
-          paymentSessionId: orderData.payment_session_id,
-          redirectTarget: "_self", // Opens in same tab
-          
-          onSuccess: function(data: any) {
-            console.log('Payment Success:', data);
-            // The backend handles the final confirmation via webhook.
-            // We just need to redirect the user to the thank you page.
-            router.push(`/thank-you?order_id=${data.order.orderId}`);
-          },
-          
-          onFailure: function(data: any) {
-            console.log('Payment Failed:', data);
-            router.push(`/payment-failed?order_id=${data.order.orderId}`);
-          },
-          
-          onRedirect: function(data: any) {
-            console.log('Redirecting for payment:', data);
-          }
+        loadCashfreeSDK(() => {
+          (window as any).cashfree.checkout({
+            paymentSessionId: orderData.payment_session_id,
+            redirectTarget: "_self",
+            onSuccess: function(data: any) {
+              console.log('Payment Success:', data);
+              router.push(`/thank-you?order_id=${data.order.orderId}`);
+            },
+            onFailure: function(data: any) {
+              console.log('Payment Failed:', data);
+              router.push(`/payment-failed?order_id=${data.order.orderId}`);
+            },
+            onRedirect: function(data: any) {
+              console.log('Redirecting for payment:', data);
+            }
+          });
         });
 
     } catch (error: any) {
@@ -126,6 +139,7 @@ export default function CheckoutPage() {
         setIsProcessing(false);
     }
   };
+
 
   return (
     <div className="bg-background overflow-x-hidden" id="checkout-top">
@@ -294,3 +308,5 @@ export default function CheckoutPage() {
     </div>
   );
 }
+
+    
