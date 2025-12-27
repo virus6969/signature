@@ -4,13 +4,13 @@ import { FileText, ShieldCheck, Truck, RotateCcw, Ban, Info, LifeBuoy } from 'lu
 import Link from 'next/link';
 
 const policies = [
-  { name: 'Shipping and Delivery', href: '/policies/shipping', icon: Truck },
-  { name: 'Refund Policy', href: '/policies/refund', icon: Info },
-  { name: 'Revision Policy', href: '/policies/revision', icon: RotateCcw },
-  { name: 'Cancellation Policy', href: '/policies/cancellation', icon: Ban },
-  { name: 'Privacy Policy', href: '/policies/privacy', icon: ShieldCheck },
-  { name: 'Terms & Conditions', href: '/policies/terms', icon: FileText },
-  { name: 'Support Policy', href: '/policies/support', icon: LifeBuoy },
+  { name: 'Shipping and Delivery', href: '/shipping', icon: Truck },
+  { name: 'Refund Policy', href: '/refund', icon: Info },
+  { name: 'Revision Policy', href: '/revision', icon: RotateCcw },
+  { name: 'Cancellation Policy', href: '/cancellation', icon: Ban },
+  { name: 'Privacy Policy', href: '/privacy', icon: ShieldCheck },
+  { name: 'Terms & Conditions', href: '/terms', icon: FileText },
+  { name: 'Support Policy', href: '/support', icon: LifeBuoy },
 ];
 
 export default function PoliciesPage() {

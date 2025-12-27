@@ -5,11 +5,11 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const policies = [
-    { name: 'Privacy Policy', href: '/policies/privacy' },
-    { name: 'Refund Policy', href: '/policies/refund' },
-    { name: 'Shipping', href: '/policies/shipping' },
-    { name: 'Terms & Conditions', href: '/policies/terms' },
-    { name: 'Contact Us', href: '/policies/support' },
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Refund Policy', href: '/refund' },
+    { name: 'Shipping', href: '/shipping' },
+    { name: 'Terms & Conditions', href: '/terms' },
+    { name: 'Contact Us', href: '/support' },
   ];
 
   return (
