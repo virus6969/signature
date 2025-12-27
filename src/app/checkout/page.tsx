@@ -83,34 +83,15 @@ export default function CheckoutPage() {
         
         console.log('✅ Order created, payment_session_id:', orderData.payment_session_id);
 
-        // ========== STEP 2: CHECK/LOAD CASHFREE SDK ==========
+        // ========== STEP 2: CHECK FOR CASHFREE SDK ==========
         if (typeof (window as any).Cashfree === 'undefined') {
-            console.log('Loading Cashfree SDK...');
-            
-            // Load SDK dynamically
-            await new Promise<void>((resolve, reject) => {
-                const script = document.createElement('script');
-                script.src = 'https://sdk.cashfree.com/js/v3/cashfree.js';
-                
-                script.onload = () => {
-                    console.log('✅ Cashfree SDK loaded');
-                    resolve();
-                };
-                
-                script.onerror = () => {
-                    console.error('❌ Failed to load Cashfree SDK');
-                    reject(new Error('Failed to load payment gateway'));
-                };
-                
-                document.head.appendChild(script);
-            });
+          throw new Error("Cashfree SDK not loaded. Please ensure you have a stable internet connection and try again.");
         }
-
+        
         // ========== STEP 3: INITIALIZE & CHECKOUT ==========
         console.log('Initializing Cashfree checkout...');
         
-        // According to Cashfree docs: https://docs.cashfree.com/docs/integrate-checkout
-        const cashfree = (window as any).Cashfree();
+        const cashfree = (window as any).Cashfree(); // Initialize SDK
         
         cashfree.checkout({
             paymentSessionId: orderData.payment_session_id,
