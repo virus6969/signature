@@ -110,9 +110,7 @@ export default function CheckoutPage() {
         console.log('Initializing Cashfree checkout...');
         
         // According to Cashfree docs: https://docs.cashfree.com/docs/integrate-checkout
-        const cashfree = (window as any).Cashfree(); // Initialize SDK first
-        
-        cashfree.checkout({
+        (window as any).Cashfree.checkout({
             paymentSessionId: orderData.payment_session_id,
             redirectTarget: "_self",
         });
