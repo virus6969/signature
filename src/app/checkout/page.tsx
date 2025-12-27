@@ -35,37 +35,6 @@ export default function CheckoutPage() {
       setTotalPrice(BASE_PRICE);
     }
   }, [isAddonSelected]);
-
-  const loadCashfreeSDK = (callback: () => void) => {
-    if ((window as any).cashfree) {
-      callback();
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = 'https://sdk.cashfree.com/js/v3/cashfree.js';
-    script.onload = () => {
-      if ((window as any).cashfree) {
-        callback();
-      } else {
-        console.error('Cashfree SDK failed to load.');
-         toast({
-            title: "Error Initializing Payment",
-            description: "Could not load payment library.",
-            variant: "destructive"
-        });
-        setIsProcessing(false);
-      }
-    };
-    script.onerror = () => {
-        toast({
-            title: "Error Initializing Payment",
-            description: "Failed to load payment script.",
-            variant: "destructive"
-        });
-        setIsProcessing(false);
-    };
-    document.body.appendChild(script);
-  };
   
   const handleProceedToPayment = async () => {
     setIsProcessing(true);
@@ -111,22 +80,32 @@ export default function CheckoutPage() {
             throw new Error(orderData.error || 'Backend order creation failed');
         }
 
-        loadCashfreeSDK(() => {
-          (window as any).cashfree.checkout({
-            paymentSessionId: orderData.payment_session_id,
-            redirectTarget: "_self",
-            onSuccess: function(data: any) {
-              console.log('Payment Success:', data);
-              router.push(`/thank-you?order_id=${data.order.orderId}`);
-            },
-            onFailure: function(data: any) {
-              console.log('Payment Failed:', data);
-              router.push(`/payment-failed?order_id=${data.order.orderId}`);
-            },
-            onRedirect: function(data: any) {
-              console.log('Redirecting for payment:', data);
-            }
+        const cashfree = (window as any).cashfree;
+        if (!cashfree) {
+          console.error("Cashfree SDK not loaded");
+           toast({
+              title: "Error Initializing Payment",
+              description: "Could not load payment library.",
+              variant: "destructive"
           });
+          setIsProcessing(false);
+          return;
+        }
+
+        cashfree.checkout({
+          paymentSessionId: orderData.payment_session_id,
+          redirectTarget: "_self",
+          onSuccess: function(data: any) {
+            console.log('Payment Success:', data);
+            router.push(`/thank-you?order_id=${data.order.orderId}`);
+          },
+          onFailure: function(data: any) {
+            console.log('Payment Failed:', data);
+            router.push(`/payment-failed?order_id=${data.order.orderId}`);
+          },
+          onRedirect: function(data: any) {
+            console.log('Redirecting for payment:', data);
+          }
         });
 
     } catch (error: any) {
@@ -308,5 +287,3 @@ export default function CheckoutPage() {
     </div>
   );
 }
-
-    
