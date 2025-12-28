@@ -102,6 +102,7 @@ export default function CheckoutPage() {
           // ✅ ADD THESE CALLBACKS
           onSuccess: function(data: any) {
             console.log('✅ Payment successful:', data);
+            setIsProcessing(false);
             toast({
               title: "Payment Successful!",
               description: "Redirecting to confirmation page...",
@@ -309,3 +310,5 @@ export default function CheckoutPage() {
     </div>
   );
 }
+
+    
