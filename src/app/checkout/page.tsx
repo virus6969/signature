@@ -85,17 +85,35 @@ export default function CheckoutPage() {
 
         // ========== STEP 2: CHECK FOR CASHFREE SDK ==========
         if (typeof (window as any).Cashfree === 'undefined') {
-          throw new Error("Cashfree SDK not loaded. Please ensure you have a stable internet connection and try again.");
+          console.error('❌ Cashfree SDK not loaded.');
+          throw new Error("Payment gateway not loaded. Please refresh and try again.");
         }
         
         // ========== STEP 3: INITIALIZE & CHECKOUT ==========
         console.log('Initializing Cashfree checkout...');
         
-        const cashfree = (window as any).Cashfree(); // Initialize SDK
+        const cashfree = (window as any).Cashfree({
+            mode: "sandbox" // Change to "production" for live
+        });
+        
+        console.log('Cashfree object initialized:', cashfree);
         
         cashfree.checkout({
             paymentSessionId: orderData.payment_session_id,
-            redirectTarget: "_self",
+            redirectTarget: "_modal",
+            onSuccess: function(data: any) {
+                console.log('Payment successful:', data);
+                if (data.order && data.order.orderId) {
+                    router.push(`/thank-you?order_id=${data.order.orderId}`);
+                } else {
+                    router.push('/thank-you');
+                }
+            },
+            onFailure: function(data: any) {
+                console.log('Payment failed:', data);
+                setIsProcessing(false);
+                router.push('/payment-failed');
+            }
         });
 
     } catch (error: any) {
