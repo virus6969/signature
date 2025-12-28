@@ -14,10 +14,10 @@ import Footer from '@/components/app/footer';
 import { FileSignature, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-const BASE_PRICE = 1;
-const ADDON_PRICE = 0;
-const ORIGINAL_TOTAL = 99;
-const DISCOUNT = 98;
+const BASE_PRICE = 489;
+const ADDON_PRICE = 199;
+const ORIGINAL_TOTAL = 4999;
+const DISCOUNT = ORIGINAL_TOTAL - BASE_PRICE;
 
 const BACKEND_URL = 'https://razorpay-signature-app.onrender.com';
 
@@ -279,3 +279,5 @@ export default function CheckoutPage() {
     </div>
   );
 }
+
+    
