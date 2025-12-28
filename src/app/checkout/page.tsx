@@ -95,41 +95,31 @@ export default function CheckoutPage() {
         });
 
         // Open checkout with callbacks
-        const checkoutOptions = {
+        cashfree.checkout({
           paymentSessionId: orderData.payment_session_id,
           redirectTarget: "_modal",
           
-          // ✅ ADD THESE CALLBACKS
-          onSuccess: function(data: any) {
-            console.log('✅ Payment successful:', data);
-            setIsProcessing(false);
-            toast({
-              title: "Payment Successful!",
-              description: "Redirecting to confirmation page...",
-            });
-            // Redirect to thank you page
-            setTimeout(() => {
-              router.push(`/thank-you?order_id=${orderData.order_id}`);
-            }, 1500);
+          // ✅ ADD THESE CALLBACKS:
+          onSuccess: (data: any) => {
+            console.log('✅ Payment successful!', data);
+            window.location.href = `/thank-you?order_id=${orderData.order_id}`;
           },
           
-          onFailure: function(data: any) {
-            console.log('❌ Payment failed:', data);
+          onFailure: (data: any) => {
+            console.log('❌ Payment failed!', data);
             setIsProcessing(false);
             toast({
               title: "Payment Failed",
-              description: "Please try again or contact support.",
+              description: "Please try again.",
               variant: "destructive"
             });
           },
           
-          onClose: function() {
-            console.log('Payment modal closed');
+          onClose: () => {
+            console.log('Modal closed');
             setIsProcessing(false);
           }
-        };
-
-        cashfree.checkout(checkoutOptions);
+        });
 
     } catch (error: any) {
         console.error('Payment error:', error);
