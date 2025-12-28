@@ -94,34 +94,10 @@ export default function CheckoutPage() {
             mode: "production" // Production mode
         });
 
-        // Open checkout with callbacks
+        // Open checkout with built-in redirect
         cashfree.checkout({
           paymentSessionId: orderData.payment_session_id,
-          redirectTarget: "_modal",
-          
-          // ✅ ADD THESE CALLBACKS:
-          onSuccess: (data: any) => {
-            alert('SUCCESS CALLBACK FIRED!');
-            console.log('✅ Payment successful!', data);
-            window.location.href = `/thank-you?order_id=${orderData.order_id}`;
-          },
-          
-          onFailure: (data: any) => {
-            alert('FAILURE CALLBACK FIRED!');
-            console.log('❌ Payment failed!', data);
-            setIsProcessing(false);
-            toast({
-              title: "Payment Failed",
-              description: "Please try again.",
-              variant: "destructive"
-            });
-          },
-          
-          onClose: () => {
-            alert('CLOSE CALLBACK FIRED!');
-            console.log('Modal closed');
-            setIsProcessing(false);
-          }
+          redirectTarget: "_self"
         });
 
     } catch (error: any) {
