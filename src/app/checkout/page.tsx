@@ -101,11 +101,13 @@ export default function CheckoutPage() {
           
           // ✅ ADD THESE CALLBACKS:
           onSuccess: (data: any) => {
+            alert('SUCCESS CALLBACK FIRED!');
             console.log('✅ Payment successful!', data);
             window.location.href = `/thank-you?order_id=${orderData.order_id}`;
           },
           
           onFailure: (data: any) => {
+            alert('FAILURE CALLBACK FIRED!');
             console.log('❌ Payment failed!', data);
             setIsProcessing(false);
             toast({
@@ -116,6 +118,7 @@ export default function CheckoutPage() {
           },
           
           onClose: () => {
+            alert('CLOSE CALLBACK FIRED!');
             console.log('Modal closed');
             setIsProcessing(false);
           }
@@ -300,5 +303,3 @@ export default function CheckoutPage() {
     </div>
   );
 }
-
-    
