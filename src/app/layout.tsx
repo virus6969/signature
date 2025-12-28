@@ -25,6 +25,10 @@ export default function RootLayout({
           src="https://sdk.cashfree.com/js/v3/cashfree.js"
           strategy="beforeInteractive"
         />
+        <meta 
+          httpEquiv="Permissions-Policy" 
+          content="payment=(self 'https://api.cashfree.com' 'https://sandbox.cashfree.com'), accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), usb=()"
+        />
       </head>
       <body className="font-body antialiased">
         {children}
