@@ -68,7 +68,8 @@ export default function CheckoutPage() {
     });
 
     try {
-        // ========== STEP 1: CREATE ORDER FIRST ==========
+        // Create order
+        console.log('Creating production order...');
         const orderResponse = await fetch(`${BACKEND_URL}/api/payment/cashfree/create-order`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -77,47 +78,30 @@ export default function CheckoutPage() {
 
         const orderData = await orderResponse.json();
         
+        console.log('Order created:', orderData.order_id);
+        
         if (!orderData.success) {
             throw new Error(orderData.error || 'Order creation failed');
         }
-        
-        console.log('✅ Order created, payment_session_id:', orderData.payment_session_id);
 
-        // ========== STEP 2: CHECK FOR CASHFREE SDK ==========
+        // Check for Cashfree SDK
         if (typeof (window as any).Cashfree === 'undefined') {
-          console.error('❌ Cashfree SDK not loaded.');
-          throw new Error("Payment gateway not loaded. Please refresh and try again.");
+            throw new Error("Payment gateway not loaded. Please refresh and try again.");
         }
         
-        // ========== STEP 3: INITIALIZE & CHECKOUT ==========
-        console.log('Initializing Cashfree checkout...');
-        
+        // Initialize Cashfree in PRODUCTION mode
         const cashfree = (window as any).Cashfree({
-            mode: "sandbox" // Change to "production" for live
+            mode: "production" // ✅ Production mode to match backend
         });
-        
-        console.log('Cashfree object initialized:', cashfree);
-        
+
+        // Open checkout
         cashfree.checkout({
             paymentSessionId: orderData.payment_session_id,
             redirectTarget: "_modal",
-            onSuccess: function(data: any) {
-                console.log('Payment successful:', data);
-                if (data.order && data.order.orderId) {
-                    router.push(`/thank-you?order_id=${data.order.orderId}`);
-                } else {
-                    router.push('/thank-you');
-                }
-            },
-            onFailure: function(data: any) {
-                console.log('Payment failed:', data);
-                setIsProcessing(false);
-                router.push('/payment-failed');
-            }
         });
 
     } catch (error: any) {
-        console.error('❌ Payment error:', error);
+        console.error('Payment error:', error);
         setIsProcessing(false);
         
         toast({
@@ -295,3 +279,5 @@ export default function CheckoutPage() {
     </div>
   );
 }
+
+    
