@@ -129,7 +129,7 @@ export default function CheckoutPage() {
           }
         };
 
-        await cashfree.checkout(checkoutOptions);
+        cashfree.checkout(checkoutOptions);
 
     } catch (error: any) {
         console.error('Payment error:', error);
