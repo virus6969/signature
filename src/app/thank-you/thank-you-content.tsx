@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
+const BACKEND_URL = 'https://payment-server-production-2c18.up.railway.app/';
+
 const ThankYouContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -17,14 +19,18 @@ const ThankYouContent = () => {
     
     if (orderIdParam) {
       setOrderId(orderIdParam);
-      // You can save orderId to localStorage or context for future reference
       localStorage.setItem('lastOrderId', orderIdParam);
+      
+      // Send successful payment data to the backend
+      fetch(`${BACKEND_URL}/api/log-payment-status`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderId: orderIdParam, status: 'SUCCESS' })
+      }).catch(error => console.error("Failed to log successful payment:", error));
     }
     
     if (statusParam === 'failed') {
-      // Handle failed payment
-      alert('Payment failed. Please try again.');
-      router.push('/checkout');
+      router.push('/payment-failed');
     }
   }, [searchParams, router]);
   
