@@ -88,7 +88,6 @@ const ThankYouContent = () => {
         }}>
           <p>Need help? Contact us at:</p>
           <p>📧 orders@thesignaturestudios.in</p>
-          <p>📞 +91 98765 43210</p>
         </div>
         
         <Link href="/" passHref>
