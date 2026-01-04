@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -35,10 +34,10 @@ export default function CheckoutPage() {
       setTotalPrice(BASE_PRICE);
     }
   }, [isAddonSelected]);
-  
+
   const handleProceedToPayment = async () => {
     setIsProcessing(true);
-    
+
     const customerDetails = {
       name: (document.getElementById('fullName') as HTMLInputElement)?.value,
       profession: (document.getElementById('profession') as HTMLInputElement)?.value,
@@ -46,69 +45,83 @@ export default function CheckoutPage() {
       phone: (document.getElementById('phone') as HTMLInputElement)?.value,
       remarks: (document.getElementById('remarks') as HTMLTextAreaElement)?.value,
     };
-    
-    const selectedItemIds: string[] = ['PRO_SIGNATURE_DESIGN'];
-    if (isAddonSelected) {
-      selectedItemIds.push('ADDON_PRACTICE_SHEET');
-    }
 
     if (!customerDetails.name || !customerDetails.profession || !customerDetails.phone || !customerDetails.email) {
-        toast({
-            title: "Missing Information",
-            description: "Please fill out all required fields (*).",
-            variant: "destructive",
-        });
-        setIsProcessing(false);
-        return;
+      toast({
+        title: "Missing Information",
+        description: "Please fill out all required fields (*).",
+        variant: "destructive",
+      });
+      setIsProcessing(false);
+      return;
     }
     
+    // Save to Google Sheet before payment attempt
+    try {
+        await fetch(`${BACKEND_URL}/api/save-to-sheet`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                ...customerDetails,
+                isAddonSelected
+            })
+        });
+    } catch (sheetError) {
+        console.error("Could not save to sheet, but proceeding with payment:", sheetError);
+    }
+
+
     toast({
-        title: "Initializing Payment...",
-        description: "Please wait while we create your secure order.",
+      title: "Initializing Payment...",
+      description: "Please wait while we create your secure order.",
     });
 
     try {
-        // Create order
-        console.log('Creating production order...');
-        const orderResponse = await fetch(`${BACKEND_URL}/api/payment/cashfree/create-order`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ customerDetails, selectedItemIds })
-        });
+      // Create order
+      const orderResponse = await fetch(`${BACKEND_URL}/api/payment/cashfree/create-order`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customerDetails,
+          totalAmount: totalPrice,
+          isAddonSelected
+        })
+      });
 
-        const orderData = await orderResponse.json();
-        
-        console.log('Order created:', orderData.order_id);
-        
-        if (!orderData.success) {
-            throw new Error(orderData.error || 'Order creation failed');
-        }
+      const orderData = await orderResponse.json();
 
-        // Check for Cashfree SDK
-        if (typeof (window as any).Cashfree === 'undefined') {
-            throw new Error("Payment gateway not loaded. Please refresh and try again.");
-        }
-        
-        // Initialize Cashfree in PRODUCTION mode
-        const cashfree = (window as any).Cashfree({
-            mode: "production" // Production mode
-        });
+      if (!orderData.success) {
+        throw new Error(orderData.error || 'Order creation failed');
+      }
 
-        // Open checkout with built-in redirect
-        cashfree.checkout({
-          paymentSessionId: orderData.payment_session_id,
-          redirectTarget: "_self"
-        });
+      // Check for Cashfree SDK
+      if (typeof (window as any).Cashfree === 'undefined') {
+        throw new Error("Payment gateway not loaded. Please refresh and try again.");
+      }
+
+      // Initialize Cashfree
+      const cashfree = (window as any).Cashfree({
+        mode: "production"
+      });
+
+      // Open checkout with built-in redirect.
+      // Cashfree will handle the redirect after payment completion.
+      cashfree.checkout({
+        paymentSessionId: orderData.payment_session_id,
+        redirectTarget: "_self"
+      });
+
+      // DO NOT add any manual redirect here.
 
     } catch (error: any) {
-        console.error('Payment error:', error);
-        setIsProcessing(false);
-        
-        toast({
-            title: "Payment Error",
-            description: error.message || "Please try again or contact support",
-            variant: "destructive"
-        });
+      console.error('Payment error:', error);
+      setIsProcessing(false);
+
+      toast({
+        title: "Payment Error",
+        description: error.message || "Please try again or contact support",
+        variant: "destructive"
+      });
     }
   };
 
@@ -279,5 +292,3 @@ export default function CheckoutPage() {
     </div>
   );
 }
-
-    
