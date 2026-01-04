@@ -18,7 +18,7 @@ const ADDON_PRICE = 199;
 const ORIGINAL_TOTAL = 4999;
 const DISCOUNT = ORIGINAL_TOTAL - BASE_PRICE;
 
-const BACKEND_URL = 'https://payment-server-production-2c18.up.railway.app/';
+const BACKEND_URL = 'https://payment-server-production-2c18.up.railway.app';
 
 export default function CheckoutPage() {
   const [isAddonSelected, setIsAddonSelected] = useState(false);
@@ -56,35 +56,25 @@ export default function CheckoutPage() {
       return;
     }
     
-    // Save to Google Sheet before payment attempt
-    try {
-        await fetch(`${BACKEND_URL}/api/save-to-sheet`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                ...customerDetails,
-                isAddonSelected
-            })
-        });
-    } catch (sheetError) {
-        console.error("Could not save to sheet, but proceeding with payment:", sheetError);
-    }
-
-
     toast({
       title: "Initializing Payment...",
       description: "Please wait while we create your secure order.",
     });
 
     try {
+      // Build selectedItemIds array
+      const selectedItemIds = ['PRO_SIGNATURE_DESIGN'];
+      if (isAddonSelected) {
+        selectedItemIds.push('ADDON_PRACTICE_SHEET');
+      }
+
       // Create order
       const orderResponse = await fetch(`${BACKEND_URL}/api/payment/cashfree/create-order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           customerDetails,
-          totalAmount: totalPrice,
-          isAddonSelected
+          selectedItemIds
         })
       });
 

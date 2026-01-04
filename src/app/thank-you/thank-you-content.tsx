@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-const BACKEND_URL = 'https://payment-server-production-2c18.up.railway.app/';
+const BACKEND_URL = 'https://payment-server-production-2c18.up.railway.app';
 
 const ThankYouContent = () => {
   const router = useRouter();
