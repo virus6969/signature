@@ -2,13 +2,14 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Loader2 } from 'lucide-react';
 
 const BACKEND_URL = 'https://payment-server-production-2c18.up.railway.app/';
 
-const PaymentFailedPage = () => {
+function PaymentFailedContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -118,4 +119,26 @@ const PaymentFailedPage = () => {
   );
 };
 
-export default PaymentFailedPage;
+function LoadingFallback() {
+    return (
+        <div style={{
+            minHeight: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: 'linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%)',
+            color: 'white',
+            textAlign: 'center'
+        }}>
+            <Loader2 className="h-12 w-12 animate-spin" />
+        </div>
+    )
+}
+
+export default function PaymentFailedPage() {
+    return (
+        <Suspense fallback={<LoadingFallback />}>
+            <PaymentFailedContent />
+        </Suspense>
+    )
+}
