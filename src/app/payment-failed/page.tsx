@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Loader2 } from 'lucide-react';
 
-const BACKEND_URL = 'https://payment-server-production-2c18.up.railway.app';
+const BACKEND_URL = 'https://payment-server-production-0ecb.up.railway.app';
 
 function PaymentFailedContent() {
   const router = useRouter();

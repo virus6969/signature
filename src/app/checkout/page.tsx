@@ -18,7 +18,7 @@ const ADDON_PRICE = 199;
 const ORIGINAL_TOTAL = 4999;
 const DISCOUNT = ORIGINAL_TOTAL - BASE_PRICE;
 
-const BACKEND_URL = 'https://payment-server-production-2c18.up.railway.app';
+const BACKEND_URL = 'https://payment-server-production-0ecb.up.railway.app';
 
 export default function CheckoutPage() {
   const [isAddonSelected, setIsAddonSelected] = useState(false);
