@@ -4,6 +4,8 @@ import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import Script from 'next/script';
+import { Suspense } from 'react';
+import FacebookPixel from '@/components/app/pixel-events';
 
 export const metadata: Metadata = {
   title: 'Professional Handcrafted Digital Signatures',
@@ -31,6 +33,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
+        <Suspense fallback={null}>
+            <FacebookPixel />
+        </Suspense>
         {children}
         <Toaster />
       </body>

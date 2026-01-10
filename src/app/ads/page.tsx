@@ -13,12 +13,18 @@ import CountdownTimer from '@/components/app/ads/countdown-timer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import ExitIntentPopup from '@/components/app/exit-intent-popup';
+import Link from 'next/link';
+import * as fpixel from '@/lib/fpixel'
 
 const POPUP_SESSION_KEY = 'signagenius_popup_shown';
 
 export default function AdsPage() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-signature');
   const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    fpixel.event('ViewContent')
+  }, [])
 
   useEffect(() => {
     if (sessionStorage.getItem(POPUP_SESSION_KEY)) {
@@ -64,13 +70,15 @@ export default function AdsPage() {
                   A signature isn’t just handwriting; it’s your identity. We transform your name into a premium, handcrafted signature that makes you stand out.
               </p>
               <div className="relative inline-block">
-                <Button 
-                  size="lg" 
-                  className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
-                  style={{boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}}
-                >
-                  Get Your Signature Now (50% Off)
-                </Button>
+                <Link href="/checkout" passHref>
+                  <Button 
+                    size="lg" 
+                    className="h-14 text-base md:text-lg min-w-[280px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all shine-effect"
+                    style={{boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}}
+                  >
+                    Get Your Signature Now (50% Off)
+                  </Button>
+                </Link>
               </div>
               <p className="text-sm mt-2 text-primary-foreground/80">Crafted by Experts. Delivered in 24 Hours. Guaranteed to Impress.</p>
             </div>
@@ -130,12 +138,14 @@ export default function AdsPage() {
             <div className="flex-1 text-center">
                 <CountdownTimer />
             </div>
-            <Button 
-              size="default" 
-              className="flex-shrink-0 h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg shine-effect"
-            >
-              Get My Signature (50% Off)
-            </Button>
+            <Link href="/checkout" passHref>
+              <Button 
+                size="default" 
+                className="flex-shrink-0 h-12 text-base bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg shadow-lg shine-effect"
+              >
+                Get My Signature (50% Off)
+              </Button>
+            </Link>
         </div>
       </div>
     </div>

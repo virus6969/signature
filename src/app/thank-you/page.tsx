@@ -4,6 +4,9 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
+import * as fpixel from '@/lib/fpixel'
+
+const BACKEND_URL = 'https://payment-server-production-0ecb.up.railway.app';
 
 function ThankYouContent() {
   const router = useRouter();
@@ -24,7 +27,7 @@ function ThankYouContent() {
     const verifyPayment = async () => {
       try {
         const response = await fetch(
-          `https://payment-server-production-0ecb.up.railway.app/api/payment/verify/${orderId}`
+          `${BACKEND_URL}/api/payment/verify/${orderId}`
         );
         
         const data = await response.json();
@@ -35,6 +38,12 @@ function ThankYouContent() {
           // Payment successful - stay on this page
           setOrderData(data);
           setLoading(false);
+          // Fire Purchase event to Facebook Pixel
+          fpixel.event('Purchase', {
+            value: data.amount,
+            currency: 'INR',
+          })
+
         } else {
           // Payment not verified - redirect to failed page
           console.log('Payment not verified, redirecting to failed page');

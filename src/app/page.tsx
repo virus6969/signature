@@ -21,12 +21,17 @@ import TransformationsSection from '@/components/app/transformations-section';
 import Footer from '@/components/app/footer';
 import Link from 'next/link';
 import { LoadingProvider } from '@/components/app/loading-provider';
+import * as fpixel from '@/lib/fpixel'
 
 const POPUP_SESSION_KEY = 'signagenius_popup_shown';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-signature');
   const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    fpixel.event('ViewContent')
+  }, [])
 
   useEffect(() => {
     if (sessionStorage.getItem(POPUP_SESSION_KEY)) {

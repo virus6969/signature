@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -12,6 +13,7 @@ import TestimonialsSection from '@/components/app/testimonials-section';
 import Footer from '@/components/app/footer';
 import { FileSignature, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import * as fpixel from '@/lib/fpixel'
 
 const BASE_PRICE = 489;
 const ADDON_PRICE = 199;
@@ -26,6 +28,10 @@ export default function CheckoutPage() {
   const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
+
+  useEffect(() => {
+    fpixel.event('InitiateCheckout')
+  }, []);
 
   useEffect(() => {
     if (isAddonSelected) {
