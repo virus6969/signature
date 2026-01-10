@@ -2,28 +2,23 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Script from 'next/script'
 import * as fpixel from '@/lib/fpixel'
 
 const FacebookPixel = () => {
   const pathname = usePathname()
-  const [pixelId, setPixelId] = useState<string | null>(null);
 
   useEffect(() => {
-    // The pixelId is only available on the client side.
-    setPixelId(fpixel.FB_PIXEL_ID || null);
-  }, []);
-
-
-  useEffect(() => {
-    if (!pixelId) return;
+    // This hook is still useful for triggering pageviews on client-side navigation.
+    if (!fpixel.FB_PIXEL_ID) return;
     
     fpixel.pageview()
 
-  }, [pathname, pixelId])
+  }, [pathname])
 
-  if (!pixelId) {
+  if (!fpixel.FB_PIXEL_ID) {
+    console.warn('Facebook Pixel ID is not configured. Tracking is disabled.');
     return null;
   }
 
@@ -42,7 +37,7 @@ const FacebookPixel = () => {
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${pixelId}');
+            fbq('init', '${fpixel.FB_PIXEL_ID}');
             fbq('track', 'PageView');
           `,
         }}
