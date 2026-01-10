@@ -32,6 +32,8 @@ export default function RootLayout({
           httpEquiv="Permissions-Policy" 
           content="payment=(self 'https://api.cashfree.com' 'https://sandbox.cashfree.com'), accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), usb=()"
         />
+      </head>
+      <body className="font-body antialiased">
         <Script
           id="fb-pixel"
           strategy="afterInteractive"
@@ -50,9 +52,6 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body className="font-body antialiased">
-        
         {children}
         <Toaster />
       </body>
