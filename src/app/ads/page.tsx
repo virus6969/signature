@@ -34,7 +34,7 @@ export default function AdsPage() {
     const timer = setTimeout(() => {
       setShowPopup(true);
       sessionStorage.setItem(POPUP_SESSION_KEY, 'true');
-    }, 7000); // 7 seconds
+    }, 15000); // 15 seconds
 
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) {
