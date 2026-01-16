@@ -20,8 +20,6 @@ const ADDON_PRICE = 199;
 const ORIGINAL_TOTAL = 4999;
 const DISCOUNT = ORIGINAL_TOTAL - BASE_PRICE;
 
-const BACKEND_URL = 'https://payment-server-production-0ecb.up.railway.app';
-
 export default function CheckoutPage() {
   const [isAddonSelected, setIsAddonSelected] = useState(false);
   const [totalPrice, setTotalPrice] = useState(BASE_PRICE);
@@ -63,62 +61,11 @@ export default function CheckoutPage() {
     }
     
     toast({
-      title: "Initializing Payment...",
-      description: "Please wait while we create your secure order.",
+      title: "Backend Not Connected",
+      description: "Payment processing is currently disabled.",
+      variant: "destructive",
     });
-
-    try {
-      // Build selectedItemIds array
-      const selectedItemIds = ['PRO_SIGNATURE_DESIGN'];
-      if (isAddonSelected) {
-        selectedItemIds.push('ADDON_PRACTICE_SHEET');
-      }
-
-      // Create order
-      const orderResponse = await fetch(`${BACKEND_URL}/api/payment/cashfree/create-order`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          customerDetails,
-          selectedItemIds
-        })
-      });
-
-      const orderData = await orderResponse.json();
-
-      if (!orderData.success) {
-        throw new Error(orderData.error || 'Order creation failed');
-      }
-
-      // Check for Cashfree SDK
-      if (typeof (window as any).Cashfree === 'undefined') {
-        throw new Error("Payment gateway not loaded. Please refresh and try again.");
-      }
-
-      // Initialize Cashfree
-      const cashfree = (window as any).Cashfree({
-        mode: "production"
-      });
-
-      // Open checkout with built-in redirect.
-      // Cashfree will handle the redirect after payment completion.
-      cashfree.checkout({
-        paymentSessionId: orderData.payment_session_id,
-        redirectTarget: "_self"
-      });
-
-      // DO NOT add any manual redirect here.
-
-    } catch (error: any) {
-      console.error('Payment error:', error);
-      setIsProcessing(false);
-
-      toast({
-        title: "Payment Error",
-        description: error.message || "Please try again or contact support",
-        variant: "destructive"
-      });
-    }
+    setIsProcessing(false);
   };
 
 

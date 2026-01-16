@@ -7,24 +7,8 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Loader2 } from 'lucide-react';
 
-const BACKEND_URL = 'https://payment-server-production-0ecb.up.railway.app';
-
 function PaymentFailedContent() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const orderIdParam = searchParams.get('order_id');
-    
-    if (orderIdParam) {
-      // Send failed payment data to the backend
-      fetch(`${BACKEND_URL}/api/log-payment-status`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ orderId: orderIdParam, status: 'FAILED' })
-      }).catch(error => console.error("Failed to log failed payment:", error));
-    }
-  }, [searchParams]);
   
   return (
     <div className="failed-container" style={{

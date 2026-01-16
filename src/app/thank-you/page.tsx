@@ -6,68 +6,19 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 import * as fpixel from '@/lib/fpixel'
 
-const BACKEND_URL = 'https://payment-server-production-0ecb.up.railway.app';
-
 function ThankYouContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [loading, setLoading] = useState(true);
-  const [orderData, setOrderData] = useState<any>(null);
+  const orderId = searchParams.get('order_id');
 
   useEffect(() => {
-    const orderId = searchParams.get('order_id');
-    
-    if (!orderId) {
-      console.error('No order ID found');
-      router.push('/payment-failed');
-      return;
+    if (orderId) {
+      fpixel.event('Purchase', {
+        value: 489, // Base price as a fallback
+        currency: 'INR',
+      })
     }
-
-    // Verify payment status from backend
-    const verifyPayment = async () => {
-      try {
-        const response = await fetch(
-          `${BACKEND_URL}/api/payment/verify/${orderId}`
-        );
-        
-        const data = await response.json();
-        
-        console.log('Payment verification response:', data);
-        
-        if (data.success && data.verified) {
-          // Payment successful - stay on this page
-          setOrderData(data);
-          setLoading(false);
-          // Fire Purchase event to Facebook Pixel
-          fpixel.event('Purchase', {
-            value: data.amount,
-            currency: 'INR',
-          })
-
-        } else {
-          // Payment not verified - redirect to failed page
-          console.log('Payment not verified, redirecting to failed page');
-          router.push(`/payment-failed?order_id=${orderId}`);
-        }
-      } catch (error) {
-        console.error('Error verifying payment:', error);
-        router.push('/payment-failed');
-      }
-    };
-
-    verifyPayment();
-  }, [searchParams, router]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-blue-50">
-        <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
-          <p className="mt-4 text-lg text-gray-700">Verifying your payment...</p>
-        </div>
-      </div>
-    );
-  }
+  }, [orderId]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-blue-50">
@@ -84,30 +35,22 @@ function ThankYouContent() {
           </h1>
           
           <p className="text-gray-600 mb-6">
-            Thank you for your purchase, {orderData?.customer_name}!
+            Thank you for your purchase!
           </p>
           
           <div className="bg-gray-50 rounded-lg p-4 mb-6 text-left">
             <div className="flex justify-between mb-2">
               <span className="text-gray-600">Order ID:</span>
-              <span className="font-mono text-sm">{orderData?.order_id}</span>
-            </div>
-            <div className="flex justify-between mb-2">
-              <span className="text-gray-600">Amount:</span>
-              <span className="font-semibold">₹{orderData?.amount}</span>
-            </div>
-            <div className="flex justify-between mb-2">
-              <span className="text-gray-600">Payment ID:</span>
-              <span className="font-mono text-sm">{orderData?.payment_id}</span>
+              <span className="font-mono text-sm">{orderId || 'N/A'}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Payment Method:</span>
-              <span className="capitalize">{orderData?.payment_method}</span>
+              <span className="text-gray-600">Status:</span>
+              <span className="font-semibold">Processing</span>
             </div>
           </div>
           
           <p className="text-sm text-gray-500 mb-6">
-            A confirmation email has been sent to {orderData?.customer_email}
+            You will receive a confirmation email with your order details shortly.
           </p>
           
           <button
